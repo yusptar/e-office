@@ -9,29 +9,33 @@
       <span class="text-black font-bold text-base">Ringkasan Statistik Bro</span>
       <div class="flex flex-col pt-5 md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <span>Total Customer</span>
+          <span>Surat Selesai</span>
           <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>
-            <span class="ml-2 text-black text-xl font-bold">{{ customer }}</span>
+            <!-- <span class="ml-2 text-black text-xl font-bold">{{ customer }}</span> -->
+            <span class="ml-2 text-black text-xl font-bold">0</span>
           </div>
         </div>
 
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <span>Total Sales</span>
+          <span>Surat Diproses</span>
           <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            <span class="ml-2 text-black text-xl font-bold">{{ sales }}</span>
+            <!-- <span class="ml-2 text-black text-xl font-bold">{{ sales }}</span> -->
+            <span class="ml-2 text-black text-xl font-bold">0</span>
           </div>
         </div>
 
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <span>Total Penjualan</span>
-          <span class="text-black text-xl font-bold">Rp. {{ formatMoney(totalPenjualan) }}</span>
+          <span>Surat Ditolak</span>
+          <!-- <span class="text-black text-xl font-bold">Rp. {{ formatMoney(totalPenjualan) }}</span> -->
+          <span class="ml-2 text-black text-xl font-bold">0</span>
         </div>
 
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <span>Total Pembayaran</span>
-          <span class="text-black text-xl font-bold">Rp. {{ formatMoney(totalPembayaran) }}</span>
+          <span>Total Seluruh Jumlah Surat</span>
+          <!-- <span class="text-black text-xl font-bold">Rp. {{ formatMoney(totalPembayaran) }}</span> -->
+          <span class="ml-2 text-black text-xl font-bold">0</span>
         </div>
       </div> 
     </div>

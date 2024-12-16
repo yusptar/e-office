@@ -18,7 +18,7 @@ return [
     [
       'uniqid' => 'menuMasterData',
       'type' => 'menu',
-      'text' => 'Master Data',
+      'text' => 'Data Surat',
       'route' => '#',
       'access' => [
         'module.data-master.jabatan.index',
@@ -48,16 +48,16 @@ return [
           'open' => false,
           'children' => null
         ],
-        [
-          'uniqid' => 'masterUser',
-          'type' => 'menu',
-          'text' => 'User',
-          'route' => 'admin.data-master.karyawan.index',
-          'access' => 'module.data-master.karyawan.index',
-          'active' => false,
-          'open' => false,
-          'children' => null
-        ]
+        // [
+        //   'uniqid' => 'masterUser',
+        //   'type' => 'menu',
+        //   'text' => 'User',
+        //   'route' => 'admin.data-master.karyawan.index',
+        //   'access' => 'module.data-master.karyawan.index',
+        //   'active' => false,
+        //   'open' => false,
+        //   'children' => null
+        // ]
       ]
     ],
     [
@@ -84,11 +84,11 @@ return [
       'children' => null
     ],
     [
-      'uniqid' => 'menuInputData',
+      'uniqid' => 'masterUser',
       'type' => 'menu',
-      'text' => 'Input Data',
-      'route' => 'admin.log-activity.index',
-      'access' => 'module.log-activity.index',
+      'text' => 'User',
+      'route' => 'admin.data-master.karyawan.index',
+      'access' => 'module.data-master.karyawan.index',
       'active' => false,
       'open' => false,
       'children' => null

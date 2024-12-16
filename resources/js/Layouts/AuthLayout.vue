@@ -1,11 +1,12 @@
 <template>
   <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-      <div class="flex flex-row w-full sm:max-w-md items-center justify-between">
-        <Link href="/">
+      <Link href="/">
           <logo-image class="w-10 h-10" />
-        </Link>
+      </Link>
+      <div class="flex flex-row w-full sm:max-w-md items-center justify-center">
+       
         <slot name="title">
-          <span class="font-extrabold tracking-wide">Masuk ke Admin Panel</span>
+          <span class="font-extrabold tracking-wide text-lg">E-Office</span>
         </slot>
       </div>
 
@@ -13,7 +14,7 @@
         <slot />
       </div>
 
-      <small class="mt-5 tracking-wide">{{ new Date().getFullYear() }} &copy; James Nathanael. All Rights Reserved.</small>
+      <small class="mt-5 tracking-wide">{{ new Date().getFullYear() }} &copy; Unit SIMRS. All Rights Reserved.</small>
   </div>
 </template>
 
