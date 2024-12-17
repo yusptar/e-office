@@ -83,6 +83,20 @@ return [
           ]
         ]
       ]
+    ],
+    [
+      'module' => 'Laporan',
+      'sub_module' => [
+        [
+          'module' => 'Laporan',
+          'activities' => [
+            [
+              'label' => 'Menu Laporan',
+              'value' => 'module.laporan.index',
+            ]
+          ]
+        ]
+      ]
     ]
   ]
 ];

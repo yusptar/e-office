@@ -45,7 +45,7 @@ class Karyawan extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'ms_karyawan';
+    protected $table = 'users_eoffice';
 
     /**
      * The attributes that aren't mass assignable.

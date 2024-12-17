@@ -68,9 +68,24 @@ return [
       'type' => 'menu',
       'text' => 'Laporan',
       'route' => '#',
+      'access' => [
+        'module.data-master.jabatan.index',
+        'module.data-master.karyawan.index',
+        'module.data-master.banner.index',
+      ],
       'active' => false,
       'open' => false,
       'children' => [
+        [
+          'uniqid' => 'masterBanner',
+          'type' => 'menu',
+          'text' => 'Banner',
+          'route' => 'admin.data-master.banner.index',
+          'access' => 'module.data-master.banner.index',
+          'active' => false,
+          'open' => false,
+          'children' => null
+        ],
       ]
     ],
     [
@@ -89,6 +104,16 @@ return [
       'text' => 'User',
       'route' => 'admin.data-master.karyawan.index',
       'access' => 'module.data-master.karyawan.index',
+      'active' => false,
+      'open' => false,
+      'children' => null
+    ],
+    [
+      'uniqid' => 'suratUser',
+      'type' => 'menu',
+      'text' => 'Surat',
+      'route' => 'admin.surat_masuk.index',
+      'access' => true,
       'active' => false,
       'open' => false,
       'children' => null

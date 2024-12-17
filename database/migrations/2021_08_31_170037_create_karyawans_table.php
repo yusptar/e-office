@@ -13,7 +13,7 @@ class CreateKaryawansTable extends Migration
      */
     public function up()
     {
-        Schema::create('ms_karyawan', function (Blueprint $table) {
+        Schema::create('users_eoffice', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lengkap');
             $table->string('slug')->nullable();
@@ -46,6 +46,6 @@ class CreateKaryawansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ms_karyawan');
+        Schema::dropIfExists('users_eoffice');
     }
 }

@@ -29,15 +29,15 @@ class DatabaseSeeder extends Seeder
             'hak_akses' => $userAccess
         ]);
         \App\Models\Karyawan::create([
-            'nama_lengkap' => 'Demo Administrator',
+            'nama_lengkap' => 'Admin E-Office',
             'tanggal_lahir' => '1970-01-01',
             'nomor_hp' => '+6281234567890',
-            'username' => 'demo-admin',
+            'username' => '20220294535',
             'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('20220294535'),
             'nik' => '3201020908023001',
             'ektp_path' => 'karyawan/ektp/demo-admin-demo-admin-612f47ef262db.png',
-            'alamat_lengkap' => 'Jl. Sukahati No. 234 Jakarta Utara',
+            'alamat_lengkap' => 'Oman',
             'profile_photo_path' => null,
             'jabatan_id' => $jabatan->id,
             'status' => true
