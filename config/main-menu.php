@@ -68,20 +68,26 @@ return [
       'type' => 'menu',
       'text' => 'Laporan',
       'route' => '#',
-      'access' => [
-        'module.data-master.jabatan.index',
-        'module.data-master.karyawan.index',
-        'module.data-master.banner.index',
-      ],
+      'access' => true,
       'active' => false,
       'open' => false,
       'children' => [
         [
-          'uniqid' => 'masterBanner',
+          'uniqid' => 'masterPengaduan',
           'type' => 'menu',
-          'text' => 'Banner',
-          'route' => 'admin.data-master.banner.index',
-          'access' => 'module.data-master.banner.index',
+          'text' => 'Pengaduan',
+          'route' => 'admin.laporan.pengaduan.index',
+          'access' => true,
+          'active' => false,
+          'open' => false,
+          'children' => null
+        ],
+        [
+          'uniqid' => 'masterSPI',
+          'type' => 'menu',
+          'text' => 'SPI',
+          'route' => 'admin.laporan.spi.index',
+          'access' => true,
           'active' => false,
           'open' => false,
           'children' => null
