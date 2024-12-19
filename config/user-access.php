@@ -88,11 +88,20 @@ return [
       'module' => 'Laporan',
       'sub_module' => [
         [
-          'module' => 'Laporan',
+          'module' => 'Pengaduan',
           'activities' => [
             [
-              'label' => 'Menu Laporan',
-              'value' => 'module.laporan.index',
+              'label' => 'Menu Pengaduan',
+              'value' => 'module.laporan.pengaduan.index',
+            ]
+          ]
+        ],
+        [
+          'module' => 'SPI',
+          'activities' => [
+            [
+              'label' => 'Menu SPI',
+              'value' => 'module.laporan.spi.index',
             ]
           ]
         ]

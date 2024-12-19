@@ -48,16 +48,6 @@ return [
           'open' => false,
           'children' => null
         ],
-        // [
-        //   'uniqid' => 'masterUser',
-        //   'type' => 'menu',
-        //   'text' => 'User',
-        //   'route' => 'admin.data-master.karyawan.index',
-        //   'access' => 'module.data-master.karyawan.index',
-        //   'active' => false,
-        //   'open' => false,
-        //   'children' => null
-        // ]
       ]
     ],
     [
@@ -68,7 +58,10 @@ return [
       'type' => 'menu',
       'text' => 'Laporan',
       'route' => '#',
-      'access' => true,
+      'access' => [
+        'module.laporan.pengaduan.index',
+        'module.laporan.spi.index',
+      ],
       'active' => false,
       'open' => false,
       'children' => [
@@ -77,7 +70,7 @@ return [
           'type' => 'menu',
           'text' => 'Pengaduan',
           'route' => 'admin.laporan.pengaduan.index',
-          'access' => true,
+          'access' => 'module.laporan.pengaduan.index',
           'active' => false,
           'open' => false,
           'children' => null
@@ -87,7 +80,7 @@ return [
           'type' => 'menu',
           'text' => 'SPI',
           'route' => 'admin.laporan.spi.index',
-          'access' => true,
+          'access' => 'module.laporan.spi.index',
           'active' => false,
           'open' => false,
           'children' => null

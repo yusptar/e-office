@@ -42,11 +42,11 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
 
     Route::group(['prefix' => 'laporan', 'as' => 'laporan.', 'namespace' => 'Laporan'], function() {
         Route::group(['prefix' => 'pengaduan', 'as' => 'pengaduan.'], function() {
-            Route::get('/', 'PengaduanController@index')->name('index');
+            Route::get('/', 'PengaduanController@index')->name('index')->middleware('has_access:module.laporan.pengaduan.index');
         });
 
         Route::group(['prefix' => 'spi', 'as' => 'spi.'], function() {
-            Route::get('/', 'SPIController@index')->name('index');
+            Route::get('/', 'SPIController@index')->name('index')->middleware('has_access:module.laporan.spi.index');
         });
     });
 
