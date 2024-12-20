@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Surat;
 
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
@@ -18,7 +18,7 @@ class SuratMasukController extends Controller
         $this->breadcrumbs = [
             [
                 'text' => 'Surat Masuk',
-                'route' => route('admin.surat_masuk.index')
+                'route' => route('admin.surat.surat_masuk.index')
             ]
         ];
     }
@@ -30,7 +30,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/SuratMasuk', [
+        return Inertia::render('Admin/Surat/SuratMasuk/Index', [
             'breadcrumbs' => $this->breadcrumbs
         ]);
     }

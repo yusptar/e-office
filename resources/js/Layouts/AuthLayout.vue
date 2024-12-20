@@ -14,7 +14,7 @@
         <slot />
       </div>
 
-      <small class="mt-5 tracking-wide">{{ new Date().getFullYear() }} &copy; Unit SIMRS. All Rights Reserved.</small>
+      <small class="mt-5 tracking-wide">{{ new Date().getFullYear() }} &copy; Unit SIMRS Rumkit Tk.II dr.Soepraoen. All Rights Reserved.</small>
   </div>
 </template>
 

@@ -85,23 +85,23 @@ return [
       ]
     ],
     [
-      'module' => 'Laporan',
+      'module' => 'Kelola Surat',
       'sub_module' => [
         [
-          'module' => 'Pengaduan',
+          'module' => 'Surat Masuk',
           'activities' => [
             [
-              'label' => 'Menu Pengaduan',
-              'value' => 'module.laporan.pengaduan.index',
+              'label' => 'Menu Surat Masuk',
+              'value' => 'module.surat.surat_masuk.index',
             ]
           ]
         ],
         [
-          'module' => 'SPI',
+          'module' => 'Surat Keluar',
           'activities' => [
             [
-              'label' => 'Menu SPI',
-              'value' => 'module.laporan.spi.index',
+              'label' => 'Menu Surat Keluar',
+              'value' => 'module.surat.surat_keluar.index',
             ]
           ]
         ]

@@ -26,7 +26,6 @@ Route::get('logout', '\Laravel\Fortify\Http\Controllers\AuthenticatedSessionCont
 Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:sanctum', 'verified']], function() {
     
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
-    Route::get('/surat-masuk', 'SuratMasukController@index')->name('surat_masuk.index');
 
     Route::group(['prefix' => 'user', 'as' => 'profile.', 'namespace' => 'UserProfile'], function() {
         Route::get('profile', 'ProfileController@show')->name('show');
@@ -40,13 +39,13 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
     Route::get('log-activity/{log_activity:id}/detail', 'LogActivityController@detail')->name('log-activity.detail')->middleware('has_access:module.log-activity.detail');
     Route::get('getLogAktivitasTable', 'LogActivityController@table')->name('log-activity.table')->middleware('has_access:module.log-activity.index');
 
-    Route::group(['prefix' => 'laporan', 'as' => 'laporan.', 'namespace' => 'Laporan'], function() {
-        Route::group(['prefix' => 'pengaduan', 'as' => 'pengaduan.'], function() {
-            Route::get('/', 'PengaduanController@index')->name('index')->middleware('has_access:module.laporan.pengaduan.index');
+    Route::group(['prefix' => 'surat', 'as' => 'surat.', 'namespace' => 'Surat'], function() {
+        Route::group(['prefix' => 'surat_masuk', 'as' => 'surat_masuk.'], function() {
+            Route::get('/', 'SuratMasukController@index')->name('index')->middleware('has_access:module.surat.surat_masuk.index');
         });
 
-        Route::group(['prefix' => 'spi', 'as' => 'spi.'], function() {
-            Route::get('/', 'SPIController@index')->name('index')->middleware('has_access:module.laporan.spi.index');
+        Route::group(['prefix' => 'surat_keluar', 'as' => 'surat_keluar.'], function() {
+            Route::get('/', 'SuratKeluarController@index')->name('index')->middleware('has_access:module.surat.surat_keluar.index');
         });
     });
 

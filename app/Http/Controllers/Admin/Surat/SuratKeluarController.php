@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Laporan;
+namespace App\Http\Controllers\Admin\Surat;
 
 use App\Http\Controllers\Controller;
 use App\Models\Jabatan;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 
-class SPIController extends Controller
+class SuratKeluarController extends Controller
 {
     /**
      *
@@ -25,12 +25,8 @@ class SPIController extends Controller
     {
         $this->breadcrumbs = [
             [
-                'text' => 'Laporan',
-                'route' => route('admin.laporan.spi.index')
-            ],
-            [
-                'text' => 'SPI',
-                'route' => route('admin.laporan.spi.index')
+                'text' => 'SuratKeluar',
+                'route' => route('admin.surat.surat_keluar.index')
             ]
         ];
     }
@@ -42,9 +38,8 @@ class SPIController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Laporan/SPI/Index', [
+        return Inertia::render('Admin/Surat/SuratKeluar/Index', [
             'breadcrumbs' => $this->breadcrumbs
         ]);
     }
-
 }
