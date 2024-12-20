@@ -21626,7 +21626,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'LogoImage'
+  name: 'LogoImage',
+  data: function data() {
+    return {
+      baseUrl: window.location.origin
+    };
+  }
 });
 
 /***/ }),
@@ -27780,14 +27785,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-13e6f2c8");
-var _hoisted_1 = {
-  src: "/img/logorst.png",
-  alt: "Logo RST",
-  "class": "logo-image"
-};
+var _hoisted_1 = ["src"];
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", _hoisted_1);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+    src: $data.baseUrl + '/img/logorst.png',
+    alt: "Logo RST",
+    "class": "logo-image"
+  }, null, 8 /* PROPS */, _hoisted_1);
 }
 
 /***/ }),
@@ -33828,7 +33833,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* Anda dapat menambahkan gaya khusus untuk gambar */\n.logo-image[data-v-13e6f2c8] {\r\n  width: 75px; /* Atur lebar sesuai kebutuhan */\r\n  height: auto; /* Pertahankan rasio aspek gambar */\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.logo-image[data-v-13e6f2c8] {\r\n  width: 75px;\r\n  height: auto;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
