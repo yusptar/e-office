@@ -26,6 +26,7 @@ Route::get('logout', '\Laravel\Fortify\Http\Controllers\AuthenticatedSessionCont
 Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:sanctum', 'verified']], function() {
     
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
+    Route::get('/pengajuan', 'PengajuanController@index')->name('pengajuan.index')->middleware('has_access:module.pengajuan.index');
 
     Route::group(['prefix' => 'user', 'as' => 'profile.', 'namespace' => 'UserProfile'], function() {
         Route::get('profile', 'ProfileController@show')->name('show');
@@ -34,7 +35,7 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
         Route::get('password', 'PasswordController@show')->name('password');
         Route::match(['put', 'patch'], 'password', '\Laravel\Fortify\Http\Controllers\PasswordController@update')->name('password-update');
     });
-
+   
     Route::get('log-activity', 'LogActivityController@index')->name('log-activity.index')->middleware('has_access:module.log-activity.index');
     Route::get('log-activity/{log_activity:id}/detail', 'LogActivityController@detail')->name('log-activity.detail')->middleware('has_access:module.log-activity.detail');
     Route::get('getLogAktivitasTable', 'LogActivityController@table')->name('log-activity.table')->middleware('has_access:module.log-activity.index');

@@ -64,6 +64,34 @@ return [
             ]
           ]
         ],
+        [
+          'module' => 'Surat Masuk',
+          'activities' => [
+            [
+              'label' => 'Menu Surat Masuk',
+              'value' => 'module.surat.surat_masuk.index',
+            ]
+          ]
+        ],
+        [
+          'module' => 'Surat Keluar',
+          'activities' => [
+            [
+              'label' => 'Menu Surat Keluar',
+              'value' => 'module.surat.surat_keluar.index',
+            ]
+          ]
+        ],
+        [
+          'module' => 'Pengajuan',
+          'activities' => [
+            [
+              'label' => 'Pengajuan Surat',
+              'value' => 'module.pengajuan.index',
+            ]
+          ]
+        ],
+       
       ]
     ],
     [
@@ -84,28 +112,5 @@ return [
         ]
       ]
     ],
-    [
-      'module' => 'Kelola Surat',
-      'sub_module' => [
-        [
-          'module' => 'Surat Masuk',
-          'activities' => [
-            [
-              'label' => 'Menu Surat Masuk',
-              'value' => 'module.surat.surat_masuk.index',
-            ]
-          ]
-        ],
-        [
-          'module' => 'Surat Keluar',
-          'activities' => [
-            [
-              'label' => 'Menu Surat Keluar',
-              'value' => 'module.surat.surat_keluar.index',
-            ]
-          ]
-        ]
-      ]
-    ]
   ]
 ];

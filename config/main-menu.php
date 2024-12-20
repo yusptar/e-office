@@ -15,6 +15,19 @@ return [
     [
       'type' => 'divider',
     ],
+    [
+      'uniqid' => 'menuPengajuan', 
+      'type' => 'menu',
+      'text' => 'Pengajuan Surat', 
+      'route' => 'admin.pengajuan.index', 
+      'access' => 'module.pengajuan.index', 
+      'active' => false, 
+      'open' => false, 
+      'children' => null
+    ],
+    [
+      'type' => 'divider',
+    ],
     // [
     //   'uniqid' => 'menuMasterData',
     //   'type' => 'menu',
@@ -87,16 +100,7 @@ return [
     [
       'type' => 'divider',
     ],
-    [
-      'uniqid' => 'menuPengajuan', 
-      'type' => 'menu',
-      'text' => 'Pengajuan Surat', 
-      'route' => 'admin.dashboard.index', 
-      'access' => true, 
-      'active' => false, 
-      'open' => false, 
-      'children' => null
-    ],
+   
     // [
     //   'uniqid' => 'menuLaporan',
     //   'type' => 'menu',
@@ -147,7 +151,7 @@ return [
         [
           'uniqid' => 'masterUser',
           'type' => 'menu',
-          'text' => 'Users',
+          'text' => 'List Users',
           'route' => 'admin.data-master.karyawan.index',
           'access' => 'module.data-master.karyawan.index',
           'active' => false,
