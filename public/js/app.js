@@ -21627,10 +21627,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'LogoImage',
-  data: function data() {
-    return {
-      baseUrl: window.location.origin
-    };
+  computed: {
+    baseUrl: function baseUrl() {
+      return window.baseUrl;
+    }
   }
 });
 
@@ -27789,7 +27789,7 @@ var _hoisted_1 = ["src"];
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
-    src: $data.baseUrl + '/img/logorst.png',
+    src: $options.baseUrl + '/img/logorst.png',
     alt: "Logo RST",
     "class": "logo-image"
   }, null, 8 /* PROPS */, _hoisted_1);

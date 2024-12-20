@@ -5,10 +5,10 @@
 <script>
 export default {
   name: 'LogoImage',
-  data() {
-    return {
-      baseUrl: window.location.origin,
-    };
+  computed: {
+    baseUrl() {
+      return window.baseUrl; 
+    },
   },
 };
 </script>

@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="app-subdirectory" content="{{ env('APP_SUBDIRECTORY', '') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('img/logorst.png') }}">
         <title inertia>E-Office | Rumkit Tk.II dr.Soepraoen</title>
         <!-- Fonts -->
@@ -17,6 +18,7 @@
         <!-- Scripts -->
         @routes
         <script src="{{ env('ALT_SCRIPT_URL') }}" defer></script>
+        <script>window.baseUrl = "{{ env('APP_URL', url('/')) }}";</script>
     </head>
     <body class="font-sans antialiased overflow-x-hidden font-roboto text-sm bg-no-repeat bg-fixed">
         @inertia
