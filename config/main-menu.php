@@ -51,16 +51,6 @@ return [
     //       'open' => false,
     //       'children' => null
     //     ],
-    //     [
-    //       'uniqid' => 'suratMasuk',
-    //       'type' => 'menu',
-    //       'text' => 'Surat Masuk',
-    //       'route' => 'admin.surat_masuk.index',
-    //       'access' => true,
-    //       'active' => false,
-    //       'open' => false,
-    //       'children' => null
-    //     ]
     //   ]
     // ],
     [

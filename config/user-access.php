@@ -86,8 +86,20 @@ return [
           'module' => 'Pengajuan',
           'activities' => [
             [
-              'label' => 'Pengajuan Surat',
+              'label' => 'Menu Pengajuan Surat',
               'value' => 'module.pengajuan.index',
+            ],
+            [
+              'label' => 'Create Pengajuan',
+              'value' => 'module.pengajuan.create',
+            ],
+            [
+              'label' => 'Edit Pengajuan',
+              'value' => 'module.pengajuan.edit',
+            ],
+            [
+              'label' => 'Delete Pengajuan',
+              'value' => 'module.pengajuan.delete',
             ]
           ]
         ],

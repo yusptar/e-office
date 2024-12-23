@@ -22,31 +22,28 @@
   <!-- END: Mobile Menu -->
   <div class="flex min-h-screen-95">
       <!-- BEGIN: Side Menu -->
-      <nav class="pr-5 h-full overflow-x-hidden hidden md:block flex-flex-col fixed bg-dark-3" style="width: 250px;">
+      <nav class="pr-5 h-full overflow-x-hidden md:block flex-col fixed bg-dark-3" style="width: 250px;">
         <div class="h-full flex flex-col">
-          <a href="" class="flex items-center pl-5 pt-6">
-            <logo-image class="w-6 h-6" />
-            <!-- <span class="hidden xl:block text-white text-md ml-5">
-              <span class="font-medium">E-Office</span>
-            </span> -->
-          </a>
-          <div class="w-full h-px z-10 relative bg-dark-3 my-6"></div>
-          <div class="overflow-y-auto pl-3" style="height: calc(103vh - 210px)">
-            <main-menu />
-          </div>
-          <user-menu
-            hide-namecard
-            class="mt-2 w-full origin-top-right left-0 bottom-20" >
-            <div class="py-2 pl-4 border-b border-dark-3 flex items-center">
-              <img :src="'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' + $page.props.currentUser.nama_lengkap" :alt="$page.props.currentUser.nama_lengkap" class="rounded-full h-8 w-8 object-cover">
-              <div class="ml-3">
-                <div class="font-medium text-white">{{ $page.props.currentUser.nama_lengkap }}</div>
-                <div class="text-xs mt-0.5 text-gray-400">{{ $page.props.currentUser.jabatan.nama_jabatan }}</div>
+            <a href="" class="flex items-center justify-center pl-5 pt-6">
+              <div class="row">
+                <logo-image class="w-6 h-6" />
               </div>
+            </a>
+            <div class="w-full h-px z-10 relative bg-dark-3 my-6"></div>
+            <div class="overflow-y-auto pl-3" style="height: calc(103vh - 210px)">
+                <main-menu />
             </div>
-          </user-menu>
+            <user-menu hide-namecard class="mt-2 w-full origin-top-right left-0 bottom-20">
+                <div class="py-2 pl-4 border-b border-dark-3 flex items-center">
+                    <img :src="'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' + $page.props.currentUser .nama_lengkap" :alt="$page.props.currentUser .nama_lengkap" class="rounded-full h-8 w-8 object-cover">
+                    <div class="ml-3">
+                        <div class="font-medium text-white">{{ $page.props.currentUser .nama_lengkap }}</div>
+                        <div class="text-xs mt-0.5 text-gray-400">{{ $page.props.currentUser .jabatan.nama_jabatan }}</div>
+                    </div>
+                </div>
+            </user-menu>
         </div>
-      </nav>
+    </nav>
       <!-- END: Side Menu -->
       <!-- BEGIN: Content -->
       <div class="rounded-30px px-4 max-w-full shadow-md my-6 mr-2 md:mr-8 py-0 md:px-6 min-w-0 min-h-full flex-1 pb-10 bg-white ml-4 md:ml-72">
