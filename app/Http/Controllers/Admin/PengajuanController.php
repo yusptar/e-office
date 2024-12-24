@@ -63,7 +63,6 @@ class PengajuanController extends Controller
         DB::beginTransaction();
         try {
             SuratMasuk::create($validated);
-
             DB::commit();
             return redirect()->route('admin.pengajuan.index')
                              ->with('success', 'Pengajuan surat berhasil disimpan.');
@@ -145,12 +144,12 @@ class PengajuanController extends Controller
             'no_surat' => 'required|string|max:255',
             'asal_surat' => 'required|string|max:255',
             'tujuan_surat' => 'required|string|max:255',
-            'agenda_surat' => 'required|string|max:255',
+            'no_agenda' => 'required|string|max:255',
             'perihal_surat' => 'required|string|max:255',
             'sifat_surat' => 'required|string|max:50',
             'jenis_surat' => 'required|string|max:50',
             'kategori_surat' => 'required|string|max:50',
-            'posisi_disposisi' => 'nullable|string|max:255',
+            'posisi_surat' => 'nullable|string|max:255',
             'file_surat' => 'nullable|mimes:pdf|max:2048',
         ];
     }

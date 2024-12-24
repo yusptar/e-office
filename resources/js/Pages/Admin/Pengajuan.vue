@@ -40,9 +40,9 @@
 
         <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
           <div class="flex-1 flex flex-col space-y-2">
-            <span class="text-black font-medium">Agenda Surat <span class="text-red-400">*</span></span>
-            <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.agenda_surat }" v-model="form.agenda_surat" :disabled="form.processing">
-            <span v-if="form.errors.agenda_surat" class="text-red-400 italic">{{ form.errors.agenda_surat }}</span>
+            <span class="text-black font-medium">No Agenda <span class="text-red-400">*</span></span>
+            <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.no_agenda }" v-model="form.no_agenda" :disabled="form.processing">
+            <span v-if="form.errors.no_agenda" class="text-red-400 italic">{{ form.errors.no_agenda }}</span>
           </div>
           <div class="flex-1 flex flex-col space-y-2">
             <span class="text-black font-medium">Perihal Surat <span class="text-red-400">*</span></span>
@@ -132,12 +132,12 @@
         no_surat: '',
         asal_surat: '',
         tujuan_surat: '',
-        agenda_surat: '',
+        no_agenda: '',
         perihal_surat: '',
         sifat_surat: '',
         jenis_surat: '',
         kategori_surat: '',
-        posisi_disposisi: '',
+        posisi_surat: '',
         file_surat: '',
       });
 
