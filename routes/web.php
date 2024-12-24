@@ -28,7 +28,7 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
     Route::get('/pengajuan', 'PengajuanController@index')->name('pengajuan.index')->middleware('has_access:module.pengajuan.index');
     Route::get('/tambah', 'PengajuanController@create')->name('pengajuan.create')->middleware('has_access:module.pengajuan.create');
-    Route::post('/', 'PengajuanController@store')->name('pengajuan.store')->middleware('has_access:module.pengajuan.create');
+    Route::post('/store', 'PengajuanController@store')->name('pengajuan.store')->middleware('has_access:module.pengajuan.create');
     Route::get('/pengajuan/{pengajuan}/edit', 'PengajuanController@edit')->name('pengajuan.edit')->middleware('has_access:module.pengajuan.edit');
     Route::put('/pengajuan/{pengajuan}', 'PengajuanController@update')->name('pengajuan.update')->middleware('has_access:module.pengajuan.update');
     Route::delete('/pengajuan/{pengajuan}', 'PengajuanController@destroy')->name('pengajuan.destroy')->middleware('has_access:module.pengajuan.delete');
