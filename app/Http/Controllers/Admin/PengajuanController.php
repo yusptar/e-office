@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Inertia\Inertia;
 use App\Models\SuratMasuk;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\Rule;
+use Exception;
 
 class PengajuanController extends Controller
 {
@@ -27,10 +30,7 @@ class PengajuanController extends Controller
 
     public function index()
     {
-        $pengajuan = SuratMasuk::latest()->paginate(10);
-
         return Inertia::render('Admin/Pengajuan', [
-            'pengajuan' => $pengajuan,
             'breadcrumbs' => $this->breadcrumbs
         ]);
     }
@@ -42,7 +42,7 @@ class PengajuanController extends Controller
             'route' => route('admin.pengajuan.create')
         ];
 
-        return Inertia::render('Admin/Pengajuan/Create', [
+        return Inertia::render('Admin/Pengajuan', [
             'breadcrumbs' => $this->breadcrumbs
         ]);
     }
@@ -77,7 +77,7 @@ class PengajuanController extends Controller
     {
         $this->breadcrumbs[] = [
             'text' => 'Edit Pengajuan Surat',
-            'route' => route('admin.pengajuan.edit', $pengajuan->id)
+            'route' => route('admin.pengajuan.edit', [$pengajuan->slug])
         ];
 
         return Inertia::render('Admin/Pengajuan/Edit', [
@@ -85,6 +85,7 @@ class PengajuanController extends Controller
             'breadcrumbs' => $this->breadcrumbs
         ]);
     }
+
 
     public function update(Request $request, SuratMasuk $pengajuan)
     {
@@ -136,6 +137,7 @@ class PengajuanController extends Controller
     public function table(Request $request)
     {
         return response()->json(SuratMasuk::orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+        // return response()->json(Karyawan::with('jabatan')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
     }
 
     private function validationRules($pengajuan = null)

@@ -77,8 +77,8 @@
           </div>
           <div class="flex-1 flex flex-col space-y-2">
             <span class="text-black font-medium">Posisi Disposisi <span class="text-red-400">*</span></span>
-            <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_disposisi }" v-model="form.posisi_disposisi" :disabled="form.processing">
-            <span v-if="form.errors.posisi_disposisi" class="text-red-400 italic">{{ form.errors.posisi_disposisi }}</span>
+            <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" v-model="form.posisi_surat" :disabled="form.processing">
+            <span v-if="form.errors.posisi_surat" class="text-red-400 italic">{{ form.errors.posisi_surat }}</span>
           </div>
         </div>
 
