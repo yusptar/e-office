@@ -15,16 +15,16 @@ return [
     [
       'type' => 'divider',
     ],
-    [
-      'uniqid' => 'menuPengajuan', 
-      'type' => 'menu',
-      'text' => 'Pengajuan Surat', 
-      'route' => 'admin.pengajuan.index', 
-      'access' => 'module.pengajuan.index', 
-      'active' => false, 
-      'open' => false, 
-      'children' => null
-    ],
+    // [
+    //   'uniqid' => 'menuPengajuan', 
+    //   'type' => 'menu',
+    //   'text' => 'Pengajuan Surat', 
+    //   'route' => 'admin.pengajuan.index', 
+    //   'access' => 'module.pengajuan.index', 
+    //   'active' => false, 
+    //   'open' => false, 
+    //   'children' => null
+    // ],
     [
       'type' => 'divider',
     ],
@@ -59,7 +59,7 @@ return [
       'text' => 'Kelola Surat',
       'route' => '#',
       'access' => [
-        'module.surat.surat_masuk.index',
+        'module.surat.masuk.index',
         'module.surat.surat_keluar.index',
       ],
       'active' => false,
@@ -69,8 +69,8 @@ return [
           'uniqid' => 'suratMasuk',
           'type' => 'menu',
           'text' => 'Surat Masuk',
-          'route' => 'admin.surat.surat_masuk.index',
-          'access' => 'module.surat.surat_masuk.index',
+          'route' => 'admin.surat.masuk.index',
+          'access' => 'module.surat.masuk.index',
           'active' => false,
           'open' => false,
           'children' => null

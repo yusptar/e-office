@@ -35,17 +35,17 @@ class PengajuanController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        $this->breadcrumbs[] = [
-            'text' => 'Buat Pengajuan Surat',
-            'route' => route('admin.pengajuan.create')
-        ];
+    // public function create()
+    // {
+    //     $this->breadcrumbs[] = [
+    //         'text' => 'Buat Pengajuan Surat',
+    //         'route' => route('admin.pengajuan.create')
+    //     ];
 
-        return Inertia::render('Admin/Pengajuan', [
-            'breadcrumbs' => $this->breadcrumbs
-        ]);
-    }
+    //     return Inertia::render('Admin/Surat/SuratMasuk/Create', [
+    //         'breadcrumbs' => $this->breadcrumbs
+    //     ]);
+    // }
 
     public function store(Request $request)
     {
@@ -73,72 +73,71 @@ class PengajuanController extends Controller
         }
     }
 
-    public function edit(SuratMasuk $pengajuan)
-    {
-        $this->breadcrumbs[] = [
-            'text' => 'Edit Pengajuan Surat',
-            'route' => route('admin.pengajuan.edit', [$pengajuan->slug])
-        ];
+    // public function edit(SuratMasuk $pengajuan)
+    // {
+    //     $this->breadcrumbs[] = [
+    //         'text' => 'Edit Pengajuan Surat',
+    //         'route' => route('admin.pengajuan.edit', [$pengajuan->slug])
+    //     ];
 
-        return Inertia::render('Admin/Pengajuan/Edit', [
-            'pengajuan' => $pengajuan,
-            'breadcrumbs' => $this->breadcrumbs
-        ]);
-    }
+    //     return Inertia::render('Admin/Surat/SuratMasuk/Edit', [
+    //         'breadcrumbs' => $this->breadcrumbs,
+    //         'pengajuan' => $pengajuan
+            
+    //     ]);
+    // }
 
+    // public function update(Request $request, SuratMasuk $pengajuan)
+    // {
+    //     $validated = $request->validate($this->validationRules($pengajuan));
 
-    public function update(Request $request, SuratMasuk $pengajuan)
-    {
-        $validated = $request->validate($this->validationRules());
+    //     if ($request->hasFile('file_surat')) {
+    //         if ($pengajuan->file_surat) {
+    //             Storage::disk('public')->delete($pengajuan->file_surat);
+    //         }
 
-        if ($request->hasFile('file_surat')) {
-            if ($pengajuan->file_surat) {
-                Storage::disk('public')->delete($pengajuan->file_surat);
-            }
+    //         $file = $request->file('file_surat');
+    //         $filePath = $file->store('pengajuan_surat', 'public');
+    //         $validated['file_surat'] = $filePath;
+    //     }
 
-            $file = $request->file('file_surat');
-            $filePath = $file->store('pengajuan_surat', 'public');
-            $validated['file_surat'] = $filePath;
-        }
+    //     DB::beginTransaction();
+    //     try {
+    //         $pengajuan->save($validated);
 
-        DB::beginTransaction();
-        try {
-            $pengajuan->update($validated);
+    //         DB::commit();
+    //         return redirect()->route('admin.surat.masuk.index')
+    //                          ->with('success', 'Pengajuan surat berhasil diperbarui.');
+    //     } catch (\Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->back()->withInput()
+    //                          ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    //     }
+    // }
 
-            DB::commit();
-            return redirect()->route('admin.pengajuan.index')
-                             ->with('success', 'Pengajuan surat berhasil diperbarui.');
-        } catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->back()->withInput()
-                             ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
-    }
+    // public function destroy(SuratMasuk $pengajuan)
+    // {
+    //     DB::beginTransaction();
+    //     try {
+    //         if ($pengajuan->file_surat) {
+    //             Storage::disk('public')->delete($pengajuan->file_surat);
+    //         }
 
-    public function destroy(SuratMasuk $pengajuan)
-    {
-        DB::beginTransaction();
-        try {
-            if ($pengajuan->file_surat) {
-                Storage::disk('public')->delete($pengajuan->file_surat);
-            }
+    //         $pengajuan->delete();
 
-            $pengajuan->delete();
+    //         DB::commit();
+    //         return redirect()->route('admin.pengajuan.index')->with('alertState', 'success')->with('alertMessage', 'Pengajuan Surat berhasil dihapus.');
+    //     } catch (Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    //     }
+    // }
 
-            DB::commit();
-            return redirect()->route('admin.pengajuan.index')
-                             ->with('success', 'Pengajuan surat berhasil dihapus.');
-        } catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
-    }
-
-    public function table(Request $request)
-    {
-        return response()->json(SuratMasuk::orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
-        // return response()->json(Karyawan::with('jabatan')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
-    }
+    // public function table(Request $request)
+    // {
+    //     return response()->json(SuratMasuk::orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+    //     // return response()->json(Karyawan::with('jabatan')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+    // }
 
     private function validationRules($pengajuan = null)
     {

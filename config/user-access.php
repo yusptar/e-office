@@ -69,7 +69,19 @@ return [
           'activities' => [
             [
               'label' => 'Menu Surat Masuk',
-              'value' => 'module.surat.surat_masuk.index',
+              'value' => 'module.surat.masuk.index',
+            ],
+            [
+              'label' => 'Create Pengajuan',
+              'value' => 'module.surat.masuk.create',
+            ],
+            [
+              'label' => 'Edit Pengajuan',
+              'value' => 'module.surat.masuk.edit',
+            ],
+            [
+              'label' => 'Delete Pengajuan',
+              'value' => 'module.surat.masuk.delete',
             ]
           ]
         ],
@@ -82,28 +94,19 @@ return [
             ]
           ]
         ],
-        [
-          'module' => 'Pengajuan',
-          'activities' => [
-            [
-              'label' => 'Menu Pengajuan Surat',
-              'value' => 'module.pengajuan.index',
-            ],
-            [
-              'label' => 'Create Pengajuan',
-              'value' => 'module.pengajuan.create',
-            ],
-            [
-              'label' => 'Edit Pengajuan',
-              'value' => 'module.pengajuan.edit',
-            ],
-            [
-              'label' => 'Delete Pengajuan',
-              'value' => 'module.pengajuan.delete',
-            ]
-          ]
-        ],
-       
+        // [
+        //   'module' => 'Pengajuan',
+        //   'activities' => [
+        //     [
+        //       'label' => 'Menu Pengajuan Surat',
+        //       'value' => 'module.pengajuan.index',
+        //     ],
+        //     [
+        //       'label' => 'Create Pengajuan',
+        //       'value' => 'module.pengajuan.create',
+        //     ],
+        //   ]
+        // ],
       ]
     ],
     [

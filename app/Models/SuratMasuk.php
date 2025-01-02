@@ -11,23 +11,6 @@ use EloquentFilter\Filterable;
 class SuratMasuk extends Model
 {
     use HasFactory, SoftDeletes, Sluggable, Filterable;
-
-    protected static function booted()
-    {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->created_by = \Auth::user()->nama_lengkap ?? 'System';
-            $model->updated_by = \Auth::user()->nama_lengkap ?? 'System';
-        });
-        static::updating(function ($model) {
-            $model->updated_by = \Auth::user()->nama_lengkap ?? 'System';
-        });
-        static::deleted(function ($model) {
-            $model->deleted_by = \Auth::user()->nama_lengkap ?? 'System';
-            $model->save();
-        });
-    }
     /**
      * The table associated with the model.
      *
@@ -42,6 +25,7 @@ class SuratMasuk extends Model
      */
     protected $fillable = [
         'user_id',
+        'slug',
         'tanggal_surat',
         'no_surat',
         'asal_surat',

@@ -26,13 +26,13 @@ Route::get('logout', '\Laravel\Fortify\Http\Controllers\AuthenticatedSessionCont
 Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:sanctum', 'verified']], function() {
     
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
-    Route::get('/pengajuan', 'PengajuanController@index')->name('pengajuan.index')->middleware('has_access:module.pengajuan.index');
-    Route::get('/tambah', 'PengajuanController@create')->name('pengajuan.create')->middleware('has_access:module.pengajuan.create');
-    Route::post('/store', 'PengajuanController@store')->name('pengajuan.store')->middleware('has_access:module.pengajuan.create');
-    Route::get('/{pengajuan:slug}/ubah', 'PengajuanController@edit')->name('pengajuan.edit')->middleware('has_access:module.pengajuan.edit');
-    Route::match(['put', 'patch'], '/{pengajuan:slug}', 'PengajuanController@update')->name('pengajuan.update')->middleware('has_access:module.pengajuan.edit');
-    Route::delete('/{pengajuan:slug}', 'PengajuanController@destroy')->name('pengajuan.destroy')->middleware('has_access:module.pengajuan.delete');
-    Route::get('/table', 'PengajuanController@table')->name('pengajuan.table')->middleware('has_access:module.pengajuan.index');
+    // Route::get('/pengajuan', 'PengajuanController@index')->name('pengajuan.index')->middleware('has_access:module.pengajuan.index');
+    // Route::get('/tambah', 'PengajuanController@create')->name('pengajuan.create')->middleware('has_access:module.pengajuan.create');
+    // Route::post('/store', 'PengajuanController@store')->name('pengajuan.store')->middleware('has_access:module.pengajuan.create');
+    // Route::get('/{pengajuan:slug}/ubah', 'PengajuanController@edit')->name('pengajuan.edit');
+    // Route::match(['put', 'patch'], '/{pengajuan:slug}', 'PengajuanController@update')->name('pengajuan.update')->middleware('has_access:module.pengajuan.edit');
+    // Route::delete('/{pengajuan:slug}', 'PengajuanController@destroy')->name('pengajuan.destroy')->middleware('has_access:module.pengajuan.delete');
+    // Route::get('/table', 'PengajuanController@table')->name('pengajuan.table')->middleware('has_access:module.pengajuan.index');
 
     Route::group(['prefix' => 'user', 'as' => 'profile.', 'namespace' => 'UserProfile'], function() {
         Route::get('profile', 'ProfileController@show')->name('show');
@@ -47,8 +47,14 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
     Route::get('getLogAktivitasTable', 'LogActivityController@table')->name('log-activity.table')->middleware('has_access:module.log-activity.index');
 
     Route::group(['prefix' => 'surat', 'as' => 'surat.', 'namespace' => 'Surat'], function() {
-        Route::group(['prefix' => 'surat_masuk', 'as' => 'surat_masuk.'], function() {
-            Route::get('/', 'SuratMasukController@index')->name('index')->middleware('has_access:module.surat.surat_masuk.index');
+        Route::group(['prefix' => 'surat_masuk', 'as' => 'masuk.'], function() {
+            Route::get('/', 'SuratMasukController@index')->name('index')->middleware('has_access:module.surat.masuk.index');
+            Route::get('/tambah', 'SuratMasukController@create')->name('create')->middleware('has_access:module.surat.masuk.create');
+            Route::post('/store', 'SuratMasukController@store')->name('store');
+            Route::get('/{pengajuan:slug}/ubah', 'SuratMasukController@edit')->name('edit');
+            Route::match(['put', 'patch'], '/{pengajuan:slug}', 'SuratMasukController@update')->name('update')->middleware('has_access:module.surat.masuk.edit');
+            Route::delete('/{pengajuan:slug}', 'SuratMasukController@destroy')->name('destroy')->middleware('has_access:module.surat.masuk.delete');
+            Route::get('/table', 'SuratMasukController@table')->name('table')->middleware('has_access:module.surat.masuk.index');
         });
 
         Route::group(['prefix' => 'surat_keluar', 'as' => 'surat_keluar.'], function() {

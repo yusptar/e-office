@@ -13,7 +13,7 @@
     <datatables
       ref="datatables"
       class="pt-4"
-      :route-uri="route('admin.pengajuan.table')"
+      :route-uri="route('admin.surat.masuk.table')"
       v-model:columns="columns"
       table-class="w-full table-auto border-collapse text-black"
       thead-class="bg-white text-black border-b-2 border-black"
@@ -43,7 +43,7 @@
         </svg>
       </template>
       <template #after.reload-button>
-        <Link v-if="hasAccess('module.pengajuan.index', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.pengajuan.index')" class="p-3 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300">
+        <Link v-if="hasAccess('module.surat.masuk.index', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.create')" class="p-3 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300">
           <div class="flex content-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 md:w-3 md:h-3 stroke-current" viewBox="0 0 16 16">
               <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
@@ -54,13 +54,13 @@
       </template>
       <template #grid.content.body.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
-          <Link v-if="hasAccess('module.pengajuan.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.pengajuan.edit', {karyawan: row.slug})">
+          <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-blue-600" viewBox="0 0 16 16">
               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
           </Link>
-          <button v-if="hasAccess('module.pengajuan.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
+          <button v-if="hasAccess('module.surat.masuk.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
               <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -70,13 +70,13 @@
       </template>
       <template #table.cell.content.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
-          <Link v-if="hasAccess('module.pengajuan.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.pengajuan.edit', {karyawan: row.slug})">
+          <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-blue-600" viewBox="0 0 16 16">
               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
           </Link>
-          <button v-if="hasAccess('module.pengajuan.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
+          <button v-if="hasAccess('module.surat.masuk.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
               <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -94,7 +94,7 @@
           <circle cx="64" cy="86.506" r="3.734"/>
         </svg>
         <p class="text-center md:text-lg">
-          Apakah Anda yakin untuk menghapus User ini? User yang telah dihapus tidak dapat dikembalikan.
+          Apakah Anda yakin untuk menghapus surat ini? Surat yang telah dihapus tidak dapat dikembalikan.
         </p>
         <div class="w-full pt-5">
           <div class="flex flex-row justify-center space-x-4">
@@ -178,15 +178,15 @@
           classes: 'px-4 py-2 md:py-4 text-left md:text-center',
           headerClass: 'text-center p-4'
         },
-        // {
-        //   uniqid: 'action',
-        //   label: 'Action',
-        //   field: 'id',
-        //   sortable: false,
-        //   align: 'center',
-        //   classes: 'px-4 py-2 md:py-4 text-center',
-        //   headerClass: 'text-center p-4'
-        // }
+        {
+          uniqid: 'action',
+          label: 'Action',
+          field: 'id',
+          sortable: false,
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-center',
+          headerClass: 'text-center p-4'
+        }
       ]);
 
       const form = useForm({})
@@ -199,7 +199,7 @@
       }
 
       function deleteRow() {
-        form.delete(route('admin.pengajuan.destroy', { pengajuan: form.value.slug }), {
+        form.delete(route('admin.surat.masuk.destroy', { pengajuan: form.value.slug }), {
           onSuccess: () => {
             form.reset()
             showModal.value = false
