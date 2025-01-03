@@ -23828,7 +23828,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       if (props.pengajuan) {
         Object.assign(form, props.pengajuan);
-        file_path.value = props.pengajuan.file_surat;
+        file_path.value = "/storage/".concat(props.pengajuan.file_surat);
       }
     });
     function submit() {
@@ -32131,7 +32131,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_pengajuan_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pengajuan-form");
   var _component_admin_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("admin-layout");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
-    title: "Edit Pengajuan"
+    title: "Pengajuan Surat"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_admin_layout, null, {
     breadcrumbs: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Breadcrumb, {
@@ -32335,10 +32335,18 @@ var _hoisted_53 = {
   "class": "text-red-400 italic"
 };
 var _hoisted_54 = {
+  key: 0,
+  "class": "mt-4"
+};
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-black font-medium"
+}, "File yang Diunggah:", -1 /* HOISTED */);
+var _hoisted_56 = ["src"];
+var _hoisted_57 = {
   "class": "flex flex-row justify-end space-x-4"
 };
-var _hoisted_55 = ["disabled"];
-var _hoisted_56 = ["disabled"];
+var _hoisted_58 = ["disabled"];
+var _hoisted_59 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
     onSubmit: _cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -32448,7 +32456,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     value: $setup.form.progress.percentage,
     max: "100"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "% ", 9 /* TEXT, PROPS */, _hoisted_52)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.form.errors.file_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.file_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "% ", 9 /* TEXT, PROPS */, _hoisted_52)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.form.errors.file_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.file_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"openModal\">Lihat File Surat</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"isModalOpen\" class=\"modal\">\n          <div class=\"modal-content\">\n            <span class=\"close\" @click=\"closeModal\">&times;</span>\n            <div v-if=\"file_path\">\n              <span class=\"text-black font-medium\">File Surat yang Diunggah:</span>\n              <embed :src=\"`/storage/${file_path}`\" width=\"100%\" height=\"500px\" type=\"application/pdf\" class=\"border border-gray-300\" />\n            </div>\n          </div>\n        </div> "), $props.pengajuan && $setup.file_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_54, [_hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
+    src: $setup.file_path,
+    width: "70%",
+    height: "400px",
+    type: "application/pdf",
+    "class": "border border-gray-300"
+  }, null, 8 /* PROPS */, _hoisted_56)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"file_path\" class=\"mt-4\">\n          <span class=\"text-black font-medium\">File yang Diunggah:</span>\n          <embed :src=\"`/storage/${file_path}`\" width=\"70%\" height=\"400px\" type=\"application/pdf\" class=\"border border-gray-300\" />\n        </div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
     onClick: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -32456,11 +32470,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       $setup.form.clearErrors();
     }, ["prevent"])),
     disabled: $setup.form.processing
-  }, " Back ", 8 /* PROPS */, _hoisted_55), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " Back ", 8 /* PROPS */, _hoisted_58), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed",
     disabled: $setup.form.processing
-  }, " Save ", 8 /* PROPS */, _hoisted_56)])])], 32 /* HYDRATE_EVENTS */);
+  }, " Save ", 8 /* PROPS */, _hoisted_59)])])], 32 /* HYDRATE_EVENTS */);
 }
 
 /***/ }),

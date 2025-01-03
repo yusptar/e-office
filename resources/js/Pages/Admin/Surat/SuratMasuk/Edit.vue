@@ -1,5 +1,5 @@
 <template>
-    <Head title="Edit Pengajuan" />
+    <Head title="Pengajuan Surat" />
   
     <admin-layout>
       <template #breadcrumbs>

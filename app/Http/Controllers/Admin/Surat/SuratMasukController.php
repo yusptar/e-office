@@ -96,23 +96,21 @@ class SuratMasukController extends Controller
 
     public function update(Request $request, SuratMasuk $pengajuan)
     {
-        $validated = $request->validate($this->validationRules($pengajuan));
-
-        if ($request->hasFile('file_surat')) {
-            if ($pengajuan->file_surat) {
-                Storage::disk('public')->delete($pengajuan->file_surat);
-            }
-
-
-            $file = $request->file('file_surat');
-            $filePath = $file->store('pengajuan_surat', 'public');
-            $validated['file_surat'] = $filePath;
-        }
+        $request->validate($this->validationRules($pengajuan));
 
         DB::beginTransaction();
         try {
-            $pengajuan->save($validated);
+            $pengajuan->fill($request->except(['file_surat']));
+            if ($request->hasFile('file_surat')) {
+                if ($pengajuan->file_surat) {
+                    Storage::disk('public')->delete($pengajuan->file_surat);
+                }
+                $file = $request->file('file_surat');
+                $filePath = $file->store('pengajuan_surat', 'public');
+                $pengajuan->file_surat = $filePath; 
+            }
 
+            $pengajuan->save();
             DB::commit();
             return redirect()->route('admin.surat.masuk.index')->with('alertState', 'success')->with('alertMessage', 'Pengajuan surat berhasil diperbarui.');
         } catch (Exception $e) {
@@ -120,6 +118,7 @@ class SuratMasukController extends Controller
             return redirect()->back()->withInput()->with('alertState', 'error')->with('alertMessage', $e->getMessage());
         }
     }
+
 
     public function destroy(SuratMasuk $pengajuan)
     {

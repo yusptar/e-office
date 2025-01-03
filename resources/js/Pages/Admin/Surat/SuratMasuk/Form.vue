@@ -75,6 +75,28 @@
           </progress>
           <span v-if="form.errors.file_surat" class="text-red-400 italic">{{ form.errors.file_surat }}</span>
         </div>
+        <!-- <button @click="openModal">Lihat File Surat</button> -->
+
+        <!-- Modal -->
+        <!-- <div v-if="isModalOpen" class="modal">
+          <div class="modal-content">
+            <span class="close" @click="closeModal">&times;</span>
+            <div v-if="file_path">
+              <span class="text-black font-medium">File Surat yang Diunggah:</span>
+              <embed :src="`/storage/${file_path}`" width="100%" height="500px" type="application/pdf" class="border border-gray-300" />
+            </div>
+          </div>
+        </div> -->
+        <div v-if="pengajuan && file_path" class="mt-4">
+          <span class="text-black font-medium">File yang Diunggah:</span>
+          <embed :src="file_path" width="70%" height="400px" type="application/pdf" class="border border-gray-300" />
+        </div>
+
+                
+        <!-- <div v-if="file_path" class="mt-4">
+          <span class="text-black font-medium">File yang Diunggah:</span>
+          <embed :src="`/storage/${file_path}`" width="70%" height="400px" type="application/pdf" class="border border-gray-300" />
+        </div> -->
       </div>
 
       <div class="flex flex-row justify-end space-x-4">
@@ -131,7 +153,7 @@ export default {
     onMounted(() => {
       if (props.pengajuan) {
         Object.assign(form, props.pengajuan);
-        file_path.value = props.pengajuan.file_surat;
+        file_path.value = `/storage/${props.pengajuan.file_surat}`;
       }
     });
 
@@ -145,10 +167,10 @@ export default {
 
     function onFileChange(evt) {
       let files = evt.target.files || evt.dataTransfer.files;
-      if (!files.length)
-        return;
-        form.file_surat = files[0]
-        file_path.value = URL.createObjectURL(files[0])
+      if (!files.length) return;
+
+      form.file_surat = files[0];
+      file_path.value = URL.createObjectURL(files[0]);
     }
 
     return {
