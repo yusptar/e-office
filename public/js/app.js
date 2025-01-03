@@ -23828,7 +23828,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       if (props.pengajuan) {
         Object.assign(form, props.pengajuan);
-        file_path.value = "/storage/".concat(props.pengajuan.file_surat);
+        file_path.value = "".concat(window.baseUrl, "/storage/").concat(props.pengajuan.file_surat);
       }
     });
     function submit() {
@@ -32462,7 +32462,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     height: "400px",
     type: "application/pdf",
     "class": "border border-gray-300"
-  }, null, 8 /* PROPS */, _hoisted_56)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"file_path\" class=\"mt-4\">\n          <span class=\"text-black font-medium\">File yang Diunggah:</span>\n          <embed :src=\"`/storage/${file_path}`\" width=\"70%\" height=\"400px\" type=\"application/pdf\" class=\"border border-gray-300\" />\n        </div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, _hoisted_56)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
     onClick: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {

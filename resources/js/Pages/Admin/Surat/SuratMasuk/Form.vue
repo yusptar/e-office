@@ -91,12 +91,6 @@
           <span class="text-black font-medium">File yang Diunggah:</span>
           <embed :src="file_path" width="70%" height="400px" type="application/pdf" class="border border-gray-300" />
         </div>
-
-                
-        <!-- <div v-if="file_path" class="mt-4">
-          <span class="text-black font-medium">File yang Diunggah:</span>
-          <embed :src="`/storage/${file_path}`" width="70%" height="400px" type="application/pdf" class="border border-gray-300" />
-        </div> -->
       </div>
 
       <div class="flex flex-row justify-end space-x-4">
@@ -153,7 +147,7 @@ export default {
     onMounted(() => {
       if (props.pengajuan) {
         Object.assign(form, props.pengajuan);
-        file_path.value = `/storage/${props.pengajuan.file_surat}`;
+        file_path.value = `${window.baseUrl}/storage/${props.pengajuan.file_surat}`;
       }
     });
 

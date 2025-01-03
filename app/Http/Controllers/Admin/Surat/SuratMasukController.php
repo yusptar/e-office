@@ -89,8 +89,7 @@ class SuratMasukController extends Controller
 
         return Inertia::render('Admin/Surat/SuratMasuk/Edit', [
             'breadcrumbs' => $this->breadcrumbs,
-            'pengajuan' => $pengajuan
-            
+            'pengajuan' => $pengajuan,
         ]);
     }
 
@@ -141,7 +140,6 @@ class SuratMasukController extends Controller
     public function table(Request $request)
     {
         return response()->json(SuratMasuk::orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
-        // return response()->json(Karyawan::with('jabatan')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
     }
 
     private function validationRules($pengajuan = null)
