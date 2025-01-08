@@ -5,23 +5,23 @@ return [
     [
       'module' => 'Master Data',
       'sub_module' => [
-        [
-          'module' => 'Banner',
-          'activities' => [
-            [
-              'label' => 'Menu Banner',
-              'value' => 'module.data-master.banner.index',
-            ],
-            [
-              'label' => 'Edit Banner',
-              'value' => 'module.data-master.banner.edit',
-            ],
-            [
-              'label' => 'Delete Banner',
-              'value' => 'module.data-master.banner.delete',
-            ]
-          ]
-        ],
+        // [
+        //   'module' => 'Banner',
+        //   'activities' => [
+        //     [
+        //       'label' => 'Menu Banner',
+        //       'value' => 'module.data-master.banner.index',
+        //     ],
+        //     [
+        //       'label' => 'Edit Banner',
+        //       'value' => 'module.data-master.banner.edit',
+        //     ],
+        //     [
+        //       'label' => 'Delete Banner',
+        //       'value' => 'module.data-master.banner.delete',
+        //     ]
+        //   ]
+        // ],
         [
           'module' => 'Group User',
           'activities' => [

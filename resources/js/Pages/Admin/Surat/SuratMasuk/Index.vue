@@ -84,6 +84,17 @@
           </button>
         </div>
       </template>
+      <!-- <template #table.cell.content.fileSurat="{ row }">
+        <div align="center">
+          <embed
+            :src="`${baseUrl}/storage/${row.file_surat}`"
+            type="application/pdf"
+            width="50%"
+            height="100px"
+            class="border border-gray-300"
+          />
+        </div>
+      </template> -->
     </datatables>
 
     <dialog-modal :show="showModal" @close="showModal = false">
@@ -112,7 +123,7 @@
 </template>
 
 <script>
-  import { ref } from "vue";
+  import { ref } from "vue";               
   import { Head, Link, usePage, useForm } from '@inertiajs/inertia-vue3';
   import AdminLayout from '@/Layouts/AdminLayout.vue';
   import Breadcrumb from '@/Layouts/Breadcrumb.vue';
@@ -136,6 +147,7 @@
     },
     setup() {
       const datatables = ref(null);
+      const baseUrl = window.baseUrl || '/';
 
       const columns = ref([
         {
@@ -178,6 +190,16 @@
           classes: 'px-4 py-2 md:py-4 text-left md:text-center',
           headerClass: 'text-center p-4'
         },
+        // {
+        //   uniqid: 'fileSurat',
+        //   label: 'File',
+        //   field: 'file_surat',
+        //   sortable: false,
+        //   sortOrder: 'asc',
+        //   align: 'center',
+        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+        //   headerClass: 'text-center p-4'
+        // },
         {
           uniqid: 'action',
           label: 'Action',

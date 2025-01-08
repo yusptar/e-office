@@ -61,7 +61,7 @@ class SuratMasukController extends Controller
         $validated = $request->validate($this->validationRules());
 
         $validated['user_id'] = Auth::user()->id;
-        $validated['tanggal_surat'] = Carbon::now()->toDateString();
+        $validated['tanggal_surat'] = Carbon::now()->format('Y-m-d');
 
         if ($request->hasFile('file_surat')) {
             $file = $request->file('file_surat');
