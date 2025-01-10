@@ -49,25 +49,25 @@
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Jenis Surat <span class="text-red-400">*</span></span>
           <select v-model="form.jenis_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.jenis_surat }" :disabled="form.processing">
-            <option value="" disabled>Pilih Jenis Surat</option>        
-            <option value="sangat-rahasia">TANDA PENGHARGAAN</option>
-            <option value="rahasia">SURAT TUGAS</option>
-            <option value="biasa">SURAT TELEGRAM RAHASIA</option>
-            <option value="sangat-rahasia">SURAT TELEGRAM</option>
-            <option value="rahasia">SURAT RAHASIA</option>
-            <option value="biasa">SURAT PERNYATAAN</option>
-            <option value="sangat-rahasia">SURAT PERINTAH</option>
-            <option value="rahasia">SURAT PANGGILAN</option>
-            <option value="biasa">SURAT KUASA</option>
-            <option value="sangat-rahasia">SURAT KETERANGAN</option>
-            <option value="rahasia">SURAT KEPUTUSAN</option>
-            <option value="biasa">SURAT IJIN</option>
-            <option value="sangat-rahasia">SURAT BIASA</option>
-            <option value="rahasia">SPTJM</option>
-            <option value="biasa">SPO</option>
-            <option value="sangat-rahasia">PERJANJIAN KERJA SAMA</option>
-            <option value="rahasia">LAPSUS</option>
-            <option value="biasa">BRATEL</option>
+            <option value="" selected disabled>Pilih Jenis Surat</option>        
+            <option value="tanda-penghargaan">TANDA PENGHARGAAN</option>
+            <option value="surat-tugas">SURAT TUGAS</option>
+            <option value="surat-telegram-rahasia">SURAT TELEGRAM RAHASIA</option>
+            <option value="surat-telegram">SURAT TELEGRAM</option>
+            <option value="surat-rahasia">SURAT RAHASIA</option>
+            <option value="surat-pernyataan">SURAT PERNYATAAN</option>
+            <option value="surat-perintah">SURAT PERINTAH</option>
+            <option value="surat-panggilan">SURAT PANGGILAN</option>
+            <option value="surat-kuasa">SURAT KUASA</option>
+            <option value="surat-keterangan">SURAT KETERANGAN</option>
+            <option value="surat-keputusan">SURAT KEPUTUSAN</option>
+            <option value="surat-ijin">SURAT IJIN</option>
+            <option value="surat-biasa">SURAT BIASA</option>
+            <option value="sptjm">SPTJM</option>
+            <option value="spo">SPO</option>
+            <option value="pks">PERJANJIAN KERJA SAMA</option>
+            <option value="lapsus">LAPSUS</option>
+            <option value="bratel">BRATEL</option>
           </select>
           <!-- <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.jenis_surat }" v-model="form.jenis_surat" :disabled="form.processing"> -->
           <span v-if="form.errors.jenis_surat" class="text-red-400 italic">{{ form.errors.jenis_surat }}</span>
@@ -78,7 +78,7 @@
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Kategori Referensi <span class="text-red-400">*</span></span>
           <select v-model="form.kategori_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" :disabled="form.processing">
-            <option value="" disabled>Pilih Kategori Referensi</option>        
+            <option value="" selected disabled>Pilih Kategori Referensi</option>        
             <option value="R-5">REFERENSI 5</option>
             <option value="R-4">REFERENSI 4</option>
             <option value="R-3">REFERENSI 3</option>
@@ -90,7 +90,12 @@
         </div>
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Disposisi Akhir<span class="text-red-400">*</span></span>
-          <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" v-model="form.posisi_surat" :disabled="form.processing">
+          <select v-model="form.posisi_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" :disabled="form.processing">
+            <option value="" selected disabled>Pilih Disposisi Akhir</option>        
+            <option value="kepala">KEPALA</option>
+            <option value="waka">WAKIL KEPALA</option>
+          </select>
+          <!-- <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" v-model="form.posisi_surat" :disabled="form.processing"> -->
           <span v-if="form.errors.posisi_surat" class="text-red-400 italic">{{ form.errors.posisi_surat }}</span>
         </div>
       </div>

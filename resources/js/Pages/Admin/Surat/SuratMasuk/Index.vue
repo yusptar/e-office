@@ -84,6 +84,55 @@
           </button>
         </div>
       </template>
+      <template #table.cell.content.fileSurat="{ row }">
+        <div align="center">
+          <button 
+            @click="openModal(row.file_surat)"
+            class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-green-600" viewBox="0 0 16 16">
+              <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L10.5 0H4zm8 14H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v3a1 1 0 0 0 1 1H13v8a1 1 0 0 1-1 1z"/>
+              <path d="M10.5 0v3h2.5L10.5 0z"/>
+            </svg>
+          </button>
+          <!-- Modal -->
+          <transition name="modal-fade">
+            <div v-if="showModalFile" class="modal" tabindex="-1" role="dialog">
+              <div class="modal-dialog" :style="modalStyle" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <button type="button" class="close" @click="closeModal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button> -->
+                  </div>
+                  <div class="modal-body" align="center">
+                    <div v-if="isPdf">
+                      <embed
+                        :src="`${baseUrl}/storage/${currentFile}`"
+                        type="application/pdf"
+                        width="70%"
+                        height="500px"
+                        class="border border-gray-300"
+                      />
+                    </div>
+                    <div v-else>
+                      <iframe
+                        :src="`${baseUrl}/storage/${currentFile}`"
+                        width="70%"
+                        height="500px"
+                        frameborder="0"
+                      ></iframe>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </template>
+
       <!-- <template #table.cell.content.fileSurat="{ row }">
         <div align="center">
           <embed
@@ -131,6 +180,40 @@
   import DialogModal from '@/Components/Modal/DialogModal.vue';
 
   export default {
+    data() {
+      return {
+        showModalFile: false,
+        currentFile: null,
+        isPdf: false,
+        baseUrl: `${baseUrl}`,
+      };
+    },
+    methods: {
+      openModal(file) {
+        this.currentFile = file;
+        this.isPdf = file.endsWith('.pdf');
+        this.adjustModalSize();
+        this.showModalFile = true;
+      },
+      closeModal() {
+        this.showModalFile = false;
+        this.currentFile = null;
+        this.isPdf = false;
+      },
+      adjustModalSize() {
+        if (this.isPdf) {
+          this.modalStyle = {
+            width: '45%',
+            height: '520px',
+          };
+        } else {
+          this.modalStyle = {
+            width: '45%',
+            height: '520px',
+          };
+        }
+      },
+    },
     name: 'MasterSuratMasukIndex',
     components: {
       Head,
@@ -147,12 +230,10 @@
     },
     setup() {
       const datatables = ref(null);
-      const baseUrl = window.baseUrl || '/';
-
       const columns = ref([
         {
           uniqid: 'rowIndex',
-          label: '#',
+          label: 'No',
           field: 'rowIndex',
           sortable: false,
           sortOrder: 'asc',
@@ -190,16 +271,16 @@
           classes: 'px-4 py-2 md:py-4 text-left md:text-center',
           headerClass: 'text-center p-4'
         },
-        // {
-        //   uniqid: 'fileSurat',
-        //   label: 'File',
-        //   field: 'file_surat',
-        //   sortable: false,
-        //   sortOrder: 'asc',
-        //   align: 'center',
-        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-        //   headerClass: 'text-center p-4'
-        // },
+        {
+          uniqid: 'fileSurat',
+          label: 'File',
+          field: 'file_surat',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+          headerClass: 'text-center p-4'
+        },
         {
           uniqid: 'action',
           label: 'Action',
@@ -241,3 +322,32 @@
     }
   }
 </script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-dialog {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s;
+}
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+</style>
