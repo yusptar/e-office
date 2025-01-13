@@ -122,16 +122,17 @@
           </div>
         </div> -->
         <div v-if="pengajuan && file_path" class="mt-4">
-          <span class="text-black font-medium">File yang Diunggah:</span>
           <div v-if="file_path.endsWith('.pdf')">
+            <span class="text-black font-medium">File yang Diunggah:</span>
             <embed :src="file_path" width="70%" height="400px" type="application/pdf" class="border border-gray-300" />
           </div>
           <div v-else-if="file_path.endsWith('.doc') || file_path.endsWith('.docx')">
+            <span class="text-black font-medium">File yang Diunggah:</span>
             <iframe :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(file_path)}`" width="70%" height="400px" class="border border-gray-300"></iframe>
           </div>
-          <div v-else>
+          <!-- <div v-else>
             <span class="text-red-500">Format file tidak didukung.</span>
-          </div>
+          </div> -->
         </div>
       </div>
 

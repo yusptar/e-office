@@ -116,7 +116,7 @@
                     </div>
                     <div v-else>
                       <iframe
-                        :src="`${baseUrl}/storage/${currentFile}`"
+                        :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
                         width="70%"
                         height="500px"
                         frameborder="0"
