@@ -102,8 +102,8 @@
 
       <div class="flex flex-col space-y-4">
         <div class="flex flex-col space-y-2">
-          <span class="text-black font-medium">Upload File Surat (PDF) <span class="text-red-400">*</span></span>
-          <input type="file" accept="application/pdf" :class="{ 'rounded-md border border-black px-4 py-2 focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.file_surat }" @change="onFileChange($event)" :disabled="form.processing">
+          <span class="text-black font-medium">Upload File Surat </span>
+          <input type="file" accept="application/pdf,.doc,.docx" :class="{ 'rounded-md border border-black px-4 py-2 focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.file_surat }" @change="onFileChange($event)" :disabled="form.processing">
           <progress v-if="form.progress" :value="form.progress.percentage" max="100">
             {{ form.progress.percentage }}%
           </progress>
@@ -123,7 +123,15 @@
         </div> -->
         <div v-if="pengajuan && file_path" class="mt-4">
           <span class="text-black font-medium">File yang Diunggah:</span>
-          <embed :src="file_path" width="70%" height="400px" type="application/pdf" class="border border-gray-300" />
+          <div v-if="file_path.endsWith('.pdf')">
+            <embed :src="file_path" width="70%" height="400px" type="application/pdf" class="border border-gray-300" />
+          </div>
+          <div v-else-if="file_path.endsWith('.doc') || file_path.endsWith('.docx')">
+            <iframe :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(file_path)}`" width="70%" height="400px" class="border border-gray-300"></iframe>
+          </div>
+          <div v-else>
+            <span class="text-red-500">Format file tidak didukung.</span>
+          </div>
         </div>
       </div>
 
