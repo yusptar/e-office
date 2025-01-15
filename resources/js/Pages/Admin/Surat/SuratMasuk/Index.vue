@@ -96,40 +96,58 @@
           </button>
           <!-- Modal -->
           <transition name="modal-fade">
-            <div v-if="showModalFile" class="modal" tabindex="-1" role="dialog">
-              <div class="modal-dialog" :style="modalStyle" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <!-- <button type="button" class="close" @click="closeModal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button> -->
+          <div 
+            v-if="showModalFile" 
+            class="modal" 
+            tabindex="-1" 
+            role="dialog" 
+            @click.self="closeModal"
+          >
+            <div class="modal-dialog" :style="modalStyle" role="document">
+              <div class="modal-content">
+                <!-- <div class="modal-header d-flex justify-content-between align-items-center">
+                  <button 
+                    type="button" 
+                    class="btn-close" 
+                    @click="closeModal" 
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div> -->
+                <div class="modal-body" align="center">
+                  <div v-if="isPdf">
+                    <embed
+                      :src="`${baseUrl}/storage/${currentFile}`"
+                      type="application/pdf"
+                      width="70%"
+                      height="500px"
+                      class="border border-gray-300"
+                    />
                   </div>
-                  <div class="modal-body" align="center">
-                    <div v-if="isPdf">
-                      <embed
-                        :src="`${baseUrl}/storage/${currentFile}`"
-                        type="application/pdf"
-                        width="70%"
-                        height="500px"
-                        class="border border-gray-300"
-                      />
-                    </div>
-                    <div v-else>
-                      <iframe
-                        :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
-                        width="70%"
-                        height="500px"
-                        frameborder="0"
-                      ></iframe>
-                    </div>
+                  <div v-else>
+                    <iframe
+                      :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
+                      width="70%"
+                      height="500px"
+                      frameborder="0"
+                    ></iframe>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
-                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button 
+                    type="button" 
+                    class="btn-close" 
+                    @click="closeModal" 
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
               </div>
             </div>
-          </transition>
+          </div>
+        </transition>
         </div>
       </template>
 
@@ -349,5 +367,15 @@
 .modal-fade-enter,
 .modal-fade-leave-to {
   opacity: 0;
+}
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #000;
+  cursor: pointer;
+}
+.btn-close:hover {
+  color: #dc3545;
 }
 </style>

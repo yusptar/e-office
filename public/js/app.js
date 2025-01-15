@@ -32327,7 +32327,7 @@ var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "text-red-400"
 }, "*")], -1 /* HOISTED */);
 var _hoisted_37 = ["disabled"];
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"\" selected disabled>Pilih Jenis Surat</option><option value=\"tanda-penghargaan\">TANDA PENGHARGAAN</option><option value=\"surat-tugas\">SURAT TUGAS</option><option value=\"surat-telegram-rahasia\">SURAT TELEGRAM RAHASIA</option><option value=\"surat-telegram\">SURAT TELEGRAM</option><option value=\"surat-rahasia\">SURAT RAHASIA</option><option value=\"surat-pernyataan\">SURAT PERNYATAAN</option><option value=\"surat-perintah\">SURAT PERINTAH</option><option value=\"surat-panggilan\">SURAT PANGGILAN</option><option value=\"surat-kuasa\">SURAT KUASA</option><option value=\"surat-keterangan\">SURAT KETERANGAN</option><option value=\"surat-keputusan\">SURAT KEPUTUSAN</option><option value=\"surat-ijin\">SURAT IJIN</option><option value=\"surat-biasa\">SURAT BIASA</option><option value=\"sptjm\">SPTJM</option><option value=\"spo\">SPO</option><option value=\"pks\">PERJANJIAN KERJA SAMA</option><option value=\"lapsus\">LAPSUS</option><option value=\"bratel\">BRATEL</option>", 19);
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"\" selected disabled>Pilih Jenis Surat</option><option value=\"Tanda Penghargaan\">TANDA PENGHARGAAN</option><option value=\"Surat Tugas\">SURAT TUGAS</option><option value=\"Surat Telegram Rahasia\">SURAT TELEGRAM RAHASIA</option><option value=\"Surat Telegram\">SURAT TELEGRAM</option><option value=\"Surat Rahasia\">SURAT RAHASIA</option><option value=\"Surat Pernyataan\">SURAT PERNYATAAN</option><option value=\"Surat Perintah\">SURAT PERINTAH</option><option value=\"Surat Panggilan\">SURAT PANGGILAN</option><option value=\"Surat Kuasa\">SURAT KUASA</option><option value=\"Surat Keterangan\">SURAT KETERANGAN</option><option value=\"Surat Keputusan\">SURAT KEPUTUSAN</option><option value=\"Surat Ijin\">SURAT IJIN</option><option value=\"Surat Biasa\">SURAT BIASA</option><option value=\"SPTJM\">SPTJM</option><option value=\"SPO\">SPO</option><option value=\"PKS\">PERJANJIAN KERJA SAMA</option><option value=\"Lapsus\">LAPSUS</option><option value=\"Bratel\">BRATEL</option>", 19);
 var _hoisted_57 = [_hoisted_38];
 var _hoisted_58 = {
   key: 0,
@@ -32345,7 +32345,7 @@ var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "text-red-400"
 }, "*")], -1 /* HOISTED */);
 var _hoisted_62 = ["disabled"];
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"\" selected disabled>Pilih Kategori Referensi</option><option value=\"R-5\">REFERENSI 5</option><option value=\"R-4\">REFERENSI 4</option><option value=\"R-3\">REFERENSI 3</option><option value=\"R-2\">REFERENSI 2</option><option value=\"R-1\">REFERENSI 1</option>", 6);
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"\" selected disabled>Pilih Kategori Referensi</option><option value=\"Ref 5\">REFERENSI 5</option><option value=\"Ref 4\">REFERENSI 4</option><option value=\"Ref 3\">REFERENSI 3</option><option value=\"Ref 2\">REFERENSI 2</option><option value=\"Ref 1\">REFERENSI 1</option>", 6);
 var _hoisted_69 = [_hoisted_63];
 var _hoisted_70 = {
   key: 0,
@@ -32366,10 +32366,10 @@ var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   disabled: ""
 }, "Pilih Disposisi Akhir", -1 /* HOISTED */);
 var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "kepala"
+  value: "Kepala"
 }, "KEPALA", -1 /* HOISTED */);
 var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "waka"
+  value: "Waka"
 }, "WAKIL KEPALA", -1 /* HOISTED */);
 var _hoisted_77 = [_hoisted_74, _hoisted_75, _hoisted_76];
 var _hoisted_78 = {
@@ -32507,7 +32507,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: $setup.form.processing
   }, _hoisted_77, 10 /* CLASS, PROPS */, _hoisted_73), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.posisi_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }\" v-model=\"form.posisi_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.posisi_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.posisi_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_79, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [_hoisted_81, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
-    accept: "application/pdf,.doc,.docx",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       'rounded-md border border-black px-4 py-2 focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
       'border-red-400': $setup.form.errors.file_surat
@@ -32689,32 +32688,27 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 })], -1 /* HOISTED */);
 var _hoisted_20 = [_hoisted_19];
 var _hoisted_21 = {
-  key: 0,
-  "class": "modal",
-  tabindex: "-1",
-  role: "dialog"
-};
-var _hoisted_22 = {
   "class": "modal-content"
 };
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "modal-header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button type=\"button\" class=\"close\" @click=\"closeModal\" aria-label=\"Close\">\n                      <span aria-hidden=\"true\">&times;</span>\n                    </button> ")], -1 /* HOISTED */);
-var _hoisted_24 = {
+var _hoisted_22 = {
   "class": "modal-body",
   align: "center"
 };
-var _hoisted_25 = {
+var _hoisted_23 = {
   key: 0
+};
+var _hoisted_24 = ["src"];
+var _hoisted_25 = {
+  key: 1
 };
 var _hoisted_26 = ["src"];
 var _hoisted_27 = {
-  key: 1
-};
-var _hoisted_28 = ["src"];
-var _hoisted_29 = {
   "class": "modal-footer"
 };
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "aria-hidden": "true"
+}, "×", -1 /* HOISTED */);
+var _hoisted_29 = [_hoisted_28];
 var _hoisted_30 = {
   "class": "flex flex-col space-y-6 p-10 items-center"
 };
@@ -32766,7 +32760,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "pt-4",
         "route-uri": _ctx.route('admin.surat.masuk.table'),
         columns: $setup.columns,
-        "onUpdate:columns": _cache[1] || (_cache[1] = function ($event) {
+        "onUpdate:columns": _cache[2] || (_cache[2] = function ($event) {
           return $setup.columns = $event;
         }),
         "table-class": "w-full table-auto border-collapse text-black",
@@ -32857,28 +32851,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             name: "modal-fade"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [$data.showModalFile ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+              return [$data.showModalFile ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+                key: 0,
+                "class": "modal",
+                tabindex: "-1",
+                role: "dialog",
+                onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+                  return $options.closeModal && $options.closeModal.apply($options, arguments);
+                }, ["self"]))
+              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
                 "class": "modal-dialog",
                 style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(_ctx.modalStyle),
                 role: "document"
-              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [$data.isPdf ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
+              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"modal-header d-flex justify-content-between align-items-center\">\n                  <button \n                    type=\"button\" \n                    class=\"btn-close\" \n                    @click=\"closeModal\" \n                    aria-label=\"Close\"\n                  >\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [$data.isPdf ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
                 src: "".concat($data.baseUrl, "/storage/").concat($data.currentFile),
                 type: "application/pdf",
                 width: "70%",
                 height: "500px",
                 "class": "border border-gray-300"
-              }, null, 8 /* PROPS */, _hoisted_26)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+              }, null, 8 /* PROPS */, _hoisted_24)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
                 src: "https://view.officeapps.live.com/op/embed.aspx?src=".concat(encodeURIComponent("".concat($data.baseUrl, "/storage/").concat($data.currentFile))),
                 width: "70%",
                 height: "500px",
                 frameborder: "0"
-              }, null, 8 /* PROPS */, _hoisted_28)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+              }, null, 8 /* PROPS */, _hoisted_26)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
                 type: "button",
-                "class": "btn btn-secondary",
+                "class": "btn-close",
                 onClick: _cache[0] || (_cache[0] = function () {
                   return $options.closeModal && $options.closeModal.apply($options, arguments);
-                })
-              }, "Close")])])], 4 /* STYLE */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+                }),
+                "aria-label": "Close"
+              }, _hoisted_29)])])], 4 /* STYLE */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
             }),
             _: 1 /* STABLE */
           })])];
@@ -32886,7 +32889,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1 /* STABLE */
       }, 8 /* PROPS */, ["route-uri", "columns"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_dialog_modal, {
         show: $setup.showModal,
-        onClose: _cache[4] || (_cache[4] = function ($event) {
+        onClose: _cache[5] || (_cache[5] = function ($event) {
           return $setup.showModal = false;
         })
       }, {
@@ -32894,14 +32897,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             type: "button",
             "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
-            onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+            onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
               return $setup.showModal = false;
             }, ["prevent"])),
             disabled: $setup.form.processing
           }, " Batal ", 8 /* PROPS */, _hoisted_35), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             type: "button",
             "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed",
-            onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+            onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
               return $setup.deleteRow();
             }, ["prevent"])),
             disabled: $setup.form.processing
@@ -35097,7 +35100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0);\n  z-index: 1050;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.modal-dialog {\n  background: #fff;\n  border-radius: 8px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  overflow: hidden;\n}\n.modal-fade-enter-active,\n.modal-fade-leave-active {\n  transition: opacity 0.3s;\n}\n.modal-fade-enter,\n.modal-fade-leave-to {\n  opacity: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0);\n  z-index: 1050;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.modal-dialog {\n  background: #fff;\n  border-radius: 8px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  overflow: hidden;\n}\n.modal-fade-enter-active,\n.modal-fade-leave-active {\n  transition: opacity 0.3s;\n}\n.modal-fade-enter,\n.modal-fade-leave-to {\n  opacity: 0;\n}\n.btn-close {\n  background: none;\n  border: none;\n  font-size: 1.5rem;\n  color: #000;\n  cursor: pointer;\n}\n.btn-close:hover {\n  color: #dc3545;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
