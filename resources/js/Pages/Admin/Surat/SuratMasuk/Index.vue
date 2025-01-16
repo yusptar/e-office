@@ -248,11 +248,33 @@
     },
     setup() {
       const datatables = ref(null);
+      const formatTanggal = (tanggal) => {
+        if (!tanggal) return '-';
+        const date = new Date(tanggal);
+        if (isNaN(date.getTime())) return '-'; 
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
+        const day = String(date.getDate()).padStart(2, '0');
+
+        return `${day}-${month}-${year}`;
+      };
+
       const columns = ref([
         {
           uniqid: 'rowIndex',
           label: 'No',
           field: 'rowIndex',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-center md:text-center',
+          headerClass: 'text-center p-4'
+        },
+        {
+          uniqid: 'tanggalSurat',
+          label: 'Tanggal',
+          field: (row) => formatTanggal(row.tanggal_surat),
           sortable: false,
           sortOrder: 'asc',
           align: 'center',
@@ -270,8 +292,28 @@
           headerClass: 'text-center p-4'
         },
         {
+          uniqid: 'perihalSurat',
+          label: 'Perihal',
+          field: 'perihal_surat',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+          headerClass: 'text-center p-4'
+        },
+        {
+          uniqid: 'jenisSurat',
+          label: 'Jenis',
+          field: 'jenis_surat',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+          headerClass: 'text-center p-4'
+        },
+        {
           uniqid: 'asalSurat',
-          label: 'Asal Surat',
+          label: 'Dari/Kepada',
           field: 'asal_surat',
           sortable: false,
           sortOrder: 'asc',
@@ -293,6 +335,16 @@
           uniqid: 'fileSurat',
           label: 'File',
           field: 'file_surat',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+          headerClass: 'text-center p-4'
+        },
+        {
+          uniqid: 'posisiSurat',
+          label: 'Disposisi Akhir',
+          field: 'posisi_surat',
           sortable: false,
           sortOrder: 'asc',
           align: 'center',

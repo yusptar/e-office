@@ -78,12 +78,12 @@
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Kategori Referensi <span class="text-red-400">*</span></span>
           <select v-model="form.kategori_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" :disabled="form.processing">
-            <option value="" selected disabled>Pilih Kategori Referensi</option>        
-            <option value="Ref 5">REFERENSI 5</option>
-            <option value="Ref 4">REFERENSI 4</option>
-            <option value="Ref 3">REFERENSI 3</option>
+            <option value="" selected disabled>Kategori Surat</option>        
+            <option value="Masuk">Masuk</option>
+            <option value="Keluar">Keluar</option>
+            <!-- <option value="Ref 3">REFERENSI 3</option>
             <option value="Ref 2">REFERENSI 2</option>
-            <option value="Ref 1">REFERENSI 1</option>
+            <option value="Ref 1">REFERENSI 1</option> -->
           </select>
           <!-- <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" v-model="form.kategori_surat" :disabled="form.processing"> -->
           <span v-if="form.errors.kategori_surat" class="text-red-400 italic">{{ form.errors.kategori_surat }}</span>

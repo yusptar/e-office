@@ -23930,10 +23930,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup() {
     var datatables = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var formatTanggal = function formatTanggal(tanggal) {
+      if (!tanggal) return '-';
+      var date = new Date(tanggal);
+      if (isNaN(date.getTime())) return '-';
+      var year = date.getFullYear();
+      var month = String(date.getMonth() + 1).padStart(2, '0');
+      var day = String(date.getDate()).padStart(2, '0');
+      return "".concat(day, "-").concat(month, "-").concat(year);
+    };
     var columns = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
       uniqid: 'rowIndex',
       label: 'No',
       field: 'rowIndex',
+      sortable: false,
+      sortOrder: 'asc',
+      align: 'center',
+      classes: 'px-4 py-2 md:py-4 text-center md:text-center',
+      headerClass: 'text-center p-4'
+    }, {
+      uniqid: 'tanggalSurat',
+      label: 'Tanggal',
+      field: function field(row) {
+        return formatTanggal(row.tanggal_surat);
+      },
       sortable: false,
       sortOrder: 'asc',
       align: 'center',
@@ -23949,8 +23969,26 @@ __webpack_require__.r(__webpack_exports__);
       classes: 'px-4 py-2 md:py-4 text-left md:text-center',
       headerClass: 'text-center p-4'
     }, {
+      uniqid: 'perihalSurat',
+      label: 'Perihal',
+      field: 'perihal_surat',
+      sortable: false,
+      sortOrder: 'asc',
+      align: 'center',
+      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+      headerClass: 'text-center p-4'
+    }, {
+      uniqid: 'jenisSurat',
+      label: 'Jenis',
+      field: 'jenis_surat',
+      sortable: false,
+      sortOrder: 'asc',
+      align: 'center',
+      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+      headerClass: 'text-center p-4'
+    }, {
       uniqid: 'asalSurat',
-      label: 'Asal Surat',
+      label: 'Dari/Kepada',
       field: 'asal_surat',
       sortable: false,
       sortOrder: 'asc',
@@ -23970,6 +24008,15 @@ __webpack_require__.r(__webpack_exports__);
       uniqid: 'fileSurat',
       label: 'File',
       field: 'file_surat',
+      sortable: false,
+      sortOrder: 'asc',
+      align: 'center',
+      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+      headerClass: 'text-center p-4'
+    }, {
+      uniqid: 'posisiSurat',
+      label: 'Disposisi Akhir',
+      field: 'posisi_surat',
       sortable: false,
       sortOrder: 'asc',
       align: 'center',
@@ -32345,75 +32392,84 @@ var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "text-red-400"
 }, "*")], -1 /* HOISTED */);
 var _hoisted_62 = ["disabled"];
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"\" selected disabled>Pilih Kategori Referensi</option><option value=\"Ref 5\">REFERENSI 5</option><option value=\"Ref 4\">REFERENSI 4</option><option value=\"Ref 3\">REFERENSI 3</option><option value=\"Ref 2\">REFERENSI 2</option><option value=\"Ref 1\">REFERENSI 1</option>", 6);
-var _hoisted_69 = [_hoisted_63];
-var _hoisted_70 = {
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "",
+  selected: "",
+  disabled: ""
+}, "Kategori Surat", -1 /* HOISTED */);
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Masuk"
+}, "Masuk", -1 /* HOISTED */);
+var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Keluar"
+}, "Keluar", -1 /* HOISTED */);
+var _hoisted_66 = {
   key: 0,
   "class": "text-red-400 italic"
 };
-var _hoisted_71 = {
+var _hoisted_67 = {
   "class": "flex-1 flex flex-col space-y-2"
 };
-var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-black font-medium"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Disposisi Akhir"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-red-400"
 }, "*")], -1 /* HOISTED */);
-var _hoisted_73 = ["disabled"];
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_69 = ["disabled"];
+var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "",
   selected: "",
   disabled: ""
 }, "Pilih Disposisi Akhir", -1 /* HOISTED */);
-var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "Kepala"
 }, "KEPALA", -1 /* HOISTED */);
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "Waka"
 }, "WAKIL KEPALA", -1 /* HOISTED */);
-var _hoisted_77 = [_hoisted_74, _hoisted_75, _hoisted_76];
-var _hoisted_78 = {
+var _hoisted_73 = [_hoisted_70, _hoisted_71, _hoisted_72];
+var _hoisted_74 = {
   key: 0,
   "class": "text-red-400 italic"
 };
-var _hoisted_79 = {
+var _hoisted_75 = {
   "class": "flex flex-col space-y-4"
 };
-var _hoisted_80 = {
+var _hoisted_76 = {
   "class": "flex flex-col space-y-2"
 };
-var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-black font-medium"
 }, "Upload File Surat ", -1 /* HOISTED */);
-var _hoisted_82 = ["disabled"];
-var _hoisted_83 = ["value"];
-var _hoisted_84 = {
+var _hoisted_78 = ["disabled"];
+var _hoisted_79 = ["value"];
+var _hoisted_80 = {
   key: 1,
   "class": "text-red-400 italic"
 };
-var _hoisted_85 = {
+var _hoisted_81 = {
   key: 0,
   "class": "mt-4"
 };
-var _hoisted_86 = {
+var _hoisted_82 = {
   key: 0
 };
-var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-black font-medium"
 }, "File yang Diunggah:", -1 /* HOISTED */);
-var _hoisted_88 = ["src"];
-var _hoisted_89 = {
+var _hoisted_84 = ["src"];
+var _hoisted_85 = {
   key: 1
 };
-var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-black font-medium"
 }, "File yang Diunggah:", -1 /* HOISTED */);
-var _hoisted_91 = ["src"];
-var _hoisted_92 = {
+var _hoisted_87 = ["src"];
+var _hoisted_88 = {
   "class": "flex flex-row justify-end space-x-4"
 };
-var _hoisted_93 = ["disabled"];
-var _hoisted_94 = ["disabled"];
+var _hoisted_89 = ["disabled"];
+var _hoisted_90 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
     onSubmit: _cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -32496,7 +32552,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'border-red-400': $setup.form.errors.kategori_surat
     }),
     disabled: $setup.form.processing
-  }, _hoisted_69, 10 /* CLASS, PROPS */, _hoisted_62), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.kategori_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }\" v-model=\"form.kategori_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.kategori_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_70, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.kategori_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [_hoisted_72, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, [_hoisted_63, _hoisted_64, _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <option value=\"Ref 3\">REFERENSI 3</option>\n            <option value=\"Ref 2\">REFERENSI 2</option>\n            <option value=\"Ref 1\">REFERENSI 1</option> ")], 10 /* CLASS, PROPS */, _hoisted_62), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.kategori_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }\" v-model=\"form.kategori_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.kategori_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.kategori_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [_hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $setup.form.posisi_surat = $event;
     }),
@@ -32505,7 +32561,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'border-red-400': $setup.form.errors.posisi_surat
     }),
     disabled: $setup.form.processing
-  }, _hoisted_77, 10 /* CLASS, PROPS */, _hoisted_73), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.posisi_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }\" v-model=\"form.posisi_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.posisi_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.posisi_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_79, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [_hoisted_81, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, _hoisted_73, 10 /* CLASS, PROPS */, _hoisted_69), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.posisi_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }\" v-model=\"form.posisi_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.posisi_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.posisi_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [_hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       'rounded-md border border-black px-4 py-2 focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
@@ -32515,22 +32571,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.onFileChange($event);
     }),
     disabled: $setup.form.processing
-  }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_82), $setup.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("progress", {
+  }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_78), $setup.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("progress", {
     key: 0,
     value: $setup.form.progress.percentage,
     max: "100"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "% ", 9 /* TEXT, PROPS */, _hoisted_83)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.form.errors.file_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_84, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.file_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"openModal\">Lihat File Surat</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"isModalOpen\" class=\"modal\">\n          <div class=\"modal-content\">\n            <span class=\"close\" @click=\"closeModal\">&times;</span>\n            <div v-if=\"file_path\">\n              <span class=\"text-black font-medium\">File Surat yang Diunggah:</span>\n              <embed :src=\"`/storage/${file_path}`\" width=\"100%\" height=\"500px\" type=\"application/pdf\" class=\"border border-gray-300\" />\n            </div>\n          </div>\n        </div> "), $props.pengajuan && $setup.file_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_85, [$setup.file_path.endsWith('.pdf') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_86, [_hoisted_87, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "% ", 9 /* TEXT, PROPS */, _hoisted_79)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.form.errors.file_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_80, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.file_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"openModal\">Lihat File Surat</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"isModalOpen\" class=\"modal\">\n          <div class=\"modal-content\">\n            <span class=\"close\" @click=\"closeModal\">&times;</span>\n            <div v-if=\"file_path\">\n              <span class=\"text-black font-medium\">File Surat yang Diunggah:</span>\n              <embed :src=\"`/storage/${file_path}`\" width=\"100%\" height=\"500px\" type=\"application/pdf\" class=\"border border-gray-300\" />\n            </div>\n          </div>\n        </div> "), $props.pengajuan && $setup.file_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_81, [$setup.file_path.endsWith('.pdf') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_82, [_hoisted_83, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
     src: $setup.file_path,
     width: "70%",
     height: "400px",
     type: "application/pdf",
     "class": "border border-gray-300"
-  }, null, 8 /* PROPS */, _hoisted_88)])) : $setup.file_path.endsWith('.doc') || $setup.file_path.endsWith('.docx') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_89, [_hoisted_90, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+  }, null, 8 /* PROPS */, _hoisted_84)])) : $setup.file_path.endsWith('.doc') || $setup.file_path.endsWith('.docx') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_85, [_hoisted_86, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
     src: "https://view.officeapps.live.com/op/embed.aspx?src=".concat(encodeURIComponent($setup.file_path)),
     width: "70%",
     height: "400px",
     "class": "border border-gray-300"
-  }, null, 8 /* PROPS */, _hoisted_91)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else>\n            <span class=\"text-red-500\">Format file tidak didukung.</span>\n          </div> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_92, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, _hoisted_87)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else>\n            <span class=\"text-red-500\">Format file tidak didukung.</span>\n          </div> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_88, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
     onClick: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -32538,11 +32594,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       $setup.form.clearErrors();
     }, ["prevent"])),
     disabled: $setup.form.processing
-  }, " Back ", 8 /* PROPS */, _hoisted_93), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " Back ", 8 /* PROPS */, _hoisted_89), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed",
     disabled: $setup.form.processing
-  }, " Save ", 8 /* PROPS */, _hoisted_94)])])], 32 /* HYDRATE_EVENTS */);
+  }, " Save ", 8 /* PROPS */, _hoisted_90)])])], 32 /* HYDRATE_EVENTS */);
 }
 
 /***/ }),
