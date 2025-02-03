@@ -23969,6 +23969,15 @@ __webpack_require__.r(__webpack_exports__);
       classes: 'px-4 py-2 md:py-4 text-left md:text-center',
       headerClass: 'text-center p-4'
     }, {
+      uniqid: 'kategoriSurat',
+      label: 'Kategori',
+      field: 'kategori_surat',
+      sortable: false,
+      sortOrder: 'asc',
+      align: 'center',
+      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+      headerClass: 'text-center p-4'
+    }, {
       uniqid: 'perihalSurat',
       label: 'Perihal',
       field: 'perihal_surat',
@@ -23987,18 +23996,18 @@ __webpack_require__.r(__webpack_exports__);
       classes: 'px-4 py-2 md:py-4 text-left md:text-center',
       headerClass: 'text-center p-4'
     }, {
-      uniqid: 'asalSurat',
-      label: 'Dari/Kepada',
-      field: 'asal_surat',
+      uniqid: 'sifatSurat',
+      label: 'Sifat',
+      field: 'sifat_surat',
       sortable: false,
       sortOrder: 'asc',
       align: 'center',
       classes: 'px-4 py-2 md:py-4 text-left md:text-center',
       headerClass: 'text-center p-4'
     }, {
-      uniqid: 'kategoriSurat',
-      label: 'Kategori',
-      field: 'kategori_surat',
+      uniqid: 'asalSurat',
+      label: 'Dari/Kepada',
+      field: 'asal_surat',
       sortable: false,
       sortOrder: 'asc',
       align: 'center',
@@ -32352,13 +32361,13 @@ var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   disabled: ""
 }, "Pilih Sifat Surat", -1 /* HOISTED */);
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "sangat-rahasia"
+  value: "Sangat Rahasia"
 }, "SANGAT RAHASIA", -1 /* HOISTED */);
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "rahasia"
+  value: "Rahasia"
 }, "RAHASIA", -1 /* HOISTED */);
 var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "biasa"
+  value: "Biasa"
 }, "BIASA", -1 /* HOISTED */);
 var _hoisted_33 = [_hoisted_29, _hoisted_30, _hoisted_31, _hoisted_32];
 var _hoisted_34 = {
@@ -32388,7 +32397,7 @@ var _hoisted_60 = {
 };
 var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Kategori Referensi "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Kategori"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-red-400"
 }, "*")], -1 /* HOISTED */);
 var _hoisted_62 = ["disabled"];

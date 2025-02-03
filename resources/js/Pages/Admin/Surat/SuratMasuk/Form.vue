@@ -40,9 +40,9 @@
           <span class="text-black font-medium">Sifat Surat <span class="text-red-400">*</span></span>
           <select v-model="form.sifat_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.sifat_surat }" :disabled="form.processing">
             <option value="" disabled>Pilih Sifat Surat</option>        
-            <option value="sangat-rahasia">SANGAT RAHASIA</option>
-            <option value="rahasia">RAHASIA</option>
-            <option value="biasa">BIASA</option>
+            <option value="Sangat Rahasia">SANGAT RAHASIA</option>
+            <option value="Rahasia">RAHASIA</option>
+            <option value="Biasa">BIASA</option>
           </select>
           <span v-if="form.errors.sifat_surat" class="text-red-400 italic">{{ form.errors.sifat_surat }}</span>
         </div>
@@ -76,7 +76,7 @@
 
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">Kategori Referensi <span class="text-red-400">*</span></span>
+          <span class="text-black font-medium">Kategori<span class="text-red-400">*</span></span>
           <select v-model="form.kategori_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" :disabled="form.processing">
             <option value="" selected disabled>Kategori Surat</option>        
             <option value="Masuk">Masuk</option>

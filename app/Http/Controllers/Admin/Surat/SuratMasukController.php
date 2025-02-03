@@ -139,7 +139,7 @@ class SuratMasukController extends Controller
 
     public function table(Request $request)
     {
-        return response()->json(SuratMasuk::orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+        return response()->json(SuratMasuk::where('kategori_surat', 'Masuk')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
     }
 
     private function validationRules($pengajuan = null)
