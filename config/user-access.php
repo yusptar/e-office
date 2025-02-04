@@ -82,6 +82,10 @@ return [
             [
               'label' => 'Delete Pengajuan',
               'value' => 'module.surat.masuk.delete',
+            ],
+            [
+              'label' => 'Sertifikasi',
+              'value' => 'module.surat.masuk.sertifikasi',
             ]
           ]
         ],

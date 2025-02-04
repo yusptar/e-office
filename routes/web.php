@@ -51,7 +51,9 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
             Route::get('/', 'SuratMasukController@index')->name('index')->middleware('has_access:module.surat.masuk.index');
             Route::get('/tambah', 'SuratMasukController@create')->name('create')->middleware('has_access:module.surat.masuk.create');
             Route::post('/store', 'SuratMasukController@store')->name('store');
+
             Route::get('/{pengajuan:slug}/ubah', 'SuratMasukController@edit')->name('edit');
+            Route::get('/{pengajuan:slug}/sertifikasi', 'SuratMasukController@sertifikasi')->name('sertifikasi')->middleware('has_access:module.surat.masuk.sertifikasi');
             Route::match(['put', 'patch'], '/{pengajuan:slug}', 'SuratMasukController@update')->name('update')->middleware('has_access:module.surat.masuk.edit');
             Route::delete('/{pengajuan:slug}', 'SuratMasukController@destroy')->name('destroy')->middleware('has_access:module.surat.masuk.delete');
             Route::get('/table', 'SuratMasukController@table')->name('table')->middleware('has_access:module.surat.masuk.index');

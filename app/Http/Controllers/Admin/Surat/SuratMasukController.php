@@ -44,6 +44,19 @@ class SuratMasukController extends Controller
         ]);
     }
 
+    public function sertifikasi(SuratMasuk $pengajuan)
+    {
+        $this->breadcrumbs[] = [
+            'text' => 'Sertifikat TTD Surat',
+            'route' => route('admin.surat.masuk.sertifikasi', [$pengajuan->slug])
+        ];
+
+        return Inertia::render('Admin/Surat/SuratMasuk/Sertifikat', [
+            'breadcrumbs' => $this->breadcrumbs,
+            'pengajuan' => $pengajuan,
+        ]);
+    }
+
     public function create()
     {
         $this->breadcrumbs[] = [

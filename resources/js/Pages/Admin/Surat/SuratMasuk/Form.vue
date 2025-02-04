@@ -135,7 +135,11 @@
           </div> -->
         </div>
       </div>
-
+      <div v-if="qrCodeUrl" class="flex flex-col items-center mt-4">
+        <span class="text-black font-medium">QR Code untuk Surat:</span>
+        <qrcode-vue :value="qrCodeUrl" :size="150" class="mt-2" />
+        <a :href="qrCodeUrl" target="_blank" class="text-blue-500 underline mt-2">Lihat Surat</a>
+      </div>
       <div class="flex flex-row justify-end space-x-4">
         <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="form.reset();form.clearErrors()" :disabled="form.processing">
           Back
@@ -151,9 +155,13 @@
 <script>
 import { ref, onMounted } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
+import QrcodeVue from 'qrcode.vue';
 
 export default {
   name: 'MasterSuratMasukForm',
+  components: {
+    QrcodeVue,
+  },
   props: {
     httpMethod: {
       type: String,
@@ -167,6 +175,10 @@ export default {
       default: '',
     },
     pengajuan: {
+      type: Object,
+      default: null,
+    },
+    sertifikasi: {
       type: Object,
       default: null,
     },
@@ -186,20 +198,32 @@ export default {
     });
 
     const file_path = ref('');
+    const qrCodeUrl = ref('');
 
     onMounted(() => {
       if (props.pengajuan) {
         Object.assign(form, props.pengajuan);
         file_path.value = `${window.baseUrl}/storage/${props.pengajuan.file_surat}`;
+        generateQrCode(props.pengajuan.id); // Buat QR Code dari ID surat
       }
     });
 
     function submit() {
-        form.transform((data) => ({
-          ...data,
-          file_surat: form.file_surat,
-          _method: props.httpMethod,
-        })).post(props.actionUri)
+      form.transform((data) => ({
+        ...data,
+        file_surat: form.file_surat,
+        _method: props.httpMethod,
+      })).post(props.actionUri, {
+        onSuccess: (response) => {
+          if (response.props.id) {
+            generateQrCode(response.props.id); // Buat QR Code setelah sukses
+          }
+        },
+      });
+    }
+
+    function generateQrCode() {
+      qrCodeUrl.value = `${window.baseUrl}/surat/surat_masuk/${props.pengajuan.slug}/sertifikasi`;
     }
 
     function onFileChange(evt) {
@@ -213,6 +237,7 @@ export default {
     return {
       form,
       file_path,
+      qrCodeUrl,
       submit,
       onFileChange,
     };
