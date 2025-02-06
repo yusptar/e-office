@@ -1,7 +1,7 @@
 <template>
-  <div class="flex min-h-screen-95">
+  <div class="flex">
     <!-- BEGIN: Content -->
-    <div class="rounded-30px px-4 max-w-4xl shadow-md my-6 mx-auto py-0 md:px-6 min-w-0 min-h-full flex-1 pb-10 bg-white">
+    <div class="rounded-30px px-4 max-w-4xl shadow-md my-6 mx-auto py-0 md:px-6 min-w-0 pb-10 bg-white">
       <!-- BEGIN: Top Bar -->
       <div class="flex items-center relative border-b border-dark-3" style="height: 67px;">
         <!-- BEGIN: Breadcrumb -->

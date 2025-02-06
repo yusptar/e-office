@@ -33110,10 +33110,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex min-h-screen-95"
+  "class": "flex"
 };
 var _hoisted_2 = {
-  "class": "rounded-30px px-4 max-w-4xl shadow-md my-6 mx-auto py-0 md:px-6 min-w-0 min-h-full flex-1 pb-10 bg-white"
+  "class": "rounded-30px px-4 max-w-4xl shadow-md my-6 mx-auto py-0 md:px-6 min-w-0 pb-10 bg-white"
 };
 var _hoisted_3 = {
   "class": "flex items-center relative border-b border-dark-3",
