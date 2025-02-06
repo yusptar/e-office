@@ -106,8 +106,13 @@ export default {
       }
     });
 
+    const ket_tte = ref({
+      tgl_signed: "0000-00-00 00:00:00",
+    });
+
     return {
-      sertf
+      sertf,
+      ket_tte
     };
   }
 };
