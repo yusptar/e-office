@@ -13,7 +13,7 @@
       <!-- END: Top Bar -->
 
       <!-- BEGIN: Keterangan Tanda Tangan Elektronik -->
-      <img src="/img/logorst-panjang.png" alt="BIOS Webservice" class="mx-auto max-w-full h-auto">
+      <img :src="baseUrl + '/img/logorst-panjang.png'" alt="BIOS Webservice" class="mx-auto max-w-full h-auto">
       <h5 class="text-center font-bold mt-4 mb-2">KETERANGAN TANDA TANGAN ELEKTRONIK PERSURATAN</h5>
 
       <div class="hash">
@@ -68,6 +68,11 @@ export default {
   name: 'AdminLayout',
   components: {
     Breadcrumb
+  },
+  computed: {
+    baseUrl() {
+      return window.baseUrl; 
+    },
   },
   props: {
     httpMethod: {
