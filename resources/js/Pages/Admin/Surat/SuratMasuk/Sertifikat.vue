@@ -4,8 +4,7 @@
     <div class="rounded-30px px-4 max-w-4xl shadow-md my-6 mx-auto py-0 md:px-6 min-w-0 pb-10 bg-white">
       <!-- BEGIN: Top Bar -->
       <div class="flex items-center relative border-b border-dark-3" style="height: 67px;">
-        <!-- BEGIN: Breadcrumb -->
-        <slot name="breadcrumbs">
+        <slot name=#breadcrumbs>
           <Breadcrumb :breadcrumbs="breadcrumbs" />
         </slot>
         <!-- END: Breadcrumb -->
@@ -13,7 +12,7 @@
       <!-- END: Top Bar -->
 
       <!-- BEGIN: Keterangan Tanda Tangan Elektronik -->
-      <img :src="baseUrl + '/img/logorst-panjang.png'" alt="BIOS Webservice" class="mx-auto max-w-full h-auto">
+      <img :src="baseUrl + '/img/logorst-panjang.png'" alt="" class="mx-auto max-w-full h-auto">
       <h5 class="text-center font-bold mt-4 mb-2">KETERANGAN TANDA TANGAN ELEKTRONIK PERSURATAN</h5>
 
       <div class="hash">
@@ -42,7 +41,9 @@
       <table class="w-full mt-2">
         <tbody>
           <tr>
-            <td class="px-3 py-2">{{ sertf.posisi_surat }} Rumah Sakit Tk.II dr.Soepraoen</td>
+            <td class="px-3 py-2">   
+              Kepala Rumah Sakit Tk.II dr.Soepraoen
+            </td>
           </tr>
         </tbody>
       </table>

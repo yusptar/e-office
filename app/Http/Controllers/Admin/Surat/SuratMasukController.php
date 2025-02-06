@@ -48,7 +48,7 @@ class SuratMasukController extends Controller
     {
         $this->breadcrumbs[] = [
             'text' => 'Sertifikat TTD Surat',
-            'route' => route('admin.surat.masuk.sertifikasi', [$pengajuan->slug])
+            'route' => route('sertifikasi', [$pengajuan->slug])
         ];
 
         return Inertia::render('Admin/Surat/SuratMasuk/Sertifikat', [

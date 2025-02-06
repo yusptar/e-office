@@ -137,8 +137,9 @@
       </div>
       <div v-if="qrCodeUrl" class="flex flex-col items-center mt-4">
         <span class="text-black font-medium">QR Code untuk Surat:</span>
-        <qrcode-vue :value="qrCodeUrl" :size="150" class="mt-2" />
-        <a :href="qrCodeUrl" target="_blank" class="text-blue-500 underline mt-2">Lihat Surat</a>
+        <a :href="qrCodeUrl" target="_blank" class="text-blue-500 underline mt-2"> 
+          <qrcode-vue :value="qrCodeUrl" :size="150" class="mt-2" />
+        </a>
       </div>
       <div class="flex flex-row justify-end space-x-4">
         <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="form.reset();form.clearErrors()" :disabled="form.processing">
@@ -223,7 +224,7 @@ export default {
     }
 
     function generateQrCode() {
-      qrCodeUrl.value = `${window.baseUrl}/surat/surat_masuk/${props.pengajuan.slug}/sertifikasi`;
+      qrCodeUrl.value = `${window.baseUrl}/${props.pengajuan.slug}/sertifikasi`;
     }
 
     function onFileChange(evt) {
