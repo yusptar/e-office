@@ -89,10 +89,7 @@
           <button 
             @click="openModal(row.file_surat)"
             class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-green-600" viewBox="0 0 16 16">
-              <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L10.5 0H4zm8 14H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v3a1 1 0 0 0 1 1H13v8a1 1 0 0 1-1 1z"/>
-              <path d="M10.5 0v3h2.5L10.5 0z"/>
-            </svg>
+            <img :src="baseUrl + '/img/file.png'" alt="file" class="w-6 h-6">
           </button>
           <!-- Modal -->
           <transition name="modal-fade">
@@ -150,18 +147,25 @@
         </transition>
         </div>
       </template>
+      
 
-      <!-- <template #table.cell.content.fileSurat="{ row }">
-        <div align="center">
-          <embed
-            :src="`${baseUrl}/storage/${row.file_surat}`"
-            type="application/pdf"
-            width="50%"
-            height="100px"
-            class="border border-gray-300"
-          />
+      <template #table.cell.content.Status="{ row }">
+        <div class="flex flex-row justify-center space-x-1">
+          <template v-if="row.status == 1">
+            <Link :href="route('sertifikasi', { pengajuan: row.slug })">
+              <img :src="baseUrl + '/img/signature-icon.jpg'" alt="Signature" class="w-6 h-6">
+            </Link>
+          </template>
+          <template v-else>
+            <button 
+              @click="acceptRequest(row)"
+              class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+            >
+              Terima
+            </button>
+          </template>
         </div>
-      </template> -->
+      </template>
     </datatables>
 
     <dialog-modal :show="showModal" @close="showModal = false">
@@ -355,6 +359,16 @@
           uniqid: 'posisiSurat',
           label: 'Disposisi Akhir',
           field: 'posisi_surat',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+          headerClass: 'text-center p-4'
+        },
+        {
+          uniqid: 'Status',
+          label: 'Status',
+          field: 'status',
           sortable: false,
           sortOrder: 'asc',
           align: 'center',

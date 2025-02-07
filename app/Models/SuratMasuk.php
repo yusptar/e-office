@@ -36,7 +36,8 @@ class SuratMasuk extends Model
         'jenis_surat',
         'kategori_surat',
         'posisi_surat',
-        'file_surat'
+        'file_surat',
+        'status'
     ];
 
     public function sluggable(): array
