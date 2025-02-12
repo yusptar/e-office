@@ -94,7 +94,23 @@ return [
           'activities' => [
             [
               'label' => 'Menu Surat Keluar',
-              'value' => 'module.surat.surat_keluar.index',
+              'value' => 'module.surat.keluar.index',
+            ],
+            [
+              'label' => 'Create Pengajuan',
+              'value' => 'module.surat.keluar.create',
+            ],
+            [
+              'label' => 'Edit Pengajuan',
+              'value' => 'module.surat.keluar.edit',
+            ],
+            [
+              'label' => 'Delete Pengajuan',
+              'value' => 'module.surat.keluar.delete',
+            ],
+            [
+              'label' => 'Sertifikasi',
+              'value' => 'module.surat.keluar.sertifikasi',
             ]
           ]
         ],

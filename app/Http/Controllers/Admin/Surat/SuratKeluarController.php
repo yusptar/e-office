@@ -26,7 +26,7 @@ class SuratKeluarController extends Controller
         $this->breadcrumbs = [
             [
                 'text' => 'SuratKeluar',
-                'route' => route('admin.surat.surat_keluar.index')
+                'route' => route('admin.surat.keluar.index')
             ]
         ];
     }

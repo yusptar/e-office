@@ -59,8 +59,14 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
             Route::get('/table', 'SuratMasukController@table')->name('table')->middleware('has_access:module.surat.masuk.index');
         });
 
-        Route::group(['prefix' => 'surat_keluar', 'as' => 'surat_keluar.'], function() {
-            Route::get('/', 'SuratKeluarController@index')->name('index')->middleware('has_access:module.surat.surat_keluar.index');
+        Route::group(['prefix' => 'surat_keluar', 'as' => 'keluar.'], function() {
+            Route::get('/', 'SuratKeluarController@index')->name('index')->middleware('has_access:module.surat.keluar.index');
+            Route::get('/tambah', 'SuratKeluarController@create')->name('create')->middleware('has_access:module.keluar.create');
+            Route::post('/store', 'SuratKeluarController@store')->name('store');
+            Route::get('/{pengajuan:slug}/ubah', 'SuratKeluarController@edit')->name('edit');
+            Route::match(['put', 'patch'], '/{pengajuan:slug}', 'SuratKeluarController@update')->name('update')->middleware('has_access:module.surat.keluar.edit');
+            Route::delete('/{pengajuan:slug}', 'SuratKeluarController@destroy')->name('destroy')->middleware('has_access:module.surat.keluar.delete');
+            Route::get('/table', 'SuratKeluarController@table')->name('table')->middleware('has_access:module.surat.keluar.index');
         });
     });
 

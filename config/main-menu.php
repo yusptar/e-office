@@ -60,7 +60,7 @@ return [
       'route' => '#',
       'access' => [
         'module.surat.masuk.index',
-        'module.surat.surat_keluar.index',
+        'module.surat.keluar.index',
       ],
       'active' => false,
       'open' => false,
@@ -79,8 +79,8 @@ return [
           'uniqid' => 'suratKeluar',
           'type' => 'menu',
           'text' => 'Surat Keluar',
-          'route' => 'admin.surat.surat_keluar.index',
-          'access' => 'module.surat.surat_keluar.index',
+          'route' => 'admin.surat.keluar.index',
+          'access' => 'module.surat.keluar.index',
           'active' => false,
           'open' => false,
           'children' => null
