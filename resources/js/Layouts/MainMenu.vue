@@ -1,27 +1,31 @@
 <template>
   <ul>
     <li v-for="menu in $page.props.mainMenu">
-      <!-- <div v-if="menu.type === 'divider'" class="w-full h-px z-10 relative bg-gray-500 my-4"></div> -->
       <div>
-        <Link v-if="!menu.children && hasAccess(menu.access, $page.props.currentUser.jabatan.hak_akses)" :href="menu.route === '#' ? '#' : route(menu.route)" :class="{ 'h-12 flex items-center pl-5 mb-1 relative rounded-full': true, 'text-white bg-dark-1': menu.active, 'text-gray-300 hover:bg-dark-3': !menu.active }">
-            <slot :name="'icon-menu-' + menu.uniqid">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
-                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-              </svg>
-            </slot>
-            <div class="w-full ml-3 flex items-center"> {{ menu.text }} </div>
+        <Link v-if="!menu.children && hasAccess(menu.access, $page.props.currentUser.jabatan.hak_akses)" 
+          :href="menu.route === '#' ? '#' : route(menu.route)" 
+          :class="{ 'h-12 flex items-center pl-5 mb-1 relative rounded-full': true, 'text-white bg-dark-1': menu.active, 'text-gray-300 hover:bg-dark-3': !menu.active }">
+          
+          <!-- Ganti ikon di sini -->
+          <slot :name="'icon-menu-' + menu.uniqid">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v12h16V6H4zm8 3h2v3h3v2h-3v3h-2v-3H9v-2h3V9z"/>
+            </svg>
+          </slot>
+          
+          <div class="w-full ml-3 flex items-center"> {{ menu.text }} </div>
         </Link>
+
         <SubMenu v-else :menu="menu">
           <template v-slot:[scopedHeaderSlotName(menu.uniqid)]="slotData">
             <slot :name="'icon-menu-' + menu.uniqid" v-bind="slotData" />
           </template>
         </SubMenu>
       </div>
-
     </li>
   </ul>
 </template>
+
 
 <script>
   import { usePage, Link } from '@inertiajs/inertia-vue3';

@@ -15,16 +15,16 @@ return [
     [
       'type' => 'divider',
     ],
-    // [
-    //   'uniqid' => 'menuPengajuan', 
-    //   'type' => 'menu',
-    //   'text' => 'Pengajuan Surat', 
-    //   'route' => 'admin.pengajuan.index', 
-    //   'access' => 'module.pengajuan.index', 
-    //   'active' => false, 
-    //   'open' => false, 
-    //   'children' => null
-    // ],
+    [
+      'uniqid' => 'menuPengajuan', 
+      'type' => 'menu',
+      'text' => 'Pengajuan Surat', 
+      'route' => 'admin.surat.pengajuan.index', 
+      'access' => 'module.surat.pengajuan.index', 
+      'active' => false, 
+      'open' => false, 
+      'children' => null
+    ],
     [
       'type' => 'divider',
     ],

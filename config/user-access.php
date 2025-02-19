@@ -114,19 +114,31 @@ return [
             ]
           ]
         ],
-        // [
-        //   'module' => 'Pengajuan',
-        //   'activities' => [
-        //     [
-        //       'label' => 'Menu Pengajuan Surat',
-        //       'value' => 'module.pengajuan.index',
-        //     ],
-        //     [
-        //       'label' => 'Create Pengajuan',
-        //       'value' => 'module.pengajuan.create',
-        //     ],
-        //   ]
-        // ],
+        [
+          'module' => 'Pengajuan Surat',
+          'activities' => [
+            [
+              'label' => 'Menu Pengajuan',
+              'value' => 'module.surat.pengajuan.index',
+            ],
+            [
+              'label' => 'Create Pengajuan',
+              'value' => 'module.surat.pengajuan.create',
+            ],
+            [
+              'label' => 'Edit Pengajuan',
+              'value' => 'module.surat.pengajuan.edit',
+            ],
+            [
+              'label' => 'Delete Pengajuan',
+              'value' => 'module.surat.pengajuan.delete',
+            ],
+            [
+              'label' => 'Sertifikasi',
+              'value' => 'module.surat.pengajuan.sertifikasi',
+            ]
+          ]
+        ]
       ]
     ],
     [
