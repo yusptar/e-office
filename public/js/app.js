@@ -35110,10 +35110,11 @@ var _hoisted_29 = {
 };
 var _hoisted_30 = ["src"];
 var _hoisted_31 = ["onClick"];
-var _hoisted_32 = {
+var _hoisted_32 = ["onClick"];
+var _hoisted_33 = {
   "class": "flex flex-col space-y-6 p-10 items-center"
 };
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 128 128",
   "class": "w-20 h-20 fill-current text-yellow-500"
@@ -35126,17 +35127,17 @@ var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   cy: "86.506",
   r: "3.734"
 })], -1 /* HOISTED */);
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-center md:text-lg"
-}, " Apakah Anda yakin untuk menghapus surat ini? Surat yang telah dihapus tidak dapat dikembalikan. ", -1 /* HOISTED */);
-var _hoisted_35 = {
+}, " Apakah Anda yakin untuk membatalkan surat ini? Surat yang telah dibatalkan tidak dapat dikembalikan. ", -1 /* HOISTED */);
+var _hoisted_36 = {
   "class": "w-full pt-5"
 };
-var _hoisted_36 = {
+var _hoisted_37 = {
   "class": "flex flex-row justify-center space-x-4"
 };
-var _hoisted_37 = ["disabled"];
 var _hoisted_38 = ["disabled"];
+var _hoisted_39 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Breadcrumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Breadcrumb");
@@ -35293,7 +35294,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         "table.cell.content.Status": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
           var row = _ref4.row;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [row.status == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [row.status == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
             key: 0,
             href: _ctx.route('sertifikasi', {
               pengajuan: row.slug
@@ -35307,13 +35308,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               }, null, 8 /* PROPS */, _hoisted_30)];
             }),
             _: 2 /* DYNAMIC */
-          }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+          }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : row.status == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
             key: 1,
             onClick: function onClick($event) {
-              return _ctx.acceptRequest(row);
+              return _ctx.approveByKasiTUUD(row);
             },
-            "class": "px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-          }, " Proses Persetujuan ", 8 /* PROPS */, _hoisted_31))])];
+            "class": "px-2 py-2 bg-green-400 text-white rounded-md hover:bg-blue-700"
+          }, " Verifikasi ", 8 /* PROPS */, _hoisted_31)) : row.status == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+            key: 2,
+            onClick: function onClick($event) {
+              return _ctx.approveByKepala(row);
+            },
+            "class": "px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-yellow-700"
+          }, " Persetujuan Kepala ", 8 /* PROPS */, _hoisted_32)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
         }),
         _: 1 /* STABLE */
       }, 8 /* PROPS */, ["route-uri", "columns"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_dialog_modal, {
@@ -35323,21 +35330,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             type: "button",
             "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
             onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
               return $setup.showModal = false;
             }, ["prevent"])),
             disabled: $setup.form.processing
-          }, " Batal ", 8 /* PROPS */, _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          }, " Tidak ", 8 /* PROPS */, _hoisted_38), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             type: "button",
             "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed",
             onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
               return $setup.deleteRow();
             }, ["prevent"])),
             disabled: $setup.form.processing
-          }, " Hapus ", 8 /* PROPS */, _hoisted_38)])])])];
+          }, " Ya ", 8 /* PROPS */, _hoisted_39)])])])];
         }),
         _: 1 /* STABLE */
       }, 8 /* PROPS */, ["show"])];

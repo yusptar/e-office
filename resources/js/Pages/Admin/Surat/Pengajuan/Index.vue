@@ -151,17 +151,25 @@
 
       <template #table.cell.content.Status="{ row }">
         <div class="flex flex-row justify-center space-x-1">
-          <template v-if="row.status == 1">
+          <template v-if="row.status == 2">
             <Link :href="route('sertifikasi', { pengajuan: row.slug })">
               <img :src="baseUrl + '/img/signature-icon.jpg'" alt="Signature" class="w-6 h-6">
             </Link>
           </template>
-          <template v-else>
+          <template v-else-if="row.status == 0">
             <button 
-              @click="acceptRequest(row)"
-              class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+              @click="approveByKasiTUUD(row)"
+              class="px-2 py-2 bg-green-400 text-white rounded-md hover:bg-blue-700"
             >
-              Proses Persetujuan
+              Verifikasi
+            </button>
+          </template>
+          <template v-else-if="row.status == 1">
+            <button 
+              @click="approveByKepala(row)"
+              class="px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-yellow-700"
+            >
+              Persetujuan Kepala
             </button>
           </template>
         </div>
@@ -176,15 +184,15 @@
           <circle cx="64" cy="86.506" r="3.734"/>
         </svg>
         <p class="text-center md:text-lg">
-          Apakah Anda yakin untuk menghapus surat ini? Surat yang telah dihapus tidak dapat dikembalikan.
+          Apakah Anda yakin untuk membatalkan surat ini? Surat yang telah dibatalkan tidak dapat dikembalikan.
         </p>
         <div class="w-full pt-5">
           <div class="flex flex-row justify-center space-x-4">
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="showModal = false" :disabled="form.processing">
-              Batal
+              Tidak
             </button>
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed" @click.prevent="deleteRow()" :disabled="form.processing">
-              Hapus
+              Ya
             </button>
           </div>
         </div>
