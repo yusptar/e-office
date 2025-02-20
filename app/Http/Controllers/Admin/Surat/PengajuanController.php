@@ -52,24 +52,24 @@ class PengajuanController extends Controller
         $validated = $request->validate($this->validationRules());
 
         $validated['user_id'] = Auth::user()->id;
-        $validated['tanggal_surat'] = Carbon::now()->toDateString();
+        $validated['tanggal_surat'] = Carbon::now()->format('Y-m-d');
+        $validated['roles'] = Auth::user()->jabatan_id;
+        $validated['posisi_surat'] = 'Kasi TUUD';
 
         if ($request->hasFile('file_surat')) {
             $file = $request->file('file_surat');
             $filePath = $file->store('pengajuan_surat', 'public');
             $validated['file_surat'] = $filePath;
         }
-
+        
         DB::beginTransaction();
         try {
             SuratMasuk::create($validated);
             DB::commit();
-            return redirect()->route('admin.surat.pengajuan.index')
-                             ->with('success', 'Pengajuan surat berhasil disimpan.');
-        } catch (\Exception $e) {
+            return redirect()->route('admin.surat.pengajuan.index')->with('alertState', 'success')->with('alertMessage', 'Pengajuan surat berhasil disimpan.');
+        } catch (Exception $e) {
             DB::rollback();
-            return redirect()->back()->withInput()
-                             ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->withInput()->with('alertState', 'error')->with('alertMessage', $e->getMessage());
         }
     }
 
@@ -89,29 +89,26 @@ class PengajuanController extends Controller
 
     public function update(Request $request, SuratMasuk $pengajuan)
     {
-        $validated = $request->validate($this->validationRules($pengajuan));
-
-        if ($request->hasFile('file_surat')) {
-            if ($pengajuan->file_surat) {
-                Storage::disk('public')->delete($pengajuan->file_surat);
-            }
-
-            $file = $request->file('file_surat');
-            $filePath = $file->store('pengajuan_surat', 'public');
-            $validated['file_surat'] = $filePath;
-        }
+        $request->validate($this->validationRules($pengajuan));
 
         DB::beginTransaction();
         try {
-            $pengajuan->save($validated);
+            $pengajuan->fill($request->except(['file_surat']));
+            if ($request->hasFile('file_surat')) {
+                if ($pengajuan->file_surat) {
+                    Storage::disk('public')->delete($pengajuan->file_surat);
+                }
+                $file = $request->file('file_surat');
+                $filePath = $file->store('pengajuan_surat', 'public');
+                $pengajuan->file_surat = $filePath; 
+            }
 
+            $pengajuan->save();
             DB::commit();
-            return redirect()->route('admin.surat.pengajuan.index')
-                             ->with('success', 'Pengajuan surat berhasil diperbarui.');
-        } catch (\Exception $e) {
+            return redirect()->route('admin.surat.pengajuan.index')->with('alertState', 'success')->with('alertMessage', 'Pengajuan surat berhasil diperbarui.');
+        } catch (Exception $e) {
             DB::rollback();
-            return redirect()->back()->withInput()
-                             ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->withInput()->with('alertState', 'error')->with('alertMessage', $e->getMessage());
         }
     }
 

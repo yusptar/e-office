@@ -138,6 +138,31 @@ return [
               'value' => 'module.surat.pengajuan.sertifikasi',
             ]
           ]
+        ],
+        [
+          'module' => 'Disposisi',
+          'activities' => [
+            [
+              'label' => 'Menu Disposisi',
+              'value' => 'module.surat.disposisi.index',
+            ],
+            [
+              'label' => 'Create Disposisi',
+              'value' => 'module.surat.disposisi.create',
+            ],
+            [
+              'label' => 'Edit Disposisi',
+              'value' => 'module.surat.disposisi.edit',
+            ],
+            [
+              'label' => 'Delete Disposisi',
+              'value' => 'module.surat.disposisi.delete',
+            ],
+            [
+              'label' => 'Sertifikasi',
+              'value' => 'module.surat.disposisi.sertifikasi',
+            ]
+          ]
         ]
       ]
     ],

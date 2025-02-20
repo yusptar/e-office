@@ -161,7 +161,7 @@
               @click="acceptRequest(row)"
               class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
             >
-              Terima
+              Proses Persetujuan
             </button>
           </template>
         </div>
@@ -337,7 +337,7 @@
         },
         {
           uniqid: 'asalSurat',
-          label: 'Dari/Kepada',
+          label: 'Asal Surat',
           field: 'asal_surat',
           sortable: false,
           sortOrder: 'asc',
@@ -357,7 +357,7 @@
         },
         {
           uniqid: 'posisiSurat',
-          label: 'Disposisi Akhir',
+          label: 'Posisi Surat',
           field: 'posisi_surat',
           sortable: false,
           sortOrder: 'asc',

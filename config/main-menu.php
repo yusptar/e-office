@@ -61,6 +61,7 @@ return [
       'access' => [
         'module.surat.masuk.index',
         'module.surat.keluar.index',
+        'module.surat.disposisi.index',
       ],
       'active' => false,
       'open' => false,
@@ -81,6 +82,16 @@ return [
           'text' => 'Surat Keluar',
           'route' => 'admin.surat.keluar.index',
           'access' => 'module.surat.keluar.index',
+          'active' => false,
+          'open' => false,
+          'children' => null
+        ],
+        [
+          'uniqid' => 'suratDisposisi',
+          'type' => 'menu',
+          'text' => 'Disposisi',
+          'route' => 'admin.surat.disposisi.index',
+          'access' => 'module.surat.disposisi.index',
           'active' => false,
           'open' => false,
           'children' => null

@@ -15,7 +15,7 @@ export default {
 
 <style scoped>
 .logo-image {
-  width: 75px;
+  width: 150px;
   height: auto;
 }
 </style>

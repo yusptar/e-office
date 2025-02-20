@@ -337,7 +337,7 @@
         },
         {
           uniqid: 'asalSurat',
-          label: 'Dari/Kepada',
+          label: 'Asal Surat',
           field: 'asal_surat',
           sortable: false,
           sortOrder: 'asc',
@@ -355,16 +355,16 @@
           classes: 'px-4 py-2 md:py-4 text-left md:text-center',
           headerClass: 'text-center p-4'
         },
-        {
-          uniqid: 'posisiSurat',
-          label: 'Disposisi Akhir',
-          field: 'posisi_surat',
-          sortable: false,
-          sortOrder: 'asc',
-          align: 'center',
-          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-          headerClass: 'text-center p-4'
-        },
+        // {
+        //   uniqid: 'posisiSurat',
+        //   label: 'Disposisi Akhir',
+        //   field: 'posisi_surat',
+        //   sortable: false,
+        //   sortOrder: 'asc',
+        //   align: 'center',
+        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+        //   headerClass: 'text-center p-4'
+        // },
         {
           uniqid: 'Status',
           label: 'Status',

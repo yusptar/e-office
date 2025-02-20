@@ -79,8 +79,7 @@
             <span class="text-black font-medium">Kategori<span class="text-red-400">*</span></span>
             <select v-model="form.kategori_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" :disabled="form.processing">
               <option value="" selected disabled>Kategori Surat</option>        
-              <option value="Masuk">Masuk</option>
-              <option value="Keluar">Keluar</option>
+              <option value="Keluar">KELUAR</option>
               <!-- <option value="Ref 3">REFERENSI 3</option>
               <option value="Ref 2">REFERENSI 2</option>
               <option value="Ref 1">REFERENSI 1</option> -->
@@ -135,12 +134,12 @@
             </div> -->
           </div>
         </div>
-        <div v-if="qrCodeUrl" class="flex flex-col items-center mt-4">
+        <!-- <div v-if="qrCodeUrl" class="flex flex-col items-center mt-4">
           <span class="text-black font-medium">QR Code untuk Surat:</span>
           <a :href="qrCodeUrl" target="_blank" class="text-blue-500 underline mt-2"> 
             <qrcode-vue :value="qrCodeUrl" :size="150" class="mt-2" />
           </a>
-        </div>
+        </div> -->
         <div class="flex flex-row justify-end space-x-4">
           <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="form.reset();form.clearErrors()" :disabled="form.processing">
             Back

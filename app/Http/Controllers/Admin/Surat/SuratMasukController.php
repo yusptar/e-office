@@ -97,7 +97,7 @@ class SuratMasukController extends Controller
     public function edit(SuratMasuk $pengajuan)
     {
         $this->breadcrumbs[] = [
-            'text' => 'Edit Pengajuan Surat',
+            'text' => 'Edit Surat Masuk',
             'route' => route('admin.surat.masuk.edit', [$pengajuan->slug])
         ];
 
@@ -153,7 +153,7 @@ class SuratMasukController extends Controller
 
     public function table(Request $request)
     {
-        return response()->json(SuratMasuk::where('kategori_surat', 'Masuk')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+        return response()->json(SuratMasuk::where('kategori_surat', 'Masuk')->where('status', '0')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
     }
 
     private function validationRules($pengajuan = null)

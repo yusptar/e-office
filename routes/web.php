@@ -51,23 +51,18 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
         Route::group(['prefix' => 'pengajuan', 'as' => 'pengajuan.'], function() {
             Route::get('/', 'PengajuanController@index')->name('index')->middleware('has_access:module.surat.pengajuan.index');
             Route::get('/tambah', 'PengajuanController@create')->name('create')->middleware('has_access:module.surat.pengajuan.create');
-            Route::post('/store', 'PengajuanController@store')->name('store');
-
-            Route::get('/{pengajuan:slug}/ubah', 'PengajuanController@edit')->name('edit');
-          
+            Route::post('/store', 'PengajuanController@store')->name('store')->middleware('has_access:module.surat.pengajuan.create');
+            Route::get('/{pengajuan:slug}/ubah', 'PengajuanController@edit')->name('edit')->middleware('has_access:module.surat.pengajuan.edit');
             Route::match(['put', 'patch'], '/{pengajuan:slug}', 'PengajuanController@update')->name('update')->middleware('has_access:module.surat.pengajuan.edit');
             Route::delete('/{pengajuan:slug}', 'PengajuanController@destroy')->name('destroy')->middleware('has_access:module.surat.pengajuan.delete');
             Route::get('/table', 'PengajuanController@table')->name('table')->middleware('has_access:module.surat.pengajuan.index');
         });
 
-
         Route::group(['prefix' => 'surat_masuk', 'as' => 'masuk.'], function() {
             Route::get('/', 'SuratMasukController@index')->name('index')->middleware('has_access:module.surat.masuk.index');
             Route::get('/tambah', 'SuratMasukController@create')->name('create')->middleware('has_access:module.surat.masuk.create');
-            Route::post('/store', 'SuratMasukController@store')->name('store');
-
-            Route::get('/{pengajuan:slug}/ubah', 'SuratMasukController@edit')->name('edit');
-          
+            Route::post('/store', 'SuratMasukController@store')->name('store')->middleware('has_access:module.surat.masuk.create');
+            Route::get('/{pengajuan:slug}/ubah', 'SuratMasukController@edit')->name('edit')->middleware('has_access:module.surat.masuk.edit');
             Route::match(['put', 'patch'], '/{pengajuan:slug}', 'SuratMasukController@update')->name('update')->middleware('has_access:module.surat.masuk.edit');
             Route::delete('/{pengajuan:slug}', 'SuratMasukController@destroy')->name('destroy')->middleware('has_access:module.surat.masuk.delete');
             Route::get('/table', 'SuratMasukController@table')->name('table')->middleware('has_access:module.surat.masuk.index');
@@ -81,6 +76,16 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
             Route::match(['put', 'patch'], '/{pengajuan:slug}', 'SuratKeluarController@update')->name('update')->middleware('has_access:module.surat.keluar.edit');
             Route::delete('/{pengajuan:slug}', 'SuratKeluarController@destroy')->name('destroy')->middleware('has_access:module.surat.keluar.delete');
             Route::get('/table', 'SuratKeluarController@table')->name('table')->middleware('has_access:module.surat.keluar.index');
+        });
+
+        Route::group(['prefix' => 'disposisi', 'as' => 'disposisi.'], function() {
+            Route::get('/', 'DisposisiController@index')->name('index')->middleware('has_access:module.surat.disposisi.index');
+            Route::get('/tambah', 'DisposisiController@create')->name('create')->middleware('has_access:module.surat.disposisi.create');
+            Route::post('/store', 'DisposisiController@store')->name('store')->middleware('has_access:module.surat.disposisi.create');
+            Route::get('/{pengajuan:slug}/ubah', 'DisposisiController@edit')->name('edit')->middleware('has_access:module.surat.disposisi.edit');
+            Route::match(['put', 'patch'], '/{pengajuan:slug}', 'DisposisiController@update')->name('update')->middleware('has_access:module.surat.disposisi.edit');
+            Route::delete('/{pengajuan:slug}', 'DisposisiController@destroy')->name('destroy')->middleware('has_access:module.surat.disposisi.delete');
+            Route::get('/table', 'DisposisiController@table')->name('table')->middleware('has_access:module.surat.disposisi.index');
         });
     });
 
