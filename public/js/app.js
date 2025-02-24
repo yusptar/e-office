@@ -23855,13 +23855,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_Breadcrumb_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Layouts/Breadcrumb.vue */ "./resources/js/Layouts/Breadcrumb.vue");
 /* harmony import */ var _Components_Datatable_Datatables_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Datatable/Datatables.vue */ "./resources/js/Components/Datatable/Datatables.vue");
 /* harmony import */ var _Components_Modal_DialogModal_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Modal/DialogModal.vue */ "./resources/js/Components/Modal/DialogModal.vue");
+/* harmony import */ var qrcode_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! qrcode.vue */ "./node_modules/qrcode.vue/dist/qrcode.vue.esm.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty(_defineProperty(_defineProperty({
+  components: {
+    QrcodeVue: qrcode_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+  },
   data: function data() {
     return {
       showModalFile: false,
@@ -23896,168 +23905,173 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  name: 'MasterSuratMasukIndex',
-  components: {
-    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
-    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link,
-    AdminLayout: _Layouts_AdminLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Breadcrumb: _Layouts_Breadcrumb_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Datatables: _Components_Datatable_Datatables_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    DialogModal: _Components_Modal_DialogModal_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
-  },
-  props: {
-    breadcrumbs: {
-      type: Array
-    }
-  },
-  setup: function setup() {
-    var datatables = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var formatTanggal = function formatTanggal(tanggal) {
-      if (!tanggal) return '-';
-      var date = new Date(tanggal);
-      if (isNaN(date.getTime())) return '-';
-      var year = date.getFullYear();
-      var month = String(date.getMonth() + 1).padStart(2, '0');
-      var day = String(date.getDate()).padStart(2, '0');
-      return "".concat(day, "-").concat(month, "-").concat(year);
-    };
-    var columns = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
-      uniqid: 'rowIndex',
-      label: 'No',
-      field: 'rowIndex',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-center md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'tanggalSurat',
-      label: 'Tanggal',
-      field: function field(row) {
-        return formatTanggal(row.tanggal_surat);
-      },
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-center md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'nomerSurat',
-      label: 'Nomer Surat',
-      field: 'no_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'kategoriSurat',
-      label: 'Kategori',
-      field: 'kategori_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'perihalSurat',
-      label: 'Perihal',
-      field: 'perihal_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'jenisSurat',
-      label: 'Jenis',
-      field: 'jenis_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'sifatSurat',
-      label: 'Sifat',
-      field: 'sifat_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'asalSurat',
-      label: 'Dari/Kepada',
-      field: 'asal_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'fileSurat',
-      label: 'File',
-      field: 'file_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'posisiSurat',
-      label: 'Disposisi Akhir',
-      field: 'posisi_surat',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'Status',
-      label: 'Status',
-      field: 'status',
-      sortable: false,
-      sortOrder: 'asc',
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-      headerClass: 'text-center p-4'
-    }, {
-      uniqid: 'action',
-      label: 'Action',
-      field: 'id',
-      sortable: false,
-      align: 'center',
-      classes: 'px-4 py-2 md:py-4 text-center',
-      headerClass: 'text-center p-4'
-    }]);
-    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({});
-    var showModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
-    function confirmDeleteRow(row) {
-      form.value = row;
-      showModal.value = true;
-    }
-    function deleteRow() {
-      form["delete"](route('admin.surat.disposisi.destroy', {
-        pengajuan: form.value.slug
-      }), {
-        onSuccess: function onSuccess() {
-          form.reset();
-          showModal.value = false;
-          datatables.value.getData();
-        }
-      });
-    }
-    return {
-      datatables: datatables,
-      columns: columns,
-      form: form,
-      showModal: showModal,
-      confirmDeleteRow: confirmDeleteRow,
-      deleteRow: deleteRow
-    };
+  name: 'MasterSuratMasukIndex'
+}, "components", {
+  Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
+  Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link,
+  AdminLayout: _Layouts_AdminLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+  Breadcrumb: _Layouts_Breadcrumb_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+  Datatables: _Components_Datatable_Datatables_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+  DialogModal: _Components_Modal_DialogModal_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+}), "props", {
+  breadcrumbs: {
+    type: Array
   }
-});
+}), "setup", function setup() {
+  var datatables = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+  var formatTanggal = function formatTanggal(tanggal) {
+    if (!tanggal) return '-';
+    var date = new Date(tanggal);
+    if (isNaN(date.getTime())) return '-';
+    var year = date.getFullYear();
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var day = String(date.getDate()).padStart(2, '0');
+    return "".concat(day, "-").concat(month, "-").concat(year);
+  };
+  var columns = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
+    uniqid: 'rowIndex',
+    label: 'No',
+    field: 'rowIndex',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-center md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'tanggalSurat',
+    label: 'Tanggal',
+    field: function field(row) {
+      return formatTanggal(row.tanggal_surat);
+    },
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-center md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'nomerSurat',
+    label: 'Nomer Surat',
+    field: 'no_surat',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'kategoriSurat',
+    label: 'Kategori',
+    field: 'kategori_surat',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'perihalSurat',
+    label: 'Perihal',
+    field: 'perihal_surat',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'jenisSurat',
+    label: 'Jenis',
+    field: 'jenis_surat',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'sifatSurat',
+    label: 'Sifat',
+    field: 'sifat_surat',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'asalSurat',
+    label: 'Dari/Kepada',
+    field: 'asal_surat',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
+    uniqid: 'fileSurat',
+    label: 'File',
+    field: 'file_surat',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  },
+  // {
+  //   uniqid: 'posisiSurat',
+  //   label: 'Disposisi Akhir',
+  //   field: 'posisi_surat',
+  //   sortable: false,
+  //   sortOrder: 'asc',
+  //   align: 'center',
+  //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+  //   headerClass: 'text-center p-4'
+  // },
+  // {
+  //   uniqid: 'Status',
+  //   label: 'Status',
+  //   field: 'status',
+  //   sortable: false,
+  //   sortOrder: 'asc',
+  //   align: 'center',
+  //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+  //   headerClass: 'text-center p-4'
+  // },
+  {
+    uniqid: 'action',
+    label: 'Action',
+    field: 'id',
+    sortable: false,
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-center',
+    headerClass: 'text-center p-4'
+  }]);
+  var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({});
+  var qrCodeUrl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
+  var showModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+  function generateQrCode() {
+    qrCodeUrl.value = "".concat(window.baseUrl, "/").concat(props.pengajuan.slug, "/sertifikasi");
+  }
+  function confirmDeleteRow(row) {
+    form.value = row;
+    showModal.value = true;
+  }
+  function deleteRow() {
+    form["delete"](route('admin.surat.disposisi.destroy', {
+      pengajuan: form.value.slug
+    }), {
+      onSuccess: function onSuccess() {
+        form.reset();
+        showModal.value = false;
+        datatables.value.getData();
+      }
+    });
+  }
+  return {
+    datatables: datatables,
+    columns: columns,
+    form: form,
+    showModal: showModal,
+    confirmDeleteRow: confirmDeleteRow,
+    qrCodeUrl: qrCodeUrl,
+    deleteRow: deleteRow
+  };
+}));
 
 /***/ }),
 
@@ -25565,19 +25579,27 @@ __webpack_require__.r(__webpack_exports__);
       jenis_surat: '',
       kategori_surat: '',
       posisi_surat: '',
-      file_surat: ''
+      file_surat: '',
+      updated_at: ''
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       if (props.pengajuan) {
         Object.assign(sertf, props.pengajuan);
       }
     });
-    var ket_tte = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
-      tgl_signed: "0000-00-00 00:00:00"
-    });
+    var formatDate = function formatDate(dateString) {
+      if (!dateString) return '-';
+      var date = new Date(dateString);
+      var day = String(date.getDate()).padStart(2, '0');
+      var month = String(date.getMonth() + 1).padStart(2, '0'); // Januari = 0
+      var year = date.getFullYear();
+      var hours = String(date.getHours()).padStart(2, '0');
+      var minutes = String(date.getMinutes()).padStart(2, '0');
+      return "".concat(day, "-").concat(month, "-").concat(year, " - ").concat(hours, ":").concat(minutes);
+    };
     return {
       sertf: sertf,
-      ket_tte: ket_tte
+      formatDate: formatDate
     };
   }
 });
@@ -33696,7 +33718,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "text-dark-7 text-lg font-medium mr-auto pb-5"
-}, "Edit Disposisi", -1 /* HOISTED */);
+}, "Bukti Tanda Tangan Secara Digital:", -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Breadcrumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Breadcrumb");
@@ -33744,360 +33766,28 @@ var _hoisted_1 = {
   "class": "flex flex-col space-y-4"
 };
 var _hoisted_2 = {
-  "class": "flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8"
-};
-var _hoisted_3 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("No Surat "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_5 = ["disabled"];
-var _hoisted_6 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_7 = {
-  "class": "flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8"
-};
-var _hoisted_8 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Asal Surat "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_10 = ["disabled"];
-var _hoisted_11 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_12 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Tujuan Surat "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_14 = ["disabled"];
-var _hoisted_15 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_16 = {
-  "class": "flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8"
-};
-var _hoisted_17 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("No Agenda "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_19 = ["disabled"];
-var _hoisted_20 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_21 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Perihal Surat "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_23 = ["disabled"];
-var _hoisted_24 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_25 = {
-  "class": "flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8"
-};
-var _hoisted_26 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sifat Surat "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_28 = ["disabled"];
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "",
-  disabled: ""
-}, "Pilih Sifat Surat", -1 /* HOISTED */);
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Sangat Rahasia"
-}, "SANGAT RAHASIA", -1 /* HOISTED */);
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Rahasia"
-}, "RAHASIA", -1 /* HOISTED */);
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Biasa"
-}, "BIASA", -1 /* HOISTED */);
-var _hoisted_33 = [_hoisted_29, _hoisted_30, _hoisted_31, _hoisted_32];
-var _hoisted_34 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_35 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Jenis Surat "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_37 = ["disabled"];
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"\" selected disabled>Pilih Jenis Surat</option><option value=\"Tanda Penghargaan\">TANDA PENGHARGAAN</option><option value=\"Surat Tugas\">SURAT TUGAS</option><option value=\"Surat Telegram Rahasia\">SURAT TELEGRAM RAHASIA</option><option value=\"Surat Telegram\">SURAT TELEGRAM</option><option value=\"Surat Rahasia\">SURAT RAHASIA</option><option value=\"Surat Pernyataan\">SURAT PERNYATAAN</option><option value=\"Surat Perintah\">SURAT PERINTAH</option><option value=\"Surat Panggilan\">SURAT PANGGILAN</option><option value=\"Surat Kuasa\">SURAT KUASA</option><option value=\"Surat Keterangan\">SURAT KETERANGAN</option><option value=\"Surat Keputusan\">SURAT KEPUTUSAN</option><option value=\"Surat Ijin\">SURAT IJIN</option><option value=\"Surat Biasa\">SURAT BIASA</option><option value=\"SPTJM\">SPTJM</option><option value=\"SPO\">SPO</option><option value=\"PKS\">PERJANJIAN KERJA SAMA</option><option value=\"Lapsus\">LAPSUS</option><option value=\"Bratel\">BRATEL</option>", 19);
-var _hoisted_57 = [_hoisted_38];
-var _hoisted_58 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_59 = {
-  "class": "flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8"
-};
-var _hoisted_60 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Kategori"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_62 = ["disabled"];
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "",
-  selected: "",
-  disabled: ""
-}, "Kategori Surat", -1 /* HOISTED */);
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Masuk"
-}, "Masuk", -1 /* HOISTED */);
-var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Keluar"
-}, "Keluar", -1 /* HOISTED */);
-var _hoisted_66 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_67 = {
-  "class": "flex-1 flex flex-col space-y-2"
-};
-var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Disposisi Akhir"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-red-400"
-}, "*")], -1 /* HOISTED */);
-var _hoisted_69 = ["disabled"];
-var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "",
-  selected: "",
-  disabled: ""
-}, "Pilih Disposisi Akhir", -1 /* HOISTED */);
-var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Kepala"
-}, "KEPALA", -1 /* HOISTED */);
-var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "Waka"
-}, "WAKIL KEPALA", -1 /* HOISTED */);
-var _hoisted_73 = [_hoisted_70, _hoisted_71, _hoisted_72];
-var _hoisted_74 = {
-  key: 0,
-  "class": "text-red-400 italic"
-};
-var _hoisted_75 = {
-  "class": "flex flex-col space-y-4"
-};
-var _hoisted_76 = {
-  "class": "flex flex-col space-y-2"
-};
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, "Upload File Surat ", -1 /* HOISTED */);
-var _hoisted_78 = ["disabled"];
-var _hoisted_79 = ["value"];
-var _hoisted_80 = {
-  key: 1,
-  "class": "text-red-400 italic"
-};
-var _hoisted_81 = {
-  key: 0,
-  "class": "mt-4"
-};
-var _hoisted_82 = {
-  key: 0
-};
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, "File yang Diunggah:", -1 /* HOISTED */);
-var _hoisted_84 = ["src"];
-var _hoisted_85 = {
-  key: 1
-};
-var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black font-medium"
-}, "File yang Diunggah:", -1 /* HOISTED */);
-var _hoisted_87 = ["src"];
-var _hoisted_88 = {
   key: 0,
   "class": "flex flex-col items-center mt-4"
 };
-var _hoisted_89 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-black font-medium"
-}, "QR Code untuk Surat:", -1 /* HOISTED */);
-var _hoisted_90 = ["href"];
-var _hoisted_91 = {
-  "class": "flex flex-row justify-end space-x-4"
-};
-var _hoisted_92 = ["disabled"];
-var _hoisted_93 = ["disabled"];
+}, null, -1 /* HOISTED */);
+var _hoisted_4 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_qrcode_vue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("qrcode-vue");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
-    onSubmit: _cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+    onSubmit: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $setup.submit();
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.no_surat
-    }),
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $setup.form.no_surat = $event;
-    }),
-    disabled: $setup.form.processing
-  }, null, 10 /* CLASS, PROPS */, _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.no_surat]]), $setup.form.errors.no_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.no_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.asal_surat
-    }),
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $setup.form.asal_surat = $event;
-    }),
-    disabled: $setup.form.processing
-  }, null, 10 /* CLASS, PROPS */, _hoisted_10), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.asal_surat]]), $setup.form.errors.asal_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.asal_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.tujuan_surat
-    }),
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $setup.form.tujuan_surat = $event;
-    }),
-    disabled: $setup.form.processing
-  }, null, 10 /* CLASS, PROPS */, _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.tujuan_surat]]), $setup.form.errors.tujuan_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.tujuan_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.no_agenda
-    }),
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return $setup.form.no_agenda = $event;
-    }),
-    disabled: $setup.form.processing
-  }, null, 10 /* CLASS, PROPS */, _hoisted_19), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.no_agenda]]), $setup.form.errors.no_agenda ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.no_agenda), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.perihal_surat
-    }),
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $setup.form.perihal_surat = $event;
-    }),
-    disabled: $setup.form.processing
-  }, null, 10 /* CLASS, PROPS */, _hoisted_23), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.perihal_surat]]), $setup.form.errors.perihal_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.perihal_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return $setup.form.sifat_surat = $event;
-    }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.sifat_surat
-    }),
-    disabled: $setup.form.processing
-  }, _hoisted_33, 10 /* CLASS, PROPS */, _hoisted_28), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.sifat_surat]]), $setup.form.errors.sifat_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.sifat_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-      return $setup.form.jenis_surat = $event;
-    }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.jenis_surat
-    }),
-    disabled: $setup.form.processing
-  }, _hoisted_57, 10 /* CLASS, PROPS */, _hoisted_37), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.jenis_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.jenis_surat }\" v-model=\"form.jenis_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.jenis_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.jenis_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [_hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return $setup.form.kategori_surat = $event;
-    }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.kategori_surat
-    }),
-    disabled: $setup.form.processing
-  }, [_hoisted_63, _hoisted_64, _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <option value=\"Ref 3\">REFERENSI 3</option>\n            <option value=\"Ref 2\">REFERENSI 2</option>\n            <option value=\"Ref 1\">REFERENSI 1</option> ")], 10 /* CLASS, PROPS */, _hoisted_62), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.kategori_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }\" v-model=\"form.kategori_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.kategori_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.kategori_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [_hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-      return $setup.form.posisi_surat = $event;
-    }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.posisi_surat
-    }),
-    disabled: $setup.form.processing
-  }, _hoisted_73, 10 /* CLASS, PROPS */, _hoisted_69), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.posisi_surat]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" :class=\"{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }\" v-model=\"form.posisi_surat\" :disabled=\"form.processing\"> "), $setup.form.errors.posisi_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.posisi_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [_hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "file",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'rounded-md border border-black px-4 py-2 focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true,
-      'border-red-400': $setup.form.errors.file_surat
-    }),
-    onChange: _cache[9] || (_cache[9] = function ($event) {
-      return $setup.onFileChange($event);
-    }),
-    disabled: $setup.form.processing
-  }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_78), $setup.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("progress", {
-    key: 0,
-    value: $setup.form.progress.percentage,
-    max: "100"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "% ", 9 /* TEXT, PROPS */, _hoisted_79)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.form.errors.file_surat ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_80, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.file_surat), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"openModal\">Lihat File Surat</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"isModalOpen\" class=\"modal\">\n          <div class=\"modal-content\">\n            <span class=\"close\" @click=\"closeModal\">&times;</span>\n            <div v-if=\"file_path\">\n              <span class=\"text-black font-medium\">File Surat yang Diunggah:</span>\n              <embed :src=\"`/storage/${file_path}`\" width=\"100%\" height=\"500px\" type=\"application/pdf\" class=\"border border-gray-300\" />\n            </div>\n          </div>\n        </div> "), $props.pengajuan && $setup.file_path ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_81, [$setup.file_path.endsWith('.pdf') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_82, [_hoisted_83, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
-    src: $setup.file_path,
-    width: "70%",
-    height: "400px",
-    type: "application/pdf",
-    "class": "border border-gray-300"
-  }, null, 8 /* PROPS */, _hoisted_84)])) : $setup.file_path.endsWith('.doc') || $setup.file_path.endsWith('.docx') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_85, [_hoisted_86, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
-    src: "https://view.officeapps.live.com/op/embed.aspx?src=".concat(encodeURIComponent($setup.file_path)),
-    width: "70%",
-    height: "400px",
-    "class": "border border-gray-300"
-  }, null, 8 /* PROPS */, _hoisted_87)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else>\n            <span class=\"text-red-500\">Format file tidak didukung.</span>\n          </div> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $setup.qrCodeUrl ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_88, [_hoisted_89, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex flex-col space-y-4\">\n        <div v-if=\"pengajuan && file_path\" class=\"mt-4\">\n          <div v-if=\"file_path.endsWith('.pdf')\">\n            <span class=\"text-black font-medium\">File yang Diunggah:</span>\n            <embed :src=\"file_path\" width=\"70%\" height=\"400px\" type=\"application/pdf\" class=\"border border-gray-300\" />\n          </div>\n          <div v-else-if=\"file_path.endsWith('.doc') || file_path.endsWith('.docx')\">\n            <span class=\"text-black font-medium\">File yang Diunggah:</span>\n            <iframe :src=\"`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(file_path)}`\" width=\"70%\" height=\"400px\" class=\"border border-gray-300\"></iframe>\n          </div>\n        </div>\n      </div> "), $setup.qrCodeUrl ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: $setup.qrCodeUrl,
     target: "_blank",
     "class": "text-blue-500 underline mt-2"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_qrcode_vue, {
     value: $setup.qrCodeUrl,
-    size: 150,
+    size: 500,
     "class": "mt-2"
-  }, null, 8 /* PROPS */, ["value"])], 8 /* PROPS */, _hoisted_90)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_91, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
-    onClick: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      $setup.form.reset();
-      $setup.form.clearErrors();
-    }, ["prevent"])),
-    disabled: $setup.form.processing
-  }, " Back ", 8 /* PROPS */, _hoisted_92), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "submit",
-    "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed",
-    disabled: $setup.form.processing
-  }, " Save ", 8 /* PROPS */, _hoisted_93)])])], 32 /* HYDRATE_EVENTS */);
+  }, null, 8 /* PROPS */, ["value"])], 8 /* PROPS */, _hoisted_4)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32 /* HYDRATE_EVENTS */);
 }
 
 /***/ }),
@@ -34197,99 +33887,41 @@ var _hoisted_11 = [_hoisted_10];
 var _hoisted_12 = {
   "class": "flex flex-row justify-center space-x-4"
 };
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "16",
-  height: "16",
-  fill: "currentColor",
-  "class": "w-4 h-4 stroke-current text-blue-600",
-  viewBox: "0 0 16 16"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  "fill-rule": "evenodd",
-  d: "M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-})], -1 /* HOISTED */);
-var _hoisted_14 = ["onClick"];
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "16",
-  height: "16",
-  fill: "currentColor",
-  "class": "w-4 h-4 stroke-current text-red-600",
-  viewBox: "0 0 16 16"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  "fill-rule": "evenodd",
-  d: "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-})], -1 /* HOISTED */);
-var _hoisted_16 = [_hoisted_15];
-var _hoisted_17 = {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 leading-none"
+}, " Hasil TTE ", -1 /* HOISTED */);
+var _hoisted_14 = {
   align: "center"
 };
-var _hoisted_18 = ["onClick"];
-var _hoisted_19 = ["src"];
-var _hoisted_20 = {
+var _hoisted_15 = ["onClick"];
+var _hoisted_16 = ["src"];
+var _hoisted_17 = {
   "class": "modal-content"
 };
-var _hoisted_21 = {
+var _hoisted_18 = {
   "class": "modal-body",
   align: "center"
 };
-var _hoisted_22 = {
+var _hoisted_19 = {
   key: 0
 };
-var _hoisted_23 = ["src"];
-var _hoisted_24 = {
+var _hoisted_20 = ["src"];
+var _hoisted_21 = {
   key: 1
 };
-var _hoisted_25 = ["src"];
-var _hoisted_26 = {
+var _hoisted_22 = ["src"];
+var _hoisted_23 = {
   "class": "modal-footer"
 };
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "aria-hidden": "true"
 }, "×", -1 /* HOISTED */);
-var _hoisted_28 = [_hoisted_27];
-var _hoisted_29 = {
-  "class": "flex flex-row justify-center space-x-1"
-};
-var _hoisted_30 = ["src"];
-var _hoisted_31 = ["onClick"];
-var _hoisted_32 = {
-  "class": "flex flex-col space-y-6 p-10 items-center"
-};
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 128 128",
-  "class": "w-20 h-20 fill-current text-yellow-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M70.335 30.683c-1.569-2.719-3.878-4.278-6.337-4.278s-4.764 1.556-6.333 4.274l-34.6 59.94c-1.569 2.719-1.765 5.5-.536 7.628s3.734 3.348 6.871 3.348h69.2c3.138 0 5.643-1.22 6.871-3.348s1.035-4.907-.534-7.624zm31.484 65.452c-.456.785-1.627 1.237-3.216 1.237H29.4c-1.589 0-2.76-.452-3.214-1.237s-.26-2.029.536-3.406l34.6-59.94c.794-1.375 1.769-2.163 2.676-2.163s1.886.79 2.68 2.167l34.6 59.939c.798 1.377.994 2.616.541 3.403z"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M64 78.144a2.11 2.11 0 0 0 2.111-2.111V48.24a2.111 2.111 0 0 0-4.222 0v27.793A2.11 2.11 0 0 0 64 78.144z"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("circle", {
-  cx: "64",
-  cy: "86.506",
-  r: "3.734"
-})], -1 /* HOISTED */);
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-center md:text-lg"
-}, " Apakah Anda yakin untuk menghapus surat ini? Surat yang telah dihapus tidak dapat dikembalikan. ", -1 /* HOISTED */);
-var _hoisted_35 = {
-  "class": "w-full pt-5"
-};
-var _hoisted_36 = {
-  "class": "flex flex-row justify-center space-x-4"
-};
-var _hoisted_37 = ["disabled"];
-var _hoisted_38 = ["disabled"];
+var _hoisted_25 = [_hoisted_24];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Breadcrumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Breadcrumb");
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
   var _component_datatables = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("datatables");
-  var _component_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("dialog-modal");
   var _component_admin_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("admin-layout");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Disposisi"
@@ -34379,18 +34011,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return [_hoisted_13];
             }),
             _: 2 /* DYNAMIC */
-          }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.hasAccess('module.surat.disposisi.delete', _ctx.$page.props.currentUser.jabatan.hak_akses) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
-            key: 1,
-            type: "button",
-            "class": "appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent",
-            onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-              return $setup.confirmDeleteRow(row);
-            }, ["prevent"])
-          }, _hoisted_16, 8 /* PROPS */, _hoisted_14)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
+          }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button v-if=\"hasAccess('module.surat.disposisi.delete', $page.props.currentUser.jabatan.hak_akses)\" type=\"button\" class=\"appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent\" @click.prevent=\"confirmDeleteRow(row)\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"w-4 h-4 stroke-current text-red-600\" viewBox=\"0 0 16 16\">\n              <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>\n              <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>\n            </svg>\n          </button> ")])];
         }),
         "table.cell.content.fileSurat": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
           var row = _ref3.row;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             onClick: function onClick($event) {
               return $options.openModal(row.file_surat);
             },
@@ -34399,7 +34024,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             src: $data.baseUrl + '/img/file.png',
             alt: "file",
             "class": "w-6 h-6"
-          }, null, 8 /* PROPS */, _hoisted_19)], 8 /* PROPS */, _hoisted_18), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+          }, null, 8 /* PROPS */, _hoisted_16)], 8 /* PROPS */, _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
             name: "modal-fade"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -34415,79 +34040,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "class": "modal-dialog",
                 style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)(_ctx.modalStyle),
                 role: "document"
-              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"modal-header d-flex justify-content-between align-items-center\">\n                  <button \n                    type=\"button\" \n                    class=\"btn-close\" \n                    @click=\"closeModal\" \n                    aria-label=\"Close\"\n                  >\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [$data.isPdf ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
+              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"modal-header d-flex justify-content-between align-items-center\">\n                  <button \n                    type=\"button\" \n                    class=\"btn-close\" \n                    @click=\"closeModal\" \n                    aria-label=\"Close\"\n                  >\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [$data.isPdf ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("embed", {
                 src: "".concat($data.baseUrl, "/storage/").concat($data.currentFile),
                 type: "application/pdf",
                 width: "70%",
                 height: "500px",
                 "class": "border border-gray-300"
-              }, null, 8 /* PROPS */, _hoisted_23)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+              }, null, 8 /* PROPS */, _hoisted_20)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
                 src: "https://view.officeapps.live.com/op/embed.aspx?src=".concat(encodeURIComponent("".concat($data.baseUrl, "/storage/").concat($data.currentFile))),
                 width: "70%",
                 height: "500px",
                 frameborder: "0"
-              }, null, 8 /* PROPS */, _hoisted_25)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+              }, null, 8 /* PROPS */, _hoisted_22)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
                 type: "button",
                 "class": "btn-close",
                 onClick: _cache[0] || (_cache[0] = function () {
                   return $options.closeModal && $options.closeModal.apply($options, arguments);
                 }),
                 "aria-label": "Close"
-              }, _hoisted_28)])])], 4 /* STYLE */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+              }, _hoisted_25)])])], 4 /* STYLE */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
             }),
             _: 1 /* STABLE */
           })])];
         }),
-        "table.cell.content.Status": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
-          var row = _ref4.row;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [row.status == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
-            key: 0,
-            href: _ctx.route('sertifikasi', {
-              pengajuan: row.slug
-            })
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-                src: $data.baseUrl + '/img/signature-icon.jpg',
-                alt: "Signature",
-                "class": "w-6 h-6"
-              }, null, 8 /* PROPS */, _hoisted_30)];
-            }),
-            _: 2 /* DYNAMIC */
-          }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
-            key: 1,
-            onClick: function onClick($event) {
-              return _ctx.acceptRequest(row);
-            },
-            "class": "px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-          }, " Terima ", 8 /* PROPS */, _hoisted_31))])];
-        }),
         _: 1 /* STABLE */
-      }, 8 /* PROPS */, ["route-uri", "columns"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_dialog_modal, {
-        show: $setup.showModal,
-        onClose: _cache[5] || (_cache[5] = function ($event) {
-          return $setup.showModal = false;
-        })
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            type: "button",
-            "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
-            onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-              return $setup.showModal = false;
-            }, ["prevent"])),
-            disabled: $setup.form.processing
-          }, " Batal ", 8 /* PROPS */, _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            type: "button",
-            "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed",
-            onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-              return $setup.deleteRow();
-            }, ["prevent"])),
-            disabled: $setup.form.processing
-          }, " Hapus ", 8 /* PROPS */, _hoisted_38)])])])];
-        }),
-        _: 1 /* STABLE */
-      }, 8 /* PROPS */, ["show"])];
+      }, 8 /* PROPS */, ["route-uri", "columns"])];
     }),
     _: 1 /* STABLE */
   })], 64 /* STABLE_FRAGMENT */);
@@ -34546,11 +34123,11 @@ var _hoisted_11 = {
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "hash"
+  "class": "hash text-right"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Surat ini telah ditandatangani oleh:")])], -1 /* HOISTED */);
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
-  "class": "w-full mt-2"
+  "class": "w-full mt-2 flex justify-end"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-2"
 }, " Kepala Rumah Sakit Tk.II dr.Soepraoen ")])])], -1 /* HOISTED */);
@@ -34558,7 +34135,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "my-4"
 }, null, -1 /* HOISTED */);
 var _hoisted_17 = {
-  "class": "timestamp text-center"
+  "class": "timestamp text-right"
 };
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ditandatangani pada: ");
 var _hoisted_19 = {
@@ -37330,11 +36907,11 @@ var _hoisted_11 = {
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "hash"
+  "class": "hash text-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "Surat ini telah ditandatangani oleh:")])], -1 /* HOISTED */);
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
-  "class": "w-full mt-2"
+  "class": "w-full mt-2 flex justify-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-3 py-2"
 }, " Kepala Rumah Sakit Tk.II dr.Soepraoen ")])])], -1 /* HOISTED */);
@@ -37344,7 +36921,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_17 = {
   "class": "timestamp text-center"
 };
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ditandatangani pada: ");
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ditandatangani pada tanggal : ");
 var _hoisted_19 = {
   key: 0
 };
@@ -37361,7 +36938,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     src: $options.baseUrl + '/img/logorst-panjang.png',
     alt: "",
     "class": "mx-auto max-w-full h-auto"
-  }, null, 8 /* PROPS */, _hoisted_4), _hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.sertf.no_surat), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.sertf.perihal_surat), 1 /* TEXT */)])])]), _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_18, $setup.ket_tte.tgl_signed === '0000-00-00 00:00:00' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, "(Masih Dalam Proses Penandatanganan)")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.ket_tte.tgl_signed), 1 /* TEXT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END: Keterangan Tanda Tangan Elektronik ")])]);
+  }, null, 8 /* PROPS */, _hoisted_4), _hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.sertf.no_surat), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.sertf.perihal_surat), 1 /* TEXT */)])])]), _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_18, $setup.sertf.updated_at === '0000-00-00 00:00:00' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, "(Masih Dalam Proses Penandatanganan)")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate($setup.sertf.updated_at)), 1 /* TEXT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" END: Keterangan Tanda Tangan Elektronik ")])]);
 }
 
 /***/ }),

@@ -2002,6 +2002,10 @@ select {
 	padding-left: 2rem;
 	padding-right: 2rem;
 }
+.px-10 {
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+}
 .pt-6 {
 	padding-top: 1.5rem;
 }
@@ -2130,6 +2134,9 @@ select {
 }
 .leading-4 {
 	line-height: 1rem;
+}
+.leading-none {
+	line-height: 1;
 }
 .tracking-widest {
 	letter-spacing: 0.1em;

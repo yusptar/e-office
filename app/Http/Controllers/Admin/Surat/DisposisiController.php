@@ -97,7 +97,7 @@ class DisposisiController extends Controller
     public function edit(SuratMasuk $pengajuan)
     {
         $this->breadcrumbs[] = [
-            'text' => 'Edit Surat Masuk',
+            'text' => 'Bukti Tanda Tangan Secara Digital:',
             'route' => route('admin.surat.disposisi.edit', [$pengajuan->slug])
         ];
 

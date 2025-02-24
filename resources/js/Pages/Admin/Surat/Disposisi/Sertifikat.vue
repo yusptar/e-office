@@ -34,11 +34,11 @@
         </tbody>
       </table>
       <br>
-      <div class="hash">
+      <div class="hash text-right">
         <p><strong>Surat ini telah ditandatangani oleh:</strong></p>
       </div>
       <br> 
-      <table class="w-full mt-2">
+      <table class="w-full mt-2 flex justify-end">
         <tbody>
           <tr>
             <td class="px-3 py-2">   
@@ -48,13 +48,14 @@
         </tbody>
       </table>
       <hr class="my-4">
-      <div class="timestamp text-center">
+      <div class="timestamp text-right">
         <p>
           Ditandatangani pada: 
           <span v-if="ket_tte.tgl_signed === '0000-00-00 00:00:00'">(Masih Dalam Proses Penandatanganan)</span>
           <span v-else>{{ ket_tte.tgl_signed }}</span>
         </p>
       </div>
+
       <!-- END: Keterangan Tanda Tangan Elektronik -->
     </div>
   </div>
