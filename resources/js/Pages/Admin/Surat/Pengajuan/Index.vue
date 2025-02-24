@@ -159,15 +159,15 @@
           <template v-else-if="row.status == 0">
             <button 
               @click="approveByKasiTUUD(row)"
-              class="px-2 py-2 bg-green-400 text-white rounded-md hover:bg-blue-700"
+              class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-blue-700" disabled
             >
-              Verifikasi
+              Proses Verifikasi
             </button>
           </template>
           <template v-else-if="row.status == 1">
             <button 
               @click="approveByKepala(row)"
-              class="px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-yellow-700"
+              class="px-2 py-2 bg-yellow-600 text-white rounded-md hover:bg-red-700" disabled
             >
               Persetujuan Kepala
             </button>

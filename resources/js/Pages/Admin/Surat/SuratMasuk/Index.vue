@@ -70,12 +70,12 @@
       </template>
       <template #table.cell.content.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
-          <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
+          <!-- <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-blue-600" viewBox="0 0 16 16">
               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
-          </Link>
+          </Link> -->
           <button v-if="hasAccess('module.surat.masuk.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -151,16 +151,30 @@
 
       <template #table.cell.content.Status="{ row }">
         <div class="flex flex-row justify-center space-x-1">
-          <template v-if="row.status == 1">
+          <template v-if="row.status == 2">
             <Link :href="route('sertifikasi', { pengajuan: row.slug })">
               <img :src="baseUrl + '/img/signature-icon.jpg'" alt="Signature" class="w-6 h-6">
             </Link>
           </template>
-          <template v-else>
+          <template v-else-if="row.status == 0">
             <button 
-              @click="acceptRequest(row)"
-              class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+              @click.prevent="confirmResponse(row)"
+              class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
             >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.828 10H4v2h10.828l-4.95 4.95 1.414 1.414L18.656 12l-7.07-7.07-1.414 1.414 4.95 4.95z"/>
+              </svg>
+              <span>Tanggapi</span>
+            </button>
+          </template>
+          <template v-else-if="row.status == 1">
+            <button 
+              @click.prevent="confirmAccept(row)"
+              class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
               Terima
             </button>
           </template>
@@ -190,6 +204,66 @@
         </div>
       </div>
     </dialog-modal>
+
+    <dialog-modal :show="modalTanggapi" @close="modalTanggapi = false">
+      <div class="flex flex-col space-y-6 p-10 items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-20 h-20 fill-current text-yellow-500">
+          <path d="M70.335 30.683c-1.569-2.719-3.878-4.278-6.337-4.278s-4.764 1.556-6.333 4.274l-34.6 59.94c-1.569 2.719-1.765 5.5-.536 7.628s3.734 3.348 6.871 3.348h69.2c3.138 0 5.643-1.22 6.871-3.348s1.035-4.907-.534-7.624zm31.484 65.452c-.456.785-1.627 1.237-3.216 1.237H29.4c-1.589 0-2.76-.452-3.214-1.237s-.26-2.029.536-3.406l34.6-59.94c.794-1.375 1.769-2.163 2.676-2.163s1.886.79 2.68 2.167l34.6 59.939c.798 1.377.994 2.616.541 3.403z"/>
+          <path d="M64 78.144a2.11 2.11 0 0 0 2.111-2.111V48.24a2.111 2.111 0 0 0-4.222 0v27.793A2.11 2.11 0 0 0 64 78.144z"/>
+          <circle cx="64" cy="86.506" r="3.734"/>
+        </svg>
+        <p class="text-center md:text-lg">
+          Apakah anda yakin untuk mengajukan surat ini?
+        </p>
+        
+        <div class="w-full">
+          <label for="posisi_surat" class="block text-sm font-medium text-gray-700">Ajukan Surat Kepada</label>
+          <select v-model="form.posisi_surat" :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" :disabled="form.processing">     
+            <option value="Kepala">KEPALA</option>
+            <option value="Waka">WAKIL KEPALA</option>
+          </select>
+          <span v-if="form.errors.posisi_surat" class="text-red-400 italic">{{ form.value.errors.posisi_surat }}</span>
+        </div>
+
+        <div class="w-full pt-5">
+          <div class="flex flex-row justify-center space-x-4">
+            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalTanggapi = false" :disabled="form.processing">
+              Batal
+            </button>
+            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-green-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed" @click.prevent="responseRequest()" :disabled="form.processing">
+              Ajukan
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog-modal>
+
+    
+
+
+    <dialog-modal :show="modalAccept" @close="modalAccept = false">
+      <div class="flex flex-col space-y-6 p-10 items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-20 h-20 fill-current text-yellow-500">
+          <path d="M70.335 30.683c-1.569-2.719-3.878-4.278-6.337-4.278s-4.764 1.556-6.333 4.274l-34.6 59.94c-1.569 2.719-1.765 5.5-.536 7.628s3.734 3.348 6.871 3.348h69.2c3.138 0 5.643-1.22 6.871-3.348s1.035-4.907-.534-7.624zm31.484 65.452c-.456.785-1.627 1.237-3.216 1.237H29.4c-1.589 0-2.76-.452-3.214-1.237s-.26-2.029.536-3.406l34.6-59.94c.794-1.375 1.769-2.163 2.676-2.163s1.886.79 2.68 2.167l34.6 59.939c.798 1.377.994 2.616.541 3.403z"/>
+          <path d="M64 78.144a2.11 2.11 0 0 0 2.111-2.111V48.24a2.111 2.111 0 0 0-4.222 0v27.793A2.11 2.11 0 0 0 64 78.144z"/>
+          <circle cx="64" cy="86.506" r="3.734"/>
+        </svg>
+        <p class="text-center md:text-lg">
+          Apakah anda yakin untuk menerima surat ini?
+        </p>
+        <div class="w-full pt-5">
+          <div class="flex flex-row justify-center space-x-4">
+            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalAccept = false" :disabled="form.processing">
+              Batal
+            </button>
+            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-green-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed" @click.prevent="acceptRequest()" :disabled="form.processing">
+              Terima
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog-modal>
+  
   </admin-layout>
 </template>
 
@@ -386,13 +460,29 @@
         }
       ]);
 
-      const form = useForm({})
+      const form = useForm({
+        posisi_surat: "", 
+        slug: "" 
+      })
 
       const showModal = ref(false)
+      const modalTanggapi = ref(false)
+      const modalAccept = ref(false)
 
       function confirmDeleteRow(row) {
         form.value = row
         showModal.value = true
+      }
+
+      function confirmResponse(row) {
+        form.posisi_surat = row.posisi_surat
+        form.slug = row.slug 
+        modalTanggapi.value = true
+      }
+
+      function confirmAccept(row) {
+        form.value = row
+        modalAccept.value = true
       }
 
       function deleteRow() {
@@ -405,13 +495,39 @@
         });
       }
 
+      function responseRequest(){
+        form.put(route('admin.surat.masuk.tanggapi', { pengajuan: form.slug }), {
+          onSuccess: () => {
+            form.reset()
+            modalTanggapi.value = false
+            datatables.value.getData()
+          }
+        });
+      }
+
+      function acceptRequest(){
+        form.put(route('admin.surat.masuk.persetujuan', { pengajuan: form.value.slug }), {
+          onSuccess: () => {
+            form.reset()
+            modalAccept.value = false
+            datatables.value.getData()
+          }
+        });
+      }
+
       return {
         datatables,
         columns,
         form,
         showModal,
+        modalTanggapi,
+        modalAccept,
         confirmDeleteRow,
-        deleteRow
+        deleteRow,
+        confirmResponse,
+        responseRequest,
+        confirmAccept,
+        acceptRequest
       }
     }
   }

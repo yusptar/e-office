@@ -151,7 +151,7 @@
 
       <template #table.cell.content.Status="{ row }">
         <div class="flex flex-row justify-center space-x-1">
-          <template v-if="row.status == 1">
+          <template v-if="row.status == 2">
             <Link :href="route('sertifikasi', { pengajuan: row.slug })">
               <img :src="baseUrl + '/img/signature-icon.jpg'" alt="Signature" class="w-6 h-6">
             </Link>

@@ -132,6 +132,38 @@ class SuratMasukController extends Controller
         }
     }
 
+    public function tanggapi(Request $request, SuratMasuk $pengajuan)
+    {
+        DB::beginTransaction();
+        try {
+            $pengajuan->update([
+                'status' => '1',
+                'posisi_surat' => $request->posisi_surat
+            ]);
+
+            DB::commit();
+            return redirect()->route('admin.surat.masuk.index')->with('alertState', 'success')->with('alertMessage', 'Status surat berhasil diajukan.');
+        } catch (Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->with('alertState', 'error')->with('alertMessage', 'Terjadi Kesalahan: ' . $e->getMessage());
+        }
+    }
+
+    public function persetujuan(SuratMasuk $pengajuan)
+    {
+        DB::beginTransaction();
+        try {
+            $pengajuan->update([
+                'status' => '2',
+            ]);
+
+            DB::commit();
+            return redirect()->route('admin.surat.masuk.index')->with('alertState', 'success')->with('alertMessage', 'Surat berhasil diterima.');
+        } catch (Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->with('alertState', 'error')->with('alertMessage', 'Terjadi Kesalahan: ' . $e->getMessage());
+        }
+    }
 
     public function destroy(SuratMasuk $pengajuan)
     {
@@ -153,8 +185,26 @@ class SuratMasukController extends Controller
 
     public function table(Request $request)
     {
-        return response()->json(SuratMasuk::where('kategori_surat', 'Masuk')->where('status', '0')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+        $query = SuratMasuk::where('kategori_surat', 'Masuk')
+            ->orderBy('created_at', 'DESC')
+            ->filter($request->all());
+    
+            if (auth()->user()->jabatan_id == 3) {
+                $query->where('status', '1')->where('posisi_surat', 'Kepala');
+            } elseif (auth()->user()->jabatan_id == 4) {
+                $query->where('status', '1')->where('posisi_surat', 'Waka');
+            } elseif (auth()->user()->jabatan_id == 16) {
+                $query->whereIn('status', ['0', '2']);
+            } elseif (auth()->user()->jabatan_id == 2) {
+                $query->whereIn('status', ['0', '1', '2']);
+            } else {
+                $query->where('status', '0');
+            }
+            
+    
+        return response()->json($query->paginateFilter());
     }
+    
 
     private function validationRules($pengajuan = null)
     {
