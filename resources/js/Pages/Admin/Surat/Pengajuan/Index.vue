@@ -52,38 +52,36 @@
           </div>
         </Link>
       </template>
-      <template #grid.content.body.action="{ row }">
-        <div class="flex flex-row justify-center space-x-4">
-          <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-blue-600" viewBox="0 0 16 16">
-              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-            </svg>
-          </Link>
-          <button v-if="hasAccess('module.surat.masuk.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
-              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg>
-          </button>
-        </div>
-      </template>
+      <!-- Action -->
       <template #table.cell.content.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
-          <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
+          <template v-if="row.status == 0">
+            <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-blue-600" viewBox="0 0 16 16">
               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
-          </Link>
-          <button v-if="hasAccess('module.surat.masuk.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
-              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg>
-          </button>
+            </Link>
+            <button v-if="hasAccess('module.surat.masuk.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+            </button>
+          </template>
+          <template v-else-if="row.status == 1">
+            <p class="leading-none whitespace-nowrap">
+              Tidak Ada Aksi
+            </p>
+          </template>
+          <template v-else-if="row.status == 2">
+             <Link :href="route('sertifikasi', { pengajuan: row.slug })">
+              <img :src="baseUrl + '/img/signature-icon.jpg'" alt="Signature" class="w-6 h-6">
+            </Link>
+          </template>
         </div>
       </template>
+      <!-- File Surat  -->
       <template #table.cell.content.fileSurat="{ row }">
         <div align="center">
           <button 
@@ -147,29 +145,31 @@
         </transition>
         </div>
       </template>
-      
-
+      <!-- Status -->
       <template #table.cell.content.Status="{ row }">
         <div class="flex flex-row justify-center space-x-1">
-          <template v-if="row.status == 2">
-            <Link :href="route('sertifikasi', { pengajuan: row.slug })">
-              <img :src="baseUrl + '/img/signature-icon.jpg'" alt="Signature" class="w-6 h-6">
-            </Link>
-          </template>
-          <template v-else-if="row.status == 0">
+          <template v-if="row.status == 0">
             <button 
-              @click="approveByKasiTUUD(row)"
-              class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-blue-700" disabled
+              @click=""
+              class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-blue-700 leading-none whitespace-nowrap" disabled
             >
               Proses Verifikasi
             </button>
           </template>
           <template v-else-if="row.status == 1">
             <button 
-              @click="approveByKepala(row)"
-              class="px-2 py-2 bg-yellow-600 text-white rounded-md hover:bg-red-700" disabled
+              @click=""
+              class="px-2 py-2 bg-yellow-600 text-white rounded-md hover:bg-red-700 leading-none whitespace-nowrap" disabled
             >
               Persetujuan Kepala
+            </button>
+          </template>
+          <template v-else-if="row.status == 2">
+            <button 
+              @click=""
+              class="px-2 py-2 bg-green-800 text-white rounded-md hover:bg-blue-900" disabled
+            >
+              Disetujui
             </button>
           </template>
         </div>

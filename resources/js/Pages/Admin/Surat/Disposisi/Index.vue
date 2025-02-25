@@ -42,7 +42,7 @@
           <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
         </svg>
       </template>
-      <template #after.reload-button>
+      <!-- <template #after.reload-button>
         <Link v-if="hasAccess('module.surat.disposisi.index', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.create')" class="p-3 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300">
           <div class="flex content-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 md:w-3 md:h-3 stroke-current" viewBox="0 0 16 16">
@@ -51,7 +51,7 @@
             <span class="hidden md:inline-flex ml-2">Pengajuan Surat Baru</span>
           </div>
         </Link>
-      </template>
+      </template> -->
       <template #grid.content.body.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
           <Link v-if="hasAccess('module.surat.disposisi.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.edit', {pengajuan: row.slug})">
@@ -72,11 +72,10 @@
         <div class="flex flex-row justify-center space-x-4">
           <Link v-if="hasAccess('module.surat.disposisi.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.edit', {pengajuan: row.slug})">
             <button 
-            class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 leading-none"
+              class="px-3 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 leading-none whitespace-nowrap"
             >
               Hasil TTE
             </button>
-
           </Link>
           <!-- <button v-if="hasAccess('module.surat.disposisi.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
@@ -345,7 +344,7 @@
         },
         {
           uniqid: 'asalSurat',
-          label: 'Dari/Kepada',
+          label: 'Asal Surat',
           field: 'asal_surat',
           sortable: false,
           sortOrder: 'asc',

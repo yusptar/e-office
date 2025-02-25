@@ -43,14 +43,14 @@
         </svg>
       </template>
       <template #after.reload-button>
-        <!-- <Link v-if="hasAccess('module.surat.keluar.index', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.keluar.create')" class="p-3 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300">
+        <Link v-if="hasAccess('module.surat.keluar.index', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.keluar.create')" class="p-3 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300">
           <div class="flex content-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 md:w-3 md:h-3 stroke-current" viewBox="0 0 16 16">
               <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
             </svg>
-            <span class="hidden md:inline-flex ml-2">Pengajuan Surat Baru</span>
+            <span class="hidden md:inline-flex ml-2">Pengajuan Surat Keluar</span>
           </div>
-        </Link> -->
+        </Link>
       </template>
       <template #grid.content.body.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
@@ -337,7 +337,7 @@
         },
         {
           uniqid: 'asalSurat',
-          label: 'Dari/Kepada',
+          label: 'Asal Surat',
           field: 'asal_surat',
           sortable: false,
           sortOrder: 'asc',
