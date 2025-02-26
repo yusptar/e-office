@@ -75,14 +75,15 @@
             </p>
           </template>
           <template v-else-if="row.status == 2">
-             <Link :href="route('sertifikasi', { pengajuan: row.slug })" class="flex items-center space-x-2 px-3 py-3 leading-none whitespace-nowrap">
+            <a :href="route('sertifikasi', { pengajuan: row.slug })" class="flex items-center space-x-2 px-3 py-3 leading-none whitespace-nowrap" target="_blank" rel="noopener noreferrer">
+             <!-- <Link :href="route('sertifikasi', { pengajuan: row.slug })" class="flex items-center space-x-2 px-3 py-3 leading-none whitespace-nowrap" target="_blank"> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M43.5 37.5v-27a2 2 0 0 0-2-2h-35a2 2 0 0 0-2 2v27a2 2 0 0 0 2 2h35a2 2 0 0 0 2-2Z"/>
                 <circle cx="14" cy="24" r="5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M19.5 24h20m-4 0v5.5"/>
               </svg>
               <!-- <strong>TTE</strong> -->
-            </Link>
+            </a>
           </template>
         </div>
       </template>
