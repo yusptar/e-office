@@ -71,11 +71,15 @@
       <template #table.cell.content.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
           <Link v-if="hasAccess('module.surat.disposisi.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.edit', {pengajuan: row.slug})">
-            <button 
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M43.5 37.5v-27a2 2 0 0 0-2-2h-35a2 2 0 0 0-2 2v27a2 2 0 0 0 2 2h35a2 2 0 0 0 2-2Z"/>
+              <circle cx="14" cy="24" r="5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M19.5 24h20m-4 0v5.5"/>
+            </svg>
+            <!-- <button 
               class="px-3 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 leading-none whitespace-nowrap"
             >
-              Hasil TTE
-            </button>
+            </button> -->
           </Link>
           <!-- <button v-if="hasAccess('module.surat.disposisi.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">

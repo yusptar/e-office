@@ -194,7 +194,7 @@ class SuratMasukController extends Controller
             } elseif (auth()->user()->jabatan_id == 4) {
                 $query->where('status', '1')->where('posisi_surat', 'Waka');
             } elseif (auth()->user()->jabatan_id == 16) {
-                $query->whereIn('status', ['0', '2']);
+                $query->whereIn('status', ['0']);
             } elseif (auth()->user()->jabatan_id == 2) {
                 $query->whereIn('status', ['0', '1', '2']);
             } else {

@@ -153,7 +153,11 @@
         <div class="flex flex-row justify-center space-x-1">
           <template v-if="row.status == 2">
             <Link :href="route('sertifikasi', { pengajuan: row.slug })">
-              <img :src="baseUrl + '/img/signature-icon.jpg'" alt="Signature" class="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M43.5 37.5v-27a2 2 0 0 0-2-2h-35a2 2 0 0 0-2 2v27a2 2 0 0 0 2 2h35a2 2 0 0 0 2-2Z"/>
+                <circle cx="14" cy="24" r="5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M19.5 24h20m-4 0v5.5"/>
+              </svg>
             </Link>
           </template>
           <template v-else-if="row.status == 0">
@@ -161,8 +165,8 @@
               @click.prevent="confirmResponse(row)"
               class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14.828 10H4v2h10.828l-4.95 4.95 1.414 1.414L18.656 12l-7.07-7.07-1.414 1.414 4.95 4.95z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" cheight="16" viewBox="0 0 8 8">
+                <path fill="currentColor" d="M5 0v2C1 2 0 4.05 0 7c.52-1.98 2-3 4-3h1v2l3-3.16L5 0z"/>
               </svg>
               <span>Tanggapi</span>
             </button>
@@ -243,10 +247,15 @@
 
     <dialog-modal :show="modalAccept" @close="modalAccept = false">
       <div class="flex flex-col space-y-6 p-10 items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-20 h-20 fill-current text-yellow-500">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-20 h-20 fill-current text-yellow-500">
           <path d="M70.335 30.683c-1.569-2.719-3.878-4.278-6.337-4.278s-4.764 1.556-6.333 4.274l-34.6 59.94c-1.569 2.719-1.765 5.5-.536 7.628s3.734 3.348 6.871 3.348h69.2c3.138 0 5.643-1.22 6.871-3.348s1.035-4.907-.534-7.624zm31.484 65.452c-.456.785-1.627 1.237-3.216 1.237H29.4c-1.589 0-2.76-.452-3.214-1.237s-.26-2.029.536-3.406l34.6-59.94c.794-1.375 1.769-2.163 2.676-2.163s1.886.79 2.68 2.167l34.6 59.939c.798 1.377.994 2.616.541 3.403z"/>
           <path d="M64 78.144a2.11 2.11 0 0 0 2.111-2.111V48.24a2.111 2.111 0 0 0-4.222 0v27.793A2.11 2.11 0 0 0 64 78.144z"/>
           <circle cx="64" cy="86.506" r="3.734"/>
+        </svg> -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 48 48">
+          <path fill="#D1C4E9" d="M38 7H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2z"/>
+          <circle cx="38" cy="38" r="10" fill="#43A047"/>
+          <path fill="#DCEDC8" d="M42.5 33.3L36.8 39l-2.7-2.7l-2.1 2.2l4.8 4.8l7.8-7.8z"/>
         </svg>
         <p class="text-center md:text-lg">
           Apakah anda yakin untuk menerima surat ini?
