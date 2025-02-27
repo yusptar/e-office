@@ -147,7 +147,7 @@ class PengajuanController extends Controller
             'jenis_surat' => 'required|string|max:50',
             'kategori_surat' => 'required|string|max:50',
             'posisi_surat' => 'nullable|string|max:255',
-            'file_surat' => 'nullable|mimes:pdf|max:2048',
+            'file_surat' => 'nullable|mimes:pdf,doc,docx|max:2048',
         ];
     }
 }
