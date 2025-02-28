@@ -39,11 +39,11 @@
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Sifat Surat <span class="text-red-400">*</span></span>
           <select v-model="form.sifat_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.sifat_surat }" :disabled="form.processing">
-            <option value="" disabled>Pilih Sifat Surat</option>        
-            <option value="Sangat Rahasia">SANGAT RAHASIA</option>
+            <option value="" disabled>Pilih Sifat Surat</option>
+            <option value="Segera">SEGERA</option>        
+            <option value="Penting">PENTING</option>
             <option value="Rahasia">RAHASIA</option>
             <option value="Biasa">BIASA</option>
-            <option value="Segera">SEGERA</option>
           </select>
           <span v-if="form.errors.sifat_surat" class="text-red-400 italic">{{ form.errors.sifat_surat }}</span>
         </div>
@@ -51,25 +51,14 @@
           <span class="text-black font-medium">Jenis Surat <span class="text-red-400">*</span></span>
           <select v-model="form.jenis_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.jenis_surat }" :disabled="form.processing">
             <option value="" selected disabled>Pilih Jenis Surat</option>        
-            <!-- <option value="Tanda Penghargaan">TANDA PENGHARGAAN</option>
-            <option value="Surat Tugas">SURAT TUGAS</option>
-            <option value="Surat Telegram Rahasia">SURAT TELEGRAM RAHASIA</option>
-            <option value="Surat Telegram">SURAT TELEGRAM</option>
-            <option value="Surat Rahasia">SURAT RAHASIA</option>
-            <option value="Surat Pernyataan">SURAT PERNYATAAN</option>
-            <option value="Surat Perintah">SURAT PERINTAH</option>
-            <option value="Surat Panggilan">SURAT PANGGILAN</option>
-            <option value="Surat Kuasa">SURAT KUASA</option>
-            <option value="Surat Keterangan">SURAT KETERANGAN</option>
-            <option value="Surat Keputusan">SURAT KEPUTUSAN</option>
-            <option value="Surat Ijin">SURAT IJIN</option>
-            <option value="Surat Biasa">SURAT BIASA</option>
-            <option value="SPTJM">SPTJM</option>
-            <option value="SPO">SPO</option>
-            <option value="PKS">PERJANJIAN KERJA SAMA</option>
-            <option value="Lapsus">LAPSUS</option>
-            <option value="Bratel">BRATEL</option> -->
             <option value="Nota Dinas">NOTA DINAS</option>
+            <option value="Surat Perintah">SURAT PERINTAH</option>
+            <option value="Surat Keputusan">SURAT KEPUTUSAN</option>
+            <option value="Surat Tugas">SURAT TUGAS</option>
+            <option value="Surat Edaran">SURAT EDARAN</option>
+            <option value="Surat Telegram Rahasia">ST. RAHASIA</option>
+            <option value="Surat Eksternal">SURAT EKSTERNAL</option>
+            <option value="Surat Internal">SURAT INTERNAL</option>
             <option value="Konsep Surat">KONSEP SURAT</option>
             <option value="Legalisasi">LEGALISASI</option>
           </select>
