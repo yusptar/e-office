@@ -126,3 +126,4 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
 });
 
 Route::get('/{pengajuan:slug}/sertifikasi', 'Admin\Surat\SuratMasukController@sertifikasi')->name('sertifikasi');
+

@@ -260,6 +260,11 @@
         <p class="text-center md:text-lg">
           Apakah anda yakin untuk menerima surat ini?
         </p>
+        <div class="w-full">
+          <label for="catatan_surat" class="block text-sm font-medium text-gray-700">Catatan (Opsional)</label>
+          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_surat }" :disabled="form.processing"  v-model="form.catatan_surat" rows="4" class="h-40"/>
+          <span v-if="form.errors.catatan_surat" class="text-red-400 italic">{{ form.value.errors.catatan_surat }}</span>
+        </div>
         <div class="w-full pt-5">
           <div class="flex flex-row justify-center space-x-4">
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalAccept = false" :disabled="form.processing">
@@ -448,6 +453,16 @@
         //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
         //   headerClass: 'text-center p-4'
         // },
+        // {
+        //   uniqid: 'catatanSurat',
+        //   label: 'Catatan',
+        //   field: 'catatan_surat',
+        //   sortable: false,
+        //   sortOrder: 'asc',
+        //   align: 'center',
+        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+        //   headerClass: 'text-center p-4'
+        // },
         {
           uniqid: 'Status',
           label: 'Status',
@@ -471,6 +486,7 @@
 
       const form = useForm({
         posisi_surat: "", 
+        catatan_surat: "",
         slug: "" 
       })
 
@@ -490,7 +506,8 @@
       }
 
       function confirmAccept(row) {
-        form.value = row
+        form.catatan_surat = row.catatan_surat
+        form.slug = row.slug 
         modalAccept.value = true
       }
 
@@ -515,7 +532,7 @@
       }
 
       function acceptRequest(){
-        form.put(route('admin.surat.masuk.persetujuan', { pengajuan: form.value.slug }), {
+        form.put(route('admin.surat.masuk.persetujuan', { pengajuan: form.slug }), {
           onSuccess: () => {
             form.reset()
             modalAccept.value = false

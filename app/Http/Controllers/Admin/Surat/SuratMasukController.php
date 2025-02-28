@@ -149,12 +149,13 @@ class SuratMasukController extends Controller
         }
     }
 
-    public function persetujuan(SuratMasuk $pengajuan)
+    public function persetujuan(Request $request, SuratMasuk $pengajuan)
     {
         DB::beginTransaction();
         try {
             $pengajuan->update([
                 'status' => '2',
+                'catatan_surat' => $request->catatan_surat
             ]);
 
             DB::commit();
