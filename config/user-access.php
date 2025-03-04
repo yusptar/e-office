@@ -64,23 +64,48 @@ return [
             ]
           ]
         ],
+        // [
+        //   'module' => 'Surat Masuk',
+        //   'activities' => [
+        //     [
+        //       'label' => 'Menu Surat Masuk',
+        //       'value' => 'module.surat.masuk.index',
+        //     ],
+        //     [
+        //       'label' => 'Create Pengajuan',
+        //       'value' => 'module.surat.masuk.create',
+        //     ],
+        //     [
+        //       'label' => 'Edit Pengajuan',
+        //       'value' => 'module.surat.masuk.edit',
+        //     ],
+        //     [
+        //       'label' => 'Delete Pengajuan',
+        //       'value' => 'module.surat.masuk.delete',
+        //     ],
+        //     [
+        //       'label' => 'Sertifikasi',
+        //       'value' => 'module.surat.masuk.sertifikasi',
+        //     ]
+        //   ]
+        // ],
         [
-          'module' => 'Surat Masuk',
+          'module' => 'Disposisi',
           'activities' => [
             [
-              'label' => 'Menu Surat Masuk',
+              'label' => 'Menu Disposisi',
               'value' => 'module.surat.masuk.index',
             ],
             [
-              'label' => 'Create Pengajuan',
+              'label' => 'Create Surat Disposisi',
               'value' => 'module.surat.masuk.create',
             ],
             [
-              'label' => 'Edit Pengajuan',
+              'label' => 'Edit Surat Disposisi',
               'value' => 'module.surat.masuk.edit',
             ],
             [
-              'label' => 'Delete Pengajuan',
+              'label' => 'Delete Surat Disposisi',
               'value' => 'module.surat.masuk.delete',
             ],
             [
@@ -140,22 +165,22 @@ return [
           ]
         ],
         [
-          'module' => 'Disposisi',
+          'module' => 'Manajemen Surat',
           'activities' => [
             [
-              'label' => 'Menu Disposisi',
+              'label' => 'Menu Manajemen Surat',
               'value' => 'module.surat.disposisi.index',
             ],
             [
-              'label' => 'Create Disposisi',
+              'label' => 'Create Manajemen Surat',
               'value' => 'module.surat.disposisi.create',
             ],
             [
-              'label' => 'Edit Disposisi',
+              'label' => 'Edit Manajemen Surat',
               'value' => 'module.surat.disposisi.edit',
             ],
             [
-              'label' => 'Delete Disposisi',
+              'label' => 'Delete Manajemen Surat',
               'value' => 'module.surat.disposisi.delete',
             ],
             [

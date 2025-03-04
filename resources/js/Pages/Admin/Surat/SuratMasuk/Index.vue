@@ -258,17 +258,14 @@
           <path d="M64 78.144a2.11 2.11 0 0 0 2.111-2.111V48.24a2.111 2.111 0 0 0-4.222 0v27.793A2.11 2.11 0 0 0 64 78.144z"/>
           <circle cx="64" cy="86.506" r="3.734"/>
         </svg> -->
-        <strong class="text-center md:text-lg">
-          Disposisi
-        </strong>
-        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 48 48">
+        <svg xmlns="http://www.w3.org/2000/svg" width="170" height="170" viewBox="0 0 48 48">
           <path fill="#D1C4E9" d="M38 7H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2z"/>
           <circle cx="38" cy="38" r="10" fill="#43A047"/>
           <path fill="#DCEDC8" d="M42.5 33.3L36.8 39l-2.7-2.7l-2.1 2.2l4.8 4.8l7.8-7.8z"/>
         </svg>
         <div class="w-full">
           <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Tembusan KASI TUUD</label>
-          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }" :v-model="form.catatan_kasi_tuud" rows="3" class="h-20" disabled/>
+          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }"  :readonly="true" v-model="form.catatan_kasi_tuud" rows="3" class="h-20" disabled/>
           <span v-if="form.errors.catatan_kasi_tuud" class="text-red-400 italic">{{ form.value.errors.catatan_kasi_tuud }}</span>
         </div>
         <p class="text-center md:text-lg">
@@ -501,6 +498,7 @@
       const form = useForm({
         posisi_surat: "", 
         catatan_ka: "",
+        catatan_kasi_tuud: "",
         slug: "" 
       })
 
@@ -522,6 +520,7 @@
 
       function confirmAccept(row) {
         form.catatan_ka = row.catatan_ka
+          form.catatan_kasi_tuud = row.catatan_kasi_tuud
         form.slug = row.slug 
         modalAccept.value = true
       }
