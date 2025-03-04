@@ -23,14 +23,25 @@ class PengajuanController extends Controller
         $this->breadcrumbs = [
             [
                 'text' => 'Pengajuan Surat',
-                'route' => route('admin.surat.pengajuan.index')
+                'route' => route('admin.surat.pengajuan.create')
             ]
         ];
+
+        // $this->breadcrumbs = [
+        //     [
+        //         'text' => 'Pengajuan Surat',
+        //         'route' => route('admin.surat.pengajuan.index')
+        //     ]
+        // ];
     }
 
     public function index()
     {
-        return Inertia::render('Admin/Surat/Pengajuan/Index', [
+        // return Inertia::render('Admin/Surat/Pengajuan/Index', [
+        //     'breadcrumbs' => $this->breadcrumbs
+        // ]);
+        
+        return Inertia::render('Admin/Surat/Pengajuan/Create', [
             'breadcrumbs' => $this->breadcrumbs
         ]);
     }
@@ -66,7 +77,7 @@ class PengajuanController extends Controller
         try {
             SuratMasuk::create($validated);
             DB::commit();
-            return redirect()->route('admin.surat.pengajuan.index')->with('alertState', 'success')->with('alertMessage', 'Pengajuan surat berhasil disimpan.');
+            return redirect()->route('admin.surat.pengajuan.create')->with('alertState', 'success')->with('alertMessage', 'Pengajuan surat berhasil disimpan.');
         } catch (Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->with('alertState', 'error')->with('alertMessage', $e->getMessage());

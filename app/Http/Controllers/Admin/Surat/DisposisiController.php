@@ -153,7 +153,26 @@ class DisposisiController extends Controller
 
     public function table(Request $request)
     {
-        return response()->json(SuratMasuk::where('kategori_surat', 'Masuk')->where('status', '2')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+        // return response()->json(SuratMasuk::where('kategori_surat', 'Masuk')->where('status', '2')->orderBy('created_at', 'DESC')->filter($request->all())->paginateFilter());
+        $query = SuratMasuk::where('kategori_surat', 'Masuk')
+            ->orderBy('created_at', 'DESC')
+            ->filter($request->all());
+    
+            if (auth()->user()->jabatan_id == 3) {
+                $query->where('status', '2')->where('posisi_surat', 'Kepala');
+            } elseif (auth()->user()->jabatan_id == 4) {
+                $query->where('status', '2')->where('posisi_surat', 'Waka');
+                // KASI TUUD
+            } elseif (auth()->user()->jabatan_id == 16) {
+                $query->whereIn('status', ['0', '1', '2']);
+                // IT
+            } elseif (auth()->user()->jabatan_id == 2) {
+                $query->whereIn('status', ['0', '1', '2']);
+            } else {
+                $query->where('status', '0');
+            }
+            
+        return response()->json($query->paginateFilter());
     }
 
     private function validationRules($pengajuan = null)

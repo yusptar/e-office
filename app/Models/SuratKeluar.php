@@ -36,6 +36,8 @@ class SuratKeluar extends Model
         'jenis_surat',
         'kategori_surat',
         'posisi_surat',
+        'catatan_ka',
+        'catatan_kasi_tuud',
         'file_surat'
     ];
 

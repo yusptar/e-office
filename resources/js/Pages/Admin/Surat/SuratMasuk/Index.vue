@@ -219,7 +219,13 @@
         <p class="text-center md:text-lg">
           Apakah anda yakin untuk mengajukan surat ini?
         </p>
-        
+
+        <div class="w-full">
+          <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Catatan (Opsional)</label>
+          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }" :disabled="form.processing"  v-model="form.catatan_kasi_tuud" rows="4" class="h-40"/>
+          <span v-if="form.errors.catatan_kasi_tuud" class="text-red-400 italic">{{ form.value.errors.catatan_kasi_tuud }}</span>
+        </div>
+
         <div class="w-full">
           <label for="posisi_surat" class="block text-sm font-medium text-gray-700">Ajukan Surat Kepada</label>
           <select v-model="form.posisi_surat" :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" :disabled="form.processing">     
@@ -252,18 +258,26 @@
           <path d="M64 78.144a2.11 2.11 0 0 0 2.111-2.111V48.24a2.111 2.111 0 0 0-4.222 0v27.793A2.11 2.11 0 0 0 64 78.144z"/>
           <circle cx="64" cy="86.506" r="3.734"/>
         </svg> -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 48 48">
+        <strong class="text-center md:text-lg">
+          Disposisi
+        </strong>
+        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 48 48">
           <path fill="#D1C4E9" d="M38 7H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2z"/>
           <circle cx="38" cy="38" r="10" fill="#43A047"/>
           <path fill="#DCEDC8" d="M42.5 33.3L36.8 39l-2.7-2.7l-2.1 2.2l4.8 4.8l7.8-7.8z"/>
         </svg>
+        <div class="w-full">
+          <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Tembusan KASI TUUD</label>
+          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }" :v-model="form.catatan_kasi_tuud" rows="3" class="h-20" disabled/>
+          <span v-if="form.errors.catatan_kasi_tuud" class="text-red-400 italic">{{ form.value.errors.catatan_kasi_tuud }}</span>
+        </div>
         <p class="text-center md:text-lg">
-          Apakah anda yakin untuk menerima surat ini?
+          Apakah anda yakin untuk menerima disposisi ini?
         </p>
         <div class="w-full">
-          <label for="catatan_surat" class="block text-sm font-medium text-gray-700">Catatan (Opsional)</label>
-          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_surat }" :disabled="form.processing"  v-model="form.catatan_surat" rows="4" class="h-40"/>
-          <span v-if="form.errors.catatan_surat" class="text-red-400 italic">{{ form.value.errors.catatan_surat }}</span>
+          <label for="catatan_ka" class="block text-sm font-medium text-gray-700">Catatan (Opsional)</label>
+          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_ka }" :disabled="form.processing"  v-model="form.catatan_ka" rows="4" class="h-40"/>
+          <span v-if="form.errors.catatan_ka" class="text-red-400 italic">{{ form.value.errors.catatan_ka }}</span>
         </div>
         <div class="w-full pt-5">
           <div class="flex flex-row justify-center space-x-4">
@@ -271,7 +285,7 @@
               Batal
             </button>
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-green-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed" @click.prevent="acceptRequest()" :disabled="form.processing">
-              Terima
+              Simpan
             </button>
           </div>
         </div>
@@ -456,7 +470,7 @@
         // {
         //   uniqid: 'catatanSurat',
         //   label: 'Catatan',
-        //   field: 'catatan_surat',
+        //   field: 'catatan_ka',
         //   sortable: false,
         //   sortOrder: 'asc',
         //   align: 'center',
@@ -486,7 +500,7 @@
 
       const form = useForm({
         posisi_surat: "", 
-        catatan_surat: "",
+        catatan_ka: "",
         slug: "" 
       })
 
@@ -501,12 +515,13 @@
 
       function confirmResponse(row) {
         form.posisi_surat = row.posisi_surat
+        form.catatan_kasi_tuud = row.catatan_kasi_tuud
         form.slug = row.slug 
         modalTanggapi.value = true
       }
 
       function confirmAccept(row) {
-        form.catatan_surat = row.catatan_surat
+        form.catatan_ka = row.catatan_ka
         form.slug = row.slug 
         modalAccept.value = true
       }

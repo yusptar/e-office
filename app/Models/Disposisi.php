@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use EloquentFilter\Filterable;
 
-class SuratMasuk extends Model
+class Disposisi extends Model
 {
     use HasFactory, SoftDeletes, Sluggable, Filterable;
     /**
@@ -16,7 +16,7 @@ class SuratMasuk extends Model
      *
      * @var string
      */
-    protected $table = 'surat_masuk';
+    protected $table = 'disposisi';
 
     /**
      * The attributes that are mass assignable.

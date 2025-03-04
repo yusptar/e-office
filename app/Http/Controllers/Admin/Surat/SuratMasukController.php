@@ -138,7 +138,8 @@ class SuratMasukController extends Controller
         try {
             $pengajuan->update([
                 'status' => '1',
-                'posisi_surat' => $request->posisi_surat
+                'posisi_surat' => $request->posisi_surat,
+                'catatan_ka' => $request->catatan_ka,
             ]);
 
             DB::commit();
@@ -155,7 +156,7 @@ class SuratMasukController extends Controller
         try {
             $pengajuan->update([
                 'status' => '2',
-                'catatan_surat' => $request->catatan_surat
+                'catatan_kasi_tuud' => $request->catatan_kasi_tuud
             ]);
 
             DB::commit();
@@ -202,7 +203,6 @@ class SuratMasukController extends Controller
                 $query->where('status', '0');
             }
             
-    
         return response()->json($query->paginateFilter());
     }
     

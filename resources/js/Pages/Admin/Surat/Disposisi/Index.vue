@@ -70,17 +70,51 @@
       </template>
       <template #table.cell.content.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
-          <Link v-if="hasAccess('module.surat.disposisi.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.edit', {pengajuan: row.slug})">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M43.5 37.5v-27a2 2 0 0 0-2-2h-35a2 2 0 0 0-2 2v27a2 2 0 0 0 2 2h35a2 2 0 0 0 2-2Z"/>
-              <circle cx="14" cy="24" r="5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M19.5 24h20m-4 0v5.5"/>
-            </svg>
-            <!-- <button 
-              class="px-3 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 leading-none whitespace-nowrap"
+          <template v-if="row.status == 2">
+            <Link v-if="hasAccess('module.surat.disposisi.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.edit', {pengajuan: row.slug})">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M43.5 37.5v-27a2 2 0 0 0-2-2h-35a2 2 0 0 0-2 2v27a2 2 0 0 0 2 2h35a2 2 0 0 0 2-2Z"/>
+                <circle cx="14" cy="24" r="5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M19.5 24h20m-4 0v5.5"/>
+              </svg> -->
+              <button 
+                @click=""
+                class="flex items-center space-x-2 px-3 py-3 bg-green-700 text-white rounded-md hover:bg-blue-900" disabled
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32">
+                  <path fill="currentColor" d="M6 5a2 2 0 0 1 2-2h8v7a3 3 0 0 0 3 3h3.316l.991-1H19a2 2 0 0 1-2-2V3.073a2 2 0 0 1 .879.513l7.193 7.193c.371-.14.757-.227 1.146-.263l-.097-.102l-7.535-7.535A3 3 0 0 0 16.465 2H8a3 3 0 0 0-3 3v22a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3v-6.327l-1 .992V27a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm22.644 11.924l-8.61 8.543a2.8 2.8 0 0 1-1.269.721l-3.02.778a1 1 0 0 1-.245.032V27h-7a.5.5 0 0 1 0-1h5.996q0-.125.033-.253l.79-3.052c.118-.455.355-.871.686-1.205l8.567-8.64a2.88 2.88 0 0 1 4.144.057a2.88 2.88 0 0 1-.072 4.017"/>
+                </svg>
+                <span>Disetujui</span>
+              </button>
+            </Link>
+          </template>
+          <template v-else-if="row.status == 1">
+            <button 
+              @click=""
+              class="flex items-center space-x-2 px-3 py-3 bg-yellow-600 text-white rounded-md hover:bg-red-700 leading-none whitespace-nowrap" disabled
             >
-            </button> -->
-          </Link>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 48 48">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                  <path d="M44 24V9H4v30h20m20-5H30"/>
+                  <path d="m35 29l-5 5l5 5M4 9l20 15L44 9"/>
+                </g>
+              </svg>
+              <span>Proses Persetujuan</span>
+            </button>
+          </template>
+          <template v-else-if="row.status == 0">
+            <button 
+              @click=""
+              class="flex items-center space-x-2 px-3 py-3 bg-green-600 text-white rounded-md hover:bg-blue-700 leading-none whitespace-nowrap" disabled
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M8.625 8.5h-4.5a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v3.5h3.5a1 1 0 0 1 0 2Z"/>
+                <path fill="currentColor" d="M21 13a1 1 0 0 1-1-1A7.995 7.995 0 0 0 5.08 8.001a1 1 0 0 1-1.731-1.002A9.995 9.995 0 0 1 22 12a1 1 0 0 1-1 1zm-1.125 9a1 1 0 0 1-1-1v-3.5h-3.5a1 1 0 0 1 0-2h4.5a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1z"/>
+                <path fill="currentColor" d="M12 22A10.012 10.012 0 0 1 2 12a1 1 0 0 1 2 0a7.995 7.995 0 0 0 14.92 3.999a1 1 0 0 1 1.731 1.002A10.032 10.032 0 0 1 12 22Z"/>
+              </svg>
+              <span>Proses Verifikasi</span>
+            </button>
+          </template>
           <!-- <button v-if="hasAccess('module.surat.disposisi.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
