@@ -179,7 +179,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Terima
+              Disposisi
             </button>
           </template>
         </div>
@@ -221,7 +221,7 @@
         </p>
 
         <div class="w-full">
-          <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Catatan (Opsional)</label>
+          <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Disposisi Kasi TUUD</label>
           <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }" :disabled="form.processing"  v-model="form.catatan_kasi_tuud" rows="4" class="h-40"/>
           <span v-if="form.errors.catatan_kasi_tuud" class="text-red-400 italic">{{ form.value.errors.catatan_kasi_tuud }}</span>
         </div>
@@ -264,15 +264,44 @@
           <path fill="#DCEDC8" d="M42.5 33.3L36.8 39l-2.7-2.7l-2.1 2.2l4.8 4.8l7.8-7.8z"/>
         </svg>
         <div class="w-full">
-          <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Tembusan KASI TUUD</label>
+          <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Disposisi Kasi TUUD</label>
           <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }"  :readonly="true" v-model="form.catatan_kasi_tuud" rows="3" class="h-20" disabled/>
           <span v-if="form.errors.catatan_kasi_tuud" class="text-red-400 italic">{{ form.value.errors.catatan_kasi_tuud }}</span>
         </div>
-        <p class="text-center md:text-lg">
-          Apakah anda yakin untuk menerima disposisi ini?
-        </p>
+
         <div class="w-full">
-          <label for="catatan_ka" class="block text-sm font-medium text-gray-700">Catatan (Opsional)</label>
+          <span class="text-black font-medium">Diteruskan Kepada <span class="text-red-400">*</span></span>
+          <input
+            list="disposisiList"
+            v-model="form.asal_surat"
+            :class="{
+              'rounded-md focus:ring-1 w-full p-4 mt-2 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100 border border-gray-300': true,
+              'border-red-400': form.errors.asal_surat
+            }"
+            placeholder="Pilih disposisi"
+          />
+          <datalist id="disposisiList">
+            <option v-for="option in disposisiOptions" :key="option.value" :value="option.value">
+              {{ option.label }}
+            </option>
+          </datalist>
+          <span v-if="form.errors.asal_surat" class="text-red-400 italic">{{ form.errors.asal_surat }}</span>
+        </div>
+
+        <div class="w-full">
+          <span class="text-black font-medium">Rencana Aksi <span class="text-red-400">*</span></span>
+            <select-search
+              clearable
+              :class="{ 'rounded-md focus:ring-1 w-full p-3 mt-2 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.rencana_aksi }"
+              v-model="form.rencana_aksi"
+              :disabled="form.processing"
+              :options="rencanaAksiOptions">
+            </select-search>
+          <span v-if="form.errors.rencana_aksi" class="text-red-400 italic">{{ form.value.errors.rencana_aksi }}</span>
+        </div>
+
+        <div class="w-full">
+          <label for="catatan_ka" class="block text-sm font-medium text-gray-700">Disposisi Karumkit</label>
           <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_ka }" :disabled="form.processing"  v-model="form.catatan_ka" rows="4" class="h-40"/>
           <span v-if="form.errors.catatan_ka" class="text-red-400 italic">{{ form.value.errors.catatan_ka }}</span>
         </div>
@@ -293,12 +322,13 @@
 </template>
 
 <script>
-  import { ref } from "vue";               
+  import { ref, computed  } from "vue";               
   import { Head, Link, usePage, useForm } from '@inertiajs/inertia-vue3';
   import AdminLayout from '@/Layouts/AdminLayout.vue';
   import Breadcrumb from '@/Layouts/Breadcrumb.vue';
   import Datatables from '@/Components/Datatable/Datatables.vue';
   import DialogModal from '@/Components/Modal/DialogModal.vue';
+  import SelectSearch from '@/Components/Select/SelectSearch.vue';
 
   export default {
     data() {
@@ -343,13 +373,18 @@
       Breadcrumb,
       Datatables,
       DialogModal,
+      SelectSearch,
     },
     props: {
       breadcrumbs: {
         type: Array
+      },
+      pengajuan: {
+        type: Object
       }
     },
-    setup() {
+    setup(props) {
+      
       const datatables = ref(null);
       const formatTanggal = (tanggal) => {
         if (!tanggal) return '-';
@@ -362,6 +397,77 @@
 
         return `${day}-${month}-${year}`;
       };
+
+      const disposisiOptions = ref([
+        { value: "Pangdam / Kakes", label: "Pangdam / Kakes" },
+        { value: "Waka", label: "Waka" },
+        { value: "Ketua Komite Medik", label: "Ketua Komite Medik" },
+        { value: "SMF Gol IV", label: "SMF Gol IV" },
+        { value: "Ka SPI", label: "Ka SPI" },
+        { value: "Jangum", label: "Jangum" },
+        { value: "Jangmed", label: "Jangmed" },
+        { value: "Jangwat", label: "Jangwat" },
+        { value: "Kaur Simak", label: "Kaur Simak" },
+        { value: "Renproggar", label: "Renproggar" },
+        { value: "Paku", label: "Paku" },
+        { value: "Bendahara", label: "Bendahara" },
+        { value: "Kabid Yanmed, Keperawatan & Penunjang", label: "Kabid Yanmed, Keperawatan & Penunjang" },
+        { value: "Kabag Yanmed", label: "Kabag Yanmed" },
+        { value: "Ka Instal Kabed", label: "Ka Instal Kabed" },
+        { value: "Gadar", label: "Gadar" },
+        { value: "Rehabmed", label: "Rehabmed" },
+        { value: "Farmasi", label: "Farmasi" },
+        { value: "Kabag Keperawatan", label: "Kabag Keperawatan" },
+        { value: "Kasub Instal Watnap", label: "Kasub Instal Watnap" },
+        { value: "Kasub Instal Watlan", label: "Kasub Instal Watlan" },
+        { value: "Kabag Penunjang", label: "Kabag Penunjang" },
+        { value: "Kasi Jangdiag", label: "Kasi Jangdiag" },
+        { value: "Ka Radiologi", label: "Ka Radiologi" },
+        { value: "Ka Lab", label: "Ka Lab" },
+        { value: "Ka Lab PA", label: "Ka Lab PA" },
+        { value: "Ka SIMRS", label: "Ka SIMRS" },
+        { value: "Ka BPJS & Asuransi Lain", label: "Ka BPJS & Asuransi Lain" },
+        { value: "Komite - Komite", label: "Komite - Komite" },
+        { value: "Ka Humas, Pemasaran & Pengaduan", label: "Ka Humas, Pemasaran & Pengaduan" },
+        { value: "Ka MPP / Case Manager", label: "Ka MPP / Case Manager" },
+        { value: "Kaur Pam", label: "Kaur Pam" },
+        { value: "Kaur Pers", label: "Kaur Pers" },
+        { value: "Kaur Dal", label: "Kaur Dal" },
+        { value: "PP Konstruksi", label: "PP Konstruksi" },
+        { value: "Ka MCU", label: "Ka MCU" },
+        { value: "Onkologi Terpadu", label: "Onkologi Terpadu" },
+        { value: "Unit CSSD", label: "Unit CSSD" },
+        { value: "Unit HD", label: "Unit HD" },
+        { value: "Jantung Terpadu", label: "Jantung Terpadu" },
+        { value: "ESWL & Endoscopy", label: "ESWL & Endoscopy" },
+        { value: "Kabid Diklat Litbangkes/Komkordik", label: "Kabid Diklat Litbangkes/Komkordik" },
+        { value: "Kabag Dik", label: "Kabag Dik" },
+        { value: "Kasi Dik Dokter", label: "Kasi Dik Dokter" },
+        { value: "Kasi Nakes Lain", label: "Kasi Nakes Lain" },
+        { value: "Kabag Litbangkes", label: "Kabag Litbangkes" },
+        { value: "Kasi Lat", label: "Kasi Lat" },
+        { value: "Kasi Litbangkes", label: "Kasi Litbangkes" },
+        { value: "Ka Primkop Kartika Rumkit", label: "Ka Primkop Kartika Rumkit" },
+        { value: "Ketua Persit Anak Ranting 2", label: "Ketua Persit Anak Ranting 2" }
+      ]);
+
+
+      const rencanaAksiOptions = ref([
+        { value: "Tindak Lanjuti", label: "Tindak Lanjuti" },
+        { value: "Ajukan Saran & Pertimbangan", label: "Ajukan Saran & Pertimbangan" },
+        { value: "Sebagai Referensi", label: "Sebagai Referensi" },
+        { value: "Pedomani", label: "Pedomani" },
+        { value: "UDL" , label: "UDL" },
+        { value: "UDK", label: "UDK" },
+        { value: "Edarkan", label: "Edarkan" },
+        { value: "Pelajari dan Laporkan HalJol", label: "Pelajari dan Laporkan HalJol" },
+        { value: "Buat Laporan Lanjutan", label: "Buat Laporan Lanjutan" },
+        { value: "Monitor / Pantau Selanjutnya", label: "Monitor / Pantau Selanjutnya" },
+        { value: "Arsipkan", label: "Arsipkan" },
+        { value: "Ka Rumkit Hadir", label: "Ka Rumkit Hadir" },
+        { value: "Agar diwakili", label: "Agar diwakili" },
+        { value: "PP Konstruksi", label: "PP Konstruksi" }
+      ]);
 
       const columns = ref([
         {
@@ -497,8 +603,10 @@
 
       const form = useForm({
         posisi_surat: "", 
+        asal_surat: "",
         catatan_ka: "",
         catatan_kasi_tuud: "",
+        rencana_aksi: "",
         slug: "" 
       })
 
@@ -520,7 +628,9 @@
 
       function confirmAccept(row) {
         form.catatan_ka = row.catatan_ka
-          form.catatan_kasi_tuud = row.catatan_kasi_tuud
+        form.catatan_kasi_tuud = row.catatan_kasi_tuud
+        form.asal_surat = _.toString(row.asal_surat)
+        form.rencana_aksi = _.toString(row.rencana_aksi)
         form.slug = row.slug 
         modalAccept.value = true
       }
@@ -554,7 +664,7 @@
           }
         });
       }
-
+  
       return {
         datatables,
         columns,
@@ -567,7 +677,9 @@
         confirmResponse,
         responseRequest,
         confirmAccept,
-        acceptRequest
+        acceptRequest,
+        disposisiOptions,
+        rencanaAksiOptions,
       }
     }
   }

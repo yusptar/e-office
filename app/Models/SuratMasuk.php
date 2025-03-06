@@ -39,6 +39,7 @@ class SuratMasuk extends Model
         'file_surat',
         'catatan_ka',
         'catatan_kasi_tuud',
+        'rencana_aksi',
         'status',
         
     ];

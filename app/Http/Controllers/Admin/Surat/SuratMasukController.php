@@ -37,10 +37,11 @@ class SuratMasukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(SuratMasuk $pengajuan)
     {
         return Inertia::render('Admin/Surat/SuratMasuk/Index', [
-            'breadcrumbs' => $this->breadcrumbs
+            'breadcrumbs' => $this->breadcrumbs,
+            'pengajuan' => $pengajuan,
         ]);
     }
 
@@ -157,6 +158,8 @@ class SuratMasukController extends Controller
             $pengajuan->update([
                 'status' => '2',
                 'catatan_ka' => $request->catatan_ka,
+                'asal_surat' => $request->asal_surat,
+                'rencana_aksi' => $request->aksi
             ]);
 
             DB::commit();

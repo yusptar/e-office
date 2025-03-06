@@ -226,6 +226,7 @@ class KaryawanController extends Controller
             'password_confirmation' => 'required_with:password',
             'jabatan_id' => 'required|exists:App\Models\Jabatan,id',
             'status' => 'required|boolean',
+            'ruangan' => 'required',
         ];
     }
 }

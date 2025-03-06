@@ -38,7 +38,9 @@ class SuratKeluar extends Model
         'posisi_surat',
         'catatan_ka',
         'catatan_kasi_tuud',
-        'file_surat'
+        'rencana_aksi',
+        'file_surat',
+        'status'
     ];
 
     public function sluggable(): array

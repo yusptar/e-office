@@ -60,8 +60,8 @@
           <input-phone-number :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.nomor_hp }" v-model="form.nomor_hp" :disabled="form.processing" />
           <span v-if="form.errors.nomor_hp" class="text-red-400 italic">{{ form.errors.nomor_hp }}</span>
         </div>
-      </div>
-
+      </div> -->
+<!-- 
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">NIK <span class="text-red-400">*</span></span>
@@ -100,7 +100,18 @@
           </select-search>
           <span v-if="form.errors.status" class="text-red-400 italic">{{ form.errors.status }}</span>
         </div>
-        <div class="flex-1"></div>
+        <div class="flex-1 flex flex-col space-y-2">
+          <span class="text-black font-medium">Unit <span class="text-red-400">*</span></span>
+          <select-search
+            clearable
+            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.ruangan }"
+            v-model="form.ruangan"
+            :disabled="form.processing"
+            :options="ruanganOptions">
+          </select-search>
+          <span v-if="form.errors.ruangan" class="text-red-400 italic">{{ form.errors.ruangan }}</span>
+          <input type="hidden" v-model="showRuanganLabel">
+        </div>
       </div>
 
       <div class="flex flex-row justify-end space-x-4">
@@ -167,6 +178,58 @@
         }
       ]);
 
+      const ruanganOptions = ref([
+        { label: 'Karumkit', value: 'Karumkit' },
+        { label: 'Wakarumkit', value: 'Wakarumkit' },
+        { label: 'Komite Medik', value: 'Komite Medik' },
+        { label: 'Komite Keperawatan', value: 'Komite Keperawatan' },
+        { label: 'SPI', value: 'SPI' },
+        { label: 'Siyanmed', value: 'Siyanmed' },
+        { label: 'Sijangum', value: 'Sijangum' },
+        { label: 'Simak', value: 'Simak' },
+        { label: 'Sijangmed', value: 'Sijangmed' },
+        { label: 'UKPBJ', value: 'UKPBJ' },
+        { label: 'Siren', value: 'Siren' },
+        { label: 'Situud', value: 'Situud' },
+        { label: 'Urpam', value: 'Urpam' },
+        { label: 'Urpers', value: 'Urpers' },
+        { label: 'Urdal', value: 'Urdal' },
+        { label: 'Ajudan', value: 'Ajudan' },
+        { label: 'Pengemudi', value: 'Pengemudi' },
+        { label: 'Teknik', value: 'Teknik' },
+        { label: 'Juru Bayar', value: 'Juru Bayar' },
+        { label: 'Urinfokes', value: 'Urinfokes' },
+        { label: 'Unit Rikkes', value: 'Unit Rikkes' },
+        { label: 'Dik & Litbangkes', value: 'Dik & Litbangkes' },
+        { label: 'Paku', value: 'Paku' },
+        { label: 'ITSK', value: 'ITSK' },
+        { label: 'Kabid Umum dan Keuangan', value: 'Kabid Umum dan Keuangan' },
+        { label: 'Unit K3', value: 'Unit K3' },
+        { label: 'Humas & Pemasaran', value: 'Humas & Pemasaran' },
+        { label: 'PPK1', value: 'PPK1' },
+        { label: 'PPI', value: 'PPI' },
+        { label: 'Koperasi', value: 'Koperasi' },
+        { label: 'Unit SIMRS', value: 'Unit SIMRS' },
+        { label: 'Komite Mutu', value: 'Komite Mutu' },
+        { label: 'Instalwatlan', value: 'Instalwatlan' },
+        { label: 'Instalwatnap', value: 'Instalwatnap' },
+        { label: 'IGD', value: 'IGD' },
+        { label: 'Instalkabed', value: 'Instalkabed' },
+        { label: 'OK Sentral', value: 'OK Sentral' },
+        { label: 'OK Gyn', value: 'OK Gyn' },
+        { label: 'Endoscopy & Brochoscopy', value: 'Endoscopy & Brochoscopy' },
+        { label: 'CSSD', value: 'CSSD' },
+        { label: 'Cathlab', value: 'Cathlab' },
+        { label: 'Instalrehabmed', value: 'Instalrehabmed' },
+        { label: 'Radiologi', value: 'Radiologi' },
+        { label: 'Radioterapi', value: 'Radioterapi' },
+        { label: 'Laboratorium', value: 'Laboratorium' },
+        { label: 'Patologi Anatomi', value: 'Patologi Anatomi' },
+        { label: 'Instalfarmasi', value: 'Instalfarmasi' },
+        { label: 'Gudang Garmasi', value: 'Gudang Garmasi' },
+        { label: 'Instaljangwat', value: 'Instaljangwat' }
+      ]);
+
       const form = useForm({
         nama_lengkap: '',
         tanggal_lahir: '',
@@ -178,6 +241,7 @@
         nik: '',
         ektp: '',
         alamat_lengkap: '',
+        ruangan: '',
         jabatan_id: '',
         status: '',
       })
@@ -194,6 +258,7 @@
           form.password = ''
           form.password_confirmation = ''
           form.nik = props.karyawan.nik
+          form.ruangan = _.toString(props.karyawan.ruangan)
           form.ektp = ''
           image_path.value = props.karyawan.ektp_path
           form.alamat_lengkap = props.karyawan.alamat_lengkap
@@ -208,6 +273,13 @@
               return data[0].tipe_user;
           }
       })
+
+      // const showRuanganLabel = computed(() => {
+      //     if (form.ruangan) {
+      //         let data = _.filter(props.ruangan, karyawan => ruangan.value == form.ruangan);
+      //         return data[0].tipe_user;
+      //     }
+      // })
 
       function submit() {
         form.transform((data) => ({
@@ -231,7 +303,8 @@
         image_path,
         submit,
         onFileChange,
-        showJabatanLabel
+        showJabatanLabel,
+        ruanganOptions,
       }
     }
   }
