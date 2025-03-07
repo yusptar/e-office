@@ -26,7 +26,8 @@ class SuratMasukController extends Controller
     {
         $this->breadcrumbs = [
             [
-                'text' => 'Surat Masuk',
+                // 'text' => 'Surat Masuk',
+                'text' => 'Disposisi',
                 'route' => route('admin.surat.masuk.index')
             ]
         ];
@@ -37,8 +38,9 @@ class SuratMasukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SuratMasuk $pengajuan)
+    public function index()
     {
+        $pengajuan = SuratMasuk::all();  
         return Inertia::render('Admin/Surat/SuratMasuk/Index', [
             'breadcrumbs' => $this->breadcrumbs,
             'pengajuan' => $pengajuan,

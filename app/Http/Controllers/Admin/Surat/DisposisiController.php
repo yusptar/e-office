@@ -26,7 +26,8 @@ class DisposisiController extends Controller
     {
         $this->breadcrumbs = [
             [
-                'text' => 'Disposisi',
+                // 'text' => 'Disposisi',
+                'text' => 'Manajemen Surat',
                 'route' => route('admin.surat.disposisi.index')
             ]
         ];

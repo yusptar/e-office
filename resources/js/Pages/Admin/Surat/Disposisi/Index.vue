@@ -6,9 +6,14 @@
       <Breadcrumb :breadcrumbs="breadcrumbs" />
     </template>
     
-    <template #page-title>
+    <!-- <template #page-title>
       <h2 class="text-dark-7 text-lg font-medium mr-auto">Disposisi Surat</h2>
+    </template> -->
+
+    <template #page-title>
+      <h2 class="text-dark-7 text-lg font-medium mr-auto">Manajemen Surat</h2>
     </template>
+
 
     <datatables
       ref="datatables"

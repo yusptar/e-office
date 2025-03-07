@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
+use App\Models\SuratMasuk;
 use App\Models\Karyawan;
 
 class DashboardController extends Controller
@@ -30,13 +31,26 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $user = Auth()->user();
+        $jabatan_id = $user->jabatan_id;
+
+        if (in_array($jabatan_id, [3, 4, 16, 2])) {
+            $query = SuratMasuk::query();
+        } else {
+            $query = SuratMasuk::where('user_id', $user->id);
+        }
+
+        $totalSurat = (clone $query)->count();
+        $suratSelesai = (clone $query)->where('status', '2')->count();
+        $suratDiproses = (clone $query)->whereIn('status', ['0', '1'])->count();
+
         return Inertia::render('Admin/Dashboard', [
-            'sales' => '50',
-            'collector' => '20',
-            'customer' => '132',
-            'totalPenjualan' => '1000000',
-            'totalPembayaran' => '500000',
             'breadcrumbs' => $this->breadcrumbs,
+            'surat' => [
+                'total' => $totalSurat,
+                'selesai' => $suratSelesai,
+                'proses' => $suratDiproses,
+            ]
         ]);
     }
 }

@@ -6,8 +6,12 @@
       <Breadcrumb :breadcrumbs="breadcrumbs" />
     </template>
     
-    <template #page-title>
+    <!-- <template #page-title>
       <h2 class="text-dark-7 text-lg font-medium mr-auto">Surat Masuk</h2>
+    </template> -->
+
+    <template #page-title>
+      <h2 class="text-dark-7 text-lg font-medium mr-auto">Disposisi</h2>
     </template>
 
     <datatables
