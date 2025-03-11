@@ -4,9 +4,9 @@
     <div class="rounded-30px px-4 max-w-4xl shadow-md my-6 mx-auto py-0 md:px-6 min-w-0 pb-10 bg-white">
       <!-- BEGIN: Top Bar -->
       <div class="flex items-center relative border-b border-dark-3" style="height: 67px;">
-        <slot name=#breadcrumbs>
+        <!-- <slot name=#breadcrumbs>
           <Breadcrumb :breadcrumbs="breadcrumbs" />
-        </slot>
+        </slot> -->
         <!-- END: Breadcrumb -->
       </div>
       <!-- END: Top Bar -->
@@ -24,12 +24,14 @@
           <tr class="bg-gray-200">
             <th class="border border-gray-300 px-3 py-2 w-1/3">No Surat</th>
             <th class="border border-gray-300 px-3 py-2 w-1/3">Perihal</th>
+            <th class="border border-gray-300 px-3 py-2 w-1/3">Catatan Tambahan</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="border border-gray-300 px-3 py-2">{{ sertf.no_surat }}</td>
             <td class="border border-gray-300 px-3 py-2">{{ sertf.perihal_surat }}</td>
+            <td class="border border-gray-300 px-3 py-2">{{ sertf.catatan_ka }}</td>
           </tr>
         </tbody>
       </table>
@@ -106,6 +108,7 @@ export default {
       posisi_surat: '',
       file_surat: '',
       updated_at: '',
+      catatan_ka: '',
     });
 
     onMounted(() => {

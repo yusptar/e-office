@@ -37,7 +37,7 @@
       </table>
       <br>
       <div class="hash text-center">
-        <p><strong>Surat ini telah ditandatangani oleha:</strong></p>
+        <p><strong>Surat ini telah ditandatangani oleh:</strong></p>
       </div>
       <br> 
       <table class="w-full mt-2 flex justify-center">
