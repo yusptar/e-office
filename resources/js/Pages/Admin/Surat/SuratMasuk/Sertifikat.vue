@@ -4,9 +4,9 @@
     <div class="rounded-30px px-4 max-w-4xl shadow-md my-6 mx-auto py-0 md:px-6 min-w-0 pb-10 bg-white">
       <!-- BEGIN: Top Bar -->
       <div class="flex items-center relative border-b border-dark-3" style="height: 67px;">
-        <slot name=#breadcrumbs>
+        <!-- <slot name=#breadcrumbs>
           <Breadcrumb :breadcrumbs="breadcrumbs" />
-        </slot>
+        </slot> -->
         <!-- END: Breadcrumb -->
       </div>
       <!-- END: Top Bar -->
@@ -31,14 +31,7 @@
           <tr>
             <td class="border border-gray-300 px-3 py-2">{{ sertf.no_surat }}</td>
             <td class="border border-gray-300 px-3 py-2">{{ sertf.perihal_surat }}</td>
-            <td class="border border-gray-300 px-3 py-2">{{ sertf.catatan_ka }}
-              <!-- <strong v-if="sertf.catatan_ka != null">
-                {{ sertf.catatan_ka }}
-              </strong>
-              <p v-else class="flex justify-center">
-                -
-              </p> -->
-            </td>
+            <td class="border border-gray-300 px-3 py-2">{{ sertf.catatan_ka }}</td>
           </tr>
         </tbody>
       </table>
