@@ -11,7 +11,7 @@
 
       <div class="flex flex-col pt-5 md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <strong class="text-black font-bold text-base">Surat Diproses</strong>
+          <strong class="text-black font-bold text-base">Jumlah Surat Proses</strong>
           <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 20 20">
               <mask id="lineMdEmailArrowDownTwotone0">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <strong class="text-black font-bold text-base">JumlahSurat Selesai</strong>
+          <strong class="text-black font-bold text-base">Jumlah Surat Selesai</strong>
           <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 20 20">
               <mask id="lineMdEmailArrowUp0">
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">
+        <div v-if="['3', '4', '16', '2'].includes(surat.roles)" class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">
           <strong class="text-black font-bold text-base">Jumlah Seluruh Surat</strong>
           <div class="flex flex-row">      
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 20 20">

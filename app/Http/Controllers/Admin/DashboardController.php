@@ -50,6 +50,7 @@ class DashboardController extends Controller
                 'total' => $totalSurat,
                 'selesai' => $suratSelesai,
                 'proses' => $suratDiproses,
+                'roles' => (string) $jabatan_id,
             ]
         ]);
     }

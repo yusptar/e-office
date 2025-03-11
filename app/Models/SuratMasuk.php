@@ -41,6 +41,7 @@ class SuratMasuk extends Model
         'catatan_kasi_tuud',
         'rencana_aksi',
         'status',
+        'roles',
         
     ];
 
