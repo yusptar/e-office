@@ -32,8 +32,8 @@
             <td class="border border-gray-300 px-3 py-2">{{ sertf.no_surat }}</td>
             <td class="border border-gray-300 px-3 py-2">{{ sertf.perihal_surat }}</td>
             <td class="border border-gray-300 px-3 py-2">
-              <strong v-if="sertf.catatan_surat != null">
-                {{ sertf.catatan_surat }}
+              <strong v-if="sertf.catatan_ka != null">
+                {{ sertf.catatan_ka }}
               </strong>
               <p v-else class="flex justify-center">
                 -

@@ -170,7 +170,7 @@ class DisposisiController extends Controller
             } elseif (auth()->user()->jabatan_id == 2) {
                 $query->whereIn('status', ['0', '1', '2']);
             } else {
-                $query->where('status',  ['0', '1', '2'])->where('user_id', Auth::user()->id);
+                $query->whereIn('status',  ['0', '1', '2'])->where('user_id', Auth::user()->id);
             }
             
         return response()->json($query->paginateFilter());
