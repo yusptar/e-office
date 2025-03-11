@@ -40,7 +40,6 @@ class Disposisi extends Model
         'catatan_ka',
         'catatan_kasi_tuud',
         'status',
-        
     ];
 
     public function sluggable(): array

@@ -399,6 +399,16 @@
           headerClass: 'text-center p-4'
         },
         {
+          uniqid: 'unitTerkait',
+          label: 'Unit',
+          field: 'ruangan_val',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+          headerClass: 'text-center p-4'
+        },
+        {
           uniqid: 'fileSurat',
           label: 'File',
           field: 'file_surat',

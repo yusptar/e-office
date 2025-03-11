@@ -61,6 +61,9 @@ class SuratKeluarController extends Controller
 
         $validated['user_id'] = Auth::user()->id;
         $validated['tanggal_surat'] = Carbon::now()->format('Y-m-d');
+        $validated['roles'] = Auth::user()->jabatan_id;
+        $validated['ruangan_val'] = Auth::user()->ruangan;
+        $validated['posisi_surat'] = 'Kasi TUUD';
 
         if ($request->hasFile('file_surat')) {
             $file = $request->file('file_surat');

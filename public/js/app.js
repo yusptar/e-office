@@ -24151,6 +24151,15 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     classes: 'px-4 py-2 md:py-4 text-left md:text-center',
     headerClass: 'text-center p-4'
   }, {
+    uniqid: 'unitTerkait',
+    label: 'Unit',
+    field: 'ruangan_val',
+    sortable: false,
+    sortOrder: 'asc',
+    align: 'center',
+    classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+    headerClass: 'text-center p-4'
+  }, {
     uniqid: 'fileSurat',
     label: 'File',
     field: 'file_surat',
@@ -26383,6 +26392,15 @@ __webpack_require__.r(__webpack_exports__);
       classes: 'px-4 py-2 md:py-4 text-left md:text-center',
       headerClass: 'text-center p-4'
     }, {
+      uniqid: 'unitTerkait',
+      label: 'Ruang',
+      field: 'ruangan_val',
+      sortable: false,
+      sortOrder: 'asc',
+      align: 'center',
+      classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+      headerClass: 'text-center p-4'
+    }, {
       uniqid: 'fileSurat',
       label: 'File',
       field: 'file_surat',
@@ -26396,16 +26414,6 @@ __webpack_require__.r(__webpack_exports__);
     //   uniqid: 'posisiSurat',
     //   label: 'Disposisi Akhir',
     //   field: 'posisi_surat',
-    //   sortable: false,
-    //   sortOrder: 'asc',
-    //   align: 'center',
-    //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-    //   headerClass: 'text-center p-4'
-    // },
-    // {
-    //   uniqid: 'catatanSurat',
-    //   label: 'Catatan',
-    //   field: 'catatan_ka',
     //   sortable: false,
     //   sortOrder: 'asc',
     //   align: 'center',

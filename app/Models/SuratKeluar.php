@@ -42,6 +42,7 @@ class SuratKeluar extends Model
         'file_surat',
         'status',
         'roles',
+        'ruangan_val',
     ];
 
     public function sluggable(): array
