@@ -203,7 +203,7 @@ class SuratMasukController extends Controller
             } elseif (auth()->user()->jabatan_id == 16) {
                 $query->whereIn('status', ['0']);
             } elseif (auth()->user()->jabatan_id == 2) {
-                $query->whereIn('status', ['0', '1', '2']);
+                $query->whereIn('status', ['0', '1']);
             } else {
                 $query->where('status', '0');
             }
