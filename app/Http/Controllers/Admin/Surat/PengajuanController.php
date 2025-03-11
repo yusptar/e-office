@@ -77,7 +77,7 @@ class PengajuanController extends Controller
         try {
             SuratMasuk::create($validated);
             DB::commit();
-            return redirect()->route('admin.surat.pengajuan.create')->with('alertState', 'success')->with('alertMessage', 'Pengajuan surat berhasil disimpan.');
+            return redirect()->route('admin.surat.disposisi.index')->with('alertState', 'success')->with('alertMessage', 'Pengajuan surat berhasil disimpan.');
         } catch (Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->with('alertState', 'error')->with('alertMessage', $e->getMessage());

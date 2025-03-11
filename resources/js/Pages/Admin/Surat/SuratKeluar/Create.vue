@@ -7,7 +7,7 @@
       </template>
       
       <template #page-title>
-        <h2 class="text-dark-7 text-lg font-medium mr-auto pb-5">Pengajuan Surat Baru</h2>
+        <h2 class="text-dark-7 text-lg font-medium mr-auto pb-5">Pengajuan Surat Keluar Baru</h2>
       </template>
   
       <pengajuan-form
@@ -23,7 +23,7 @@
     import { Head, useForm } from '@inertiajs/inertia-vue3';
     import AdminLayout from '@/Layouts/AdminLayout.vue';
     import Breadcrumb from '@/Layouts/Breadcrumb.vue';
-    import PengajuanForm from '@/Pages/Admin/Surat/SuratMasuk/Form.vue';
+    import PengajuanForm from '@/Pages/Admin/Surat/SuratKeluar/Form.vue';
   
     export default {
       name: 'MasterSuratMasukCreate',

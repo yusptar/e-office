@@ -74,7 +74,7 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth:s
 
         Route::group(['prefix' => 'surat_keluar', 'as' => 'keluar.'], function() {
             Route::get('/', 'SuratKeluarController@index')->name('index')->middleware('has_access:module.surat.keluar.index');
-            Route::get('/tambah', 'SuratKeluarController@create')->name('create')->middleware('has_access:module.keluar.create');
+            Route::get('/tambah', 'SuratKeluarController@create')->name('create')->middleware('has_access:module.surat.keluar.create');
             Route::post('/store', 'SuratKeluarController@store')->name('store');
             Route::get('/{pengajuan:slug}/ubah', 'SuratKeluarController@edit')->name('edit');
             Route::match(['put', 'patch'], '/{pengajuan:slug}', 'SuratKeluarController@update')->name('update')->middleware('has_access:module.surat.keluar.edit');

@@ -11,10 +11,21 @@
 
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
+          <span class="text-black font-medium">Asal Surat<span class="text-red-400">*</span></span>
+          <select-search
+            clearable
+            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.asal_surat }"
+            v-model="form.asal_surat"
+            :disabled="form.processing"
+            :options="disposisiOptions">
+          </select-search>
+          <span v-if="form.errors.asal_surat" class="text-red-400 italic">{{ form.errors.asal_surat }}</span>
+        </div>
+        <!-- <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Asal Surat <span class="text-red-400">*</span></span>
           <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.asal_surat }" v-model="form.asal_surat" :disabled="form.processing">
           <span v-if="form.errors.asal_surat" class="text-red-400 italic">{{ form.errors.asal_surat }}</span>
-        </div>
+        </div> -->
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Tujuan Surat <span class="text-red-400">*</span></span>
           <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.tujuan_surat }" v-model="form.tujuan_surat" :disabled="form.processing">
@@ -37,41 +48,35 @@
 
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">Sifat Surat <span class="text-red-400">*</span></span>
-          <select v-model="form.sifat_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.sifat_surat }" :disabled="form.processing">
-            <option value="" disabled>Pilih Sifat Surat</option>
-            <option value="Segera">SEGERA</option>        
-            <option value="Penting">PENTING</option>
-            <option value="Rahasia">RAHASIA</option>
-            <option value="Biasa">BIASA</option>
-          </select>
+          <span class="text-black font-medium">Sifat<span class="text-red-400">*</span></span>
+          <select-search
+            clearable
+            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.sifat_surat }"
+            v-model="form.sifat_surat"
+            :disabled="form.processing"
+            :options="sifatOptions">
+          </select-search>
           <span v-if="form.errors.sifat_surat" class="text-red-400 italic">{{ form.errors.sifat_surat }}</span>
         </div>
         <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">Jenis Surat <span class="text-red-400">*</span></span>
-          <select v-model="form.jenis_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.jenis_surat }" :disabled="form.processing">
-            <option value="Nota Dinas">NOTA DINAS</option>
-            <option value="Surat Perintah">SURAT PERINTAH</option>
-            <option value="Surat Keputusan">SURAT KEPUTUSAN</option>
-            <option value="Surat Tugas">SURAT TUGAS</option>
-            <option value="Surat Edaran">SURAT EDARAN</option>
-            <option value="Surat Telegram Rahasia">ST. RAHASIA</option>
-            <option value="Surat Eksternal">SURAT EKSTERNAL</option>
-            <option value="Surat Internal">SURAT INTERNAL</option>
-            <option value="Konsep Surat">KONSEP SURAT</option>
-            <option value="Legalisasi">LEGALISASI</option>
-          </select>
-          <!-- <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.jenis_surat }" v-model="form.jenis_surat" :disabled="form.processing"> -->
+          <span class="text-black font-medium">Jenis Surat<span class="text-red-400">*</span></span>
+          <select-search
+            clearable
+            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.jenis_surat }"
+            v-model="form.jenis_surat"
+            :disabled="form.processing"
+            :options="jenisOptions">
+          </select-search>
           <span v-if="form.errors.jenis_surat" class="text-red-400 italic">{{ form.errors.jenis_surat }}</span>
         </div>
       </div>
-
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Kategori<span class="text-red-400">*</span></span>
           <select v-model="form.kategori_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" :disabled="form.processing">
             <option value="" selected disabled>Kategori Surat</option>        
-            <option value="Masuk">MASUK</option>
+            <option value="Masuk">Masuk</option>
+            <option value="Keluar">Keluar</option>
             <!-- <option value="Ref 3">REFERENSI 3</option>
             <option value="Ref 2">REFERENSI 2</option>
             <option value="Ref 1">REFERENSI 1</option> -->
@@ -79,16 +84,15 @@
           <!-- <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" v-model="form.kategori_surat" :disabled="form.processing"> -->
           <span v-if="form.errors.kategori_surat" class="text-red-400 italic">{{ form.errors.kategori_surat }}</span>
         </div>
-        <div class="flex-1 flex flex-col space-y-2">
+        <!-- <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Disposisi Akhir<span class="text-red-400">*</span></span>
           <select v-model="form.posisi_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" :disabled="form.processing">
             <option value="" selected disabled>Pilih Disposisi Akhir</option>        
             <option value="Kepala">KEPALA</option>
             <option value="Waka">WAKIL KEPALA</option>
           </select>
-          <!-- <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" v-model="form.posisi_surat" :disabled="form.processing"> -->
           <span v-if="form.errors.posisi_surat" class="text-red-400 italic">{{ form.errors.posisi_surat }}</span>
-        </div>
+        </div> -->
       </div>
 
       <div class="flex flex-col space-y-4">
@@ -148,11 +152,13 @@
 import { ref, onMounted } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import QrcodeVue from 'qrcode.vue';
+import SelectSearch from '@/Components/Select/SelectSearch.vue';
 
 export default {
-  name: 'MasterSuratMasukForm',
+  name: 'MasterSuratKeluarForm',
   components: {
     QrcodeVue,
+    SelectSearch
   },
   props: {
     httpMethod: {
@@ -185,9 +191,82 @@ export default {
       sifat_surat: '',
       jenis_surat: '',
       kategori_surat: '',
-      posisi_surat: '',
+      // posisi_surat: '',
       file_surat: '',
     });
+
+    const disposisiOptions = ref([
+        { value: "Pangdam / Kakes", label: "Pangdam / Kakes" },
+        { value: "Waka", label: "Waka" },
+        { value: "Ketua Komite Medik", label: "Ketua Komite Medik" },
+        { value: "SMF Gol IV", label: "SMF Gol IV" },
+        { value: "Ka SPI", label: "Ka SPI" },
+        { value: "Jangum", label: "Jangum" },
+        { value: "Jangmed", label: "Jangmed" },
+        { value: "Jangwat", label: "Jangwat" },
+        { value: "Kaur Simak", label: "Kaur Simak" },
+        { value: "Renproggar", label: "Renproggar" },
+        { value: "Paku", label: "Paku" },
+        { value: "Bendahara", label: "Bendahara" },
+        { value: "Kabid Yanmed, Keperawatan & Penunjang", label: "Kabid Yanmed, Keperawatan & Penunjang" },
+        { value: "Kabag Yanmed", label: "Kabag Yanmed" },
+        { value: "Ka Instal Kabed", label: "Ka Instal Kabed" },
+        { value: "Gadar", label: "Gadar" },
+        { value: "Rehabmed", label: "Rehabmed" },
+        { value: "Farmasi", label: "Farmasi" },
+        { value: "Kabag Keperawatan", label: "Kabag Keperawatan" },
+        { value: "Kasub Instal Watnap", label: "Kasub Instal Watnap" },
+        { value: "Kasub Instal Watlan", label: "Kasub Instal Watlan" },
+        { value: "Kabag Penunjang", label: "Kabag Penunjang" },
+        { value: "Kasi Jangdiag", label: "Kasi Jangdiag" },
+        { value: "Ka Radiologi", label: "Ka Radiologi" },
+        { value: "Ka Lab", label: "Ka Lab" },
+        { value: "Ka Lab PA", label: "Ka Lab PA" },
+        { value: "Ka SIMRS", label: "Ka SIMRS" },
+        { value: "Ka BPJS & Asuransi Lain", label: "Ka BPJS & Asuransi Lain" },
+        { value: "Komite - Komite", label: "Komite - Komite" },
+        { value: "Ka Humas, Pemasaran & Pengaduan", label: "Ka Humas, Pemasaran & Pengaduan" },
+        { value: "Ka MPP / Case Manager", label: "Ka MPP / Case Manager" },
+        { value: "Kaur Pam", label: "Kaur Pam" },
+        { value: "Kaur Pers", label: "Kaur Pers" },
+        { value: "Kaur Dal", label: "Kaur Dal" },
+        { value: "PP Konstruksi", label: "PP Konstruksi" },
+        { value: "Ka MCU", label: "Ka MCU" },
+        { value: "Onkologi Terpadu", label: "Onkologi Terpadu" },
+        { value: "Unit CSSD", label: "Unit CSSD" },
+        { value: "Unit HD", label: "Unit HD" },
+        { value: "Jantung Terpadu", label: "Jantung Terpadu" },
+        { value: "ESWL & Endoscopy", label: "ESWL & Endoscopy" },
+        { value: "Kabid Diklat Litbangkes/Komkordik", label: "Kabid Diklat Litbangkes/Komkordik" },
+        { value: "Kabag Dik", label: "Kabag Dik" },
+        { value: "Kasi Dik Dokter", label: "Kasi Dik Dokter" },
+        { value: "Kasi Nakes Lain", label: "Kasi Nakes Lain" },
+        { value: "Kabag Litbangkes", label: "Kabag Litbangkes" },
+        { value: "Kasi Lat", label: "Kasi Lat" },
+        { value: "Kasi Litbangkes", label: "Kasi Litbangkes" },
+        { value: "Ka Primkop Kartika Rumkit", label: "Ka Primkop Kartika Rumkit" },
+        { value: "Ketua Persit Anak Ranting 2", label: "Ketua Persit Anak Ranting 2" }
+    ]);
+
+    const sifatOptions = ref([
+        { value: "Segera", label: "SEGERA" },
+        { value: "Penting", label: "PENTING" },
+        { value: "Rahasia", label: "RAHASIA" },
+        { value: "Biasa", label: "BIASA" }
+    ]);
+
+    const jenisOptions = ref([
+        { value: "Nota Dinas", label: "NOTA DINAS" },
+        { value: "Surat Perintah", label: "SURAT PERINTAH" },
+        { value: "Surat Keputusan", label: "SURAT KEPUTUSAN" },
+        { value: "Surat Tugas", label: "SURAT TUGAS" },
+        { value: "Surat Edaran", label: "SURAT EDARAN" },
+        { value: "Surat Telegram Rahasia", label: "ST. RAHASIA" },
+        { value: "Surat Eksternal", label: "SURAT EKSTERNAL" },
+        { value: "Surat Internal", label: "SURAT INTERNAL" },
+        { value: "Konsep Surat", label: "KONSEP SURAT" },
+        { value: "Legalisasi", label: "LEGALISASI" }
+    ]);
 
     const file_path = ref('');
     const qrCodeUrl = ref('');
@@ -232,6 +311,9 @@ export default {
       qrCodeUrl,
       submit,
       onFileChange,
+      disposisiOptions,
+      sifatOptions,
+      jenisOptions
     };
   }
 };
