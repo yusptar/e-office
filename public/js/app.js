@@ -26567,7 +26567,8 @@ __webpack_require__.r(__webpack_exports__);
       kategori_surat: '',
       posisi_surat: '',
       file_surat: '',
-      updated_at: ''
+      updated_at: '',
+      catatan_ka: ''
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       if (props.pengajuan) {

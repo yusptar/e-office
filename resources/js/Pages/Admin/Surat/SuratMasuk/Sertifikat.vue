@@ -115,6 +115,7 @@ export default {
       posisi_surat: '',
       file_surat: '',
       updated_at: '',
+      catatan_ka:'',
     });
 
     onMounted(() => {
