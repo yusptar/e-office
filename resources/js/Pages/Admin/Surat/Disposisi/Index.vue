@@ -74,6 +74,30 @@
         </div>
       </template>
       <template #table.cell.content.action="{ row }">
+        <div v-if="row.status == 2" class="flex flex-row justify-center space-x-4">
+          <Link v-if="hasAccess('module.surat.disposisi.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.edit', {pengajuan: row.slug})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+              <path fill="currentColor" d="M6 5a2 2 0 0 1 2-2h8v7a3 3 0 0 0 3 3h3.316l.991-1H19a2 2 0 0 1-2-2V3.073a2 2 0 0 1 .879.513l7.193 7.193c.371-.14.757-.227 1.146-.263l-.097-.102l-7.535-7.535A3 3 0 0 0 16.465 2H8a3 3 0 0 0-3 3v22a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3v-6.327l-1 .992V27a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm22.644 11.924l-8.61 8.543a2.8 2.8 0 0 1-1.269.721l-3.02.778a1 1 0 0 1-.245.032V27h-7a.5.5 0 0 1 0-1h5.996q0-.125.033-.253l.79-3.052c.118-.455.355-.871.686-1.205l8.567-8.64a2.88 2.88 0 0 1 4.144.057a2.88 2.88 0 0 1-.072 4.017"/>
+            </svg>
+          </Link>
+          <!-- <button v-if="hasAccess('module.surat.disposisi.delete', $page.props.currentUser.jabatan.hak_akses)" type="button" class="appearance-none outline-none focus:border-transparent focus:outline-none bg-transparent" @click.prevent="confirmDeleteRow(row)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 stroke-current text-red-600" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg>
+          </button> -->
+            <a v-if="row.file_surat" :href="`${baseUrl}/storage/${row.file_surat}`" download class="text-green-600" title="Download File">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M13 3v9.586l3.5-3.5l1.414 1.414L12 16.414L6.086 10.5L7.5 9.086l3.5 3.5V3h2ZM4.5 14v5h15v-5h2v7h-19v-7h2Z"/>
+              </svg>
+            </a>
+
+        </div>
+        <div v-else>
+          <span>Tidak Ada Aksi</span>
+        </div>
+      </template>
+      <template #table.cell.content.Status="{ row }">
         <div class="flex flex-row justify-center space-x-4">
           <template v-if="row.status == 2">
             <Link v-if="hasAccess('module.surat.disposisi.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.disposisi.edit', {pengajuan: row.slug})">
@@ -191,30 +215,9 @@
         </transition>
         </div>
       </template>
-      
-<!-- 
-      <template #table.cell.content.Status="{ row }">
-        <div class="flex flex-row justify-center space-x-1">
-          <template v-if="row.status == 2">
-            <div v-if="qrCodeUrl" class="flex flex-col items-center mt-4">
-              <a :href="qrCodeUrl" target="_blank" class="text-blue-500 underline mt-2"> 
-                <qrcode-vue :value="qrCodeUrl" :size="150" class="mt-2" />
-              </a>
-            </div>
-          </template>
-          <template v-else>
-            <button 
-              @click="acceptRequest(row)"
-              class="px-2 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-            >
-              Terima
-            </button>
-          </template>
-        </div>
-      </template> -->
     </datatables>
 
-    <!-- <dialog-modal :show="showModal" @close="showModal = false">
+    <dialog-modal :show="showModal" @close="showModal = false">
       <div class="flex flex-col space-y-6 p-10 items-center">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-20 h-20 fill-current text-yellow-500">
           <path d="M70.335 30.683c-1.569-2.719-3.878-4.278-6.337-4.278s-4.764 1.556-6.333 4.274l-34.6 59.94c-1.569 2.719-1.765 5.5-.536 7.628s3.734 3.348 6.871 3.348h69.2c3.138 0 5.643-1.22 6.871-3.348s1.035-4.907-.534-7.624zm31.484 65.452c-.456.785-1.627 1.237-3.216 1.237H29.4c-1.589 0-2.76-.452-3.214-1.237s-.26-2.029.536-3.406l34.6-59.94c.794-1.375 1.769-2.163 2.676-2.163s1.886.79 2.68 2.167l34.6 59.939c.798 1.377.994 2.616.541 3.403z"/>
@@ -235,7 +238,7 @@
           </div>
         </div>
       </div>
-    </dialog-modal> -->
+    </dialog-modal>
   </admin-layout>
 </template>
 
@@ -415,16 +418,16 @@
         //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
         //   headerClass: 'text-center p-4'
         // },
-        // {
-        //   uniqid: 'Status',
-        //   label: 'Status',
-        //   field: 'status',
-        //   sortable: false,
-        //   sortOrder: 'asc',
-        //   align: 'center',
-        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-        //   headerClass: 'text-center p-4'
-        // },
+        {
+          uniqid: 'Status',
+          label: 'Status',
+          field: 'status',
+          sortable: false,
+          sortOrder: 'asc',
+          align: 'center',
+          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+          headerClass: 'text-center p-4'
+        },
         {
           uniqid: 'action',
           label: 'Action',
