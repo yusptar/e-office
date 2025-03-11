@@ -26393,7 +26393,7 @@ __webpack_require__.r(__webpack_exports__);
       headerClass: 'text-center p-4'
     }, {
       uniqid: 'unitTerkait',
-      label: 'Ruang',
+      label: 'Unit',
       field: 'ruangan_val',
       sortable: false,
       sortOrder: 'asc',

@@ -556,7 +556,7 @@
         },
         {
           uniqid: 'unitTerkait',
-          label: 'Ruang',
+          label: 'Unit',
           field: 'ruangan_val',
           sortable: false,
           sortOrder: 'asc',
