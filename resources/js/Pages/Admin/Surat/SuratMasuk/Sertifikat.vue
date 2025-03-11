@@ -31,20 +31,20 @@
           <tr>
             <td class="border border-gray-300 px-3 py-2">{{ sertf.no_surat }}</td>
             <td class="border border-gray-300 px-3 py-2">{{ sertf.perihal_surat }}</td>
-            <td class="border border-gray-300 px-3 py-2">
-              <strong v-if="sertf.catatan_ka != null">
+            <td class="border border-gray-300 px-3 py-2">{{ sertf.catatan_ka }}
+              <!-- <strong v-if="sertf.catatan_ka != null">
                 {{ sertf.catatan_ka }}
               </strong>
               <p v-else class="flex justify-center">
                 -
-              </p>
+              </p> -->
             </td>
           </tr>
         </tbody>
       </table>
       <br>
       <div class="hash text-center">
-        <p><strong>Surat ini telah ditandatangani oleh:</strong></p>
+        <p><strong>Surat ini telah ditandatangani oleha:</strong></p>
       </div>
       <br> 
       <table class="w-full mt-2 flex justify-center">
@@ -115,7 +115,7 @@ export default {
       posisi_surat: '',
       file_surat: '',
       updated_at: '',
-      catatan_ka:'',
+      catatan_ka: '',
     });
 
     onMounted(() => {
