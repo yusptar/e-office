@@ -24807,10 +24807,11 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
         var today = dayjs__WEBPACK_IMPORTED_MODULE_4___default()();
         var day = today.format('DD');
         var month = today.format('MM');
+        var year = today.format('YYYY');
         var romawiMonths = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
         var monthRomawi = romawiMonths[parseInt(month) - 1];
         var ruanganCode = ruanganOptions[form.ruangan_val] || form.ruangan_val.toUpperCase();
-        form.no_surat = "ND/".concat(day, "/").concat(monthRomawi, "/").concat(ruanganCode);
+        form.no_surat = "ND/".concat(day, "/").concat(monthRomawi, "/").concat(year, "/").concat(ruanganCode);
       }
     };
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
@@ -35373,11 +35374,11 @@ var _hoisted_34 = {
 };
 var _hoisted_35 = {
   key: 0,
-  "class": "flex items-center space-x-2 px-3 py-3 bg-red-700 text-white rounded-md hover:bg-blue-900"
+  "class": "flex items-center space-x-2 px-3 py-3 bg-red-600 text-white rounded-md hover:bg-red-900"
 };
 var _hoisted_36 = {
   key: 1,
-  "class": "flex items-center space-x-2 px-3 py-3 bg-blue-700 text-white rounded-md hover:bg-blue-900"
+  "class": "flex items-center space-x-2 px-3 py-3 text-black rounded-md"
 };
 var _hoisted_37 = {
   key: 2,

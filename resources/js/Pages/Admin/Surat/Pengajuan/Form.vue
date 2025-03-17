@@ -351,10 +351,11 @@ export default {
         const today = dayjs();
         const day = today.format('DD');
         const month = today.format('MM');
+        const year = today.format('YYYY');
         const romawiMonths = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
         const monthRomawi = romawiMonths[parseInt(month) - 1];
         const ruanganCode = ruanganOptions[form.ruangan_val] || form.ruangan_val.toUpperCase();
-        form.no_surat = `ND/${day}/${monthRomawi}/${ruanganCode}`;
+        form.no_surat = `ND/${day}/${monthRomawi}/${year}/${ruanganCode}`;
       }
     };
 

@@ -139,14 +139,14 @@
         <div class="flex flex-row justify-center space-x-4">
           <template v-if="row.sifat_surat == 'Segera'">
             <span 
-              class="flex items-center space-x-2 px-3 py-3 bg-red-700 text-white rounded-md hover:bg-blue-900" 
+              class="flex items-center space-x-2 px-3 py-3 bg-red-600 text-white rounded-md hover:bg-red-900" 
             >
               Segera
             </span>
           </template>
           <template v-else-if="row.sifat_surat == 'Biasa'">
             <span
-              class="flex items-center space-x-2 px-3 py-3 bg-blue-700 text-white rounded-md hover:bg-blue-900"
+              class="flex items-center space-x-2 px-3 py-3 text-black rounded-md"
             >
               Biasa
             </span>
