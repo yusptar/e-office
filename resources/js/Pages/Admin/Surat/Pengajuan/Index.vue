@@ -315,7 +315,7 @@
         },
         {
           uniqid: 'nomerSurat',
-          label: 'Nomer Surat',
+          label: 'No Surat Unit',
           field: 'no_surat',
           sortable: false,
           sortOrder: 'asc',

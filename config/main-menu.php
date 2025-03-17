@@ -86,20 +86,20 @@ return [
           'open' => false,
           'children' => null
         ],
-        [
-          'uniqid' => 'suratKeluar',
-          'type' => 'menu',
-          'text' => 'Surat Keluar',
-          'route' => 'admin.surat.keluar.index',
-          'access' => 'module.surat.keluar.index',
-          'active' => false,
-          'open' => false,
-          'children' => null
-        ]
       ]
     ],
     [
       'type' => 'divider',
+    ],
+    [
+      'uniqid' => 'suratKeluar',
+      'type' => 'menu',
+      'text' => 'Surat Keluar',
+      'route' => 'admin.surat.keluar.index',
+      'access' => 'module.surat.keluar.index',
+      'active' => false,
+      'open' => false,
+      'children' => null
     ],
    
     // [

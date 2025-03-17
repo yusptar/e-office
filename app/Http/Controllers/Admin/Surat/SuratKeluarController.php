@@ -64,6 +64,7 @@ class SuratKeluarController extends Controller
         $validated['roles'] = Auth::user()->jabatan_id;
         $validated['ruangan_val'] = Auth::user()->ruangan;
         $validated['posisi_surat'] = 'Kasi TUUD';
+        $validated['kategori_surat'] = 'Keluar';
 
         if ($request->hasFile('file_surat')) {
             $file = $request->file('file_surat');

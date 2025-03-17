@@ -3,23 +3,36 @@
     <div class="flex flex-col space-y-4">
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">No Surat <span class="text-red-400">*</span></span>
-          <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.no_surat }" v-model="form.no_surat" :disabled="form.processing">
-          <span v-if="form.errors.no_surat" class="text-red-400 italic">{{ form.errors.no_surat }}</span>
+          <span class="text-black font-medium">Jenis Surat<span class="text-red-400">*</span></span>
+          <select-search
+            clearable
+            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.jenis_surat }"
+            v-model="form.jenis_surat"
+            :disabled="form.processing"
+            :options="jenisOptions"
+            @change="generateNoSurat">
+          </select-search>
+          <span v-if="form.errors.jenis_surat" class="text-red-400 italic">{{ form.errors.jenis_surat }}</span>
+        </div>
+        <div class="flex-1 flex flex-col space-y-2">
+          <span class="text-black font-medium">Asal Surat<span class="text-red-400">*</span></span>
+          <select-search
+            clearable
+            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.ruangan }"
+            v-model="form.ruangan_val"
+            :disabled="form.processing"
+            :options="ruanganOptions"
+            @change="generateNoSurat">
+          </select-search>
+          <span v-if="form.errors.ruangan_val" class="text-red-400 italic">{{ form.errors.ruangan_val }}</span>
         </div>
       </div>
 
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">Asal Surat<span class="text-red-400">*</span></span>
-          <select-search
-            clearable
-            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.asal_surat }"
-            v-model="form.asal_surat"
-            :disabled="form.processing"
-            :options="disposisiOptions">
-          </select-search>
-          <span v-if="form.errors.asal_surat" class="text-red-400 italic">{{ form.errors.asal_surat }}</span>
+          <span class="text-black font-medium">No Surat Unit <span class="text-red-400">*</span></span>
+          <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.no_surat }" v-model="form.no_surat" :disabled="true">
+          <span v-if="form.errors.no_surat" class="text-red-400 italic">{{ form.errors.no_surat }}</span>
         </div>
         <!-- <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Asal Surat <span class="text-red-400">*</span></span>
@@ -27,13 +40,18 @@
           <span v-if="form.errors.asal_surat" class="text-red-400 italic">{{ form.errors.asal_surat }}</span>
         </div> -->
         <div class="flex-1 flex flex-col space-y-2">
+          <span class="text-black font-medium">Perihal Surat <span class="text-red-400">*</span></span>
+          <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.perihal_surat }" v-model="form.perihal_surat" :disabled="form.processing">
+          <span v-if="form.errors.perihal_surat" class="text-red-400 italic">{{ form.errors.perihal_surat }}</span>
+        </div>
+        <!-- <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Tujuan Surat <span class="text-red-400">*</span></span>
           <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.tujuan_surat }" v-model="form.tujuan_surat" :disabled="form.processing">
           <span v-if="form.errors.tujuan_surat" class="text-red-400 italic">{{ form.errors.tujuan_surat }}</span>
-        </div>
+        </div> -->
       </div>
 
-      <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+      <!-- <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">No Agenda <span class="text-red-400">*</span></span>
           <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.no_agenda }" v-model="form.no_agenda" :disabled="form.processing">
@@ -44,10 +62,10 @@
           <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.perihal_surat }" v-model="form.perihal_surat" :disabled="form.processing">
           <span v-if="form.errors.perihal_surat" class="text-red-400 italic">{{ form.errors.perihal_surat }}</span>
         </div>
-      </div>
+      </div> -->
 
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-        <div class="flex-1 flex flex-col space-y-2">
+        <!-- <div class="flex flex-col space-y-2">
           <span class="text-black font-medium">Sifat<span class="text-red-400">*</span></span>
           <select-search
             clearable
@@ -57,46 +75,8 @@
             :options="sifatOptions">
           </select-search>
           <span v-if="form.errors.sifat_surat" class="text-red-400 italic">{{ form.errors.sifat_surat }}</span>
-        </div>
-        <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">Jenis Surat<span class="text-red-400">*</span></span>
-          <select-search
-            clearable
-            :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.jenis_surat }"
-            v-model="form.jenis_surat"
-            :disabled="form.processing"
-            :options="jenisOptions">
-          </select-search>
-          <span v-if="form.errors.jenis_surat" class="text-red-400 italic">{{ form.errors.jenis_surat }}</span>
-        </div>
-      </div>
-      <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-        <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">Kategori<span class="text-red-400">*</span></span>
-          <select v-model="form.kategori_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" :disabled="form.processing">
-            <option value="" selected disabled>Kategori Surat</option>        
-            <option value="Masuk">Masuk</option>
-            <option value="Keluar">Keluar</option>
-            <!-- <option value="Ref 3">REFERENSI 3</option>
-            <option value="Ref 2">REFERENSI 2</option>
-            <option value="Ref 1">REFERENSI 1</option> -->
-          </select>
-          <!-- <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" v-model="form.kategori_surat" :disabled="form.processing"> -->
-          <span v-if="form.errors.kategori_surat" class="text-red-400 italic">{{ form.errors.kategori_surat }}</span>
-        </div>
-        <!-- <div class="flex-1 flex flex-col space-y-2">
-          <span class="text-black font-medium">Disposisi Akhir<span class="text-red-400">*</span></span>
-          <select v-model="form.posisi_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" :disabled="form.processing">
-            <option value="" selected disabled>Pilih Disposisi Akhir</option>        
-            <option value="Kepala">KEPALA</option>
-            <option value="Waka">WAKIL KEPALA</option>
-          </select>
-          <span v-if="form.errors.posisi_surat" class="text-red-400 italic">{{ form.errors.posisi_surat }}</span>
         </div> -->
-      </div>
-
-      <div class="flex flex-col space-y-4">
-        <div class="flex flex-col space-y-2">
+        <div class="flex-1 flex flex-col space-y-2">
           <span class="text-black font-medium">Upload File Surat </span>
           <input type="file" :class="{ 'rounded-md border border-black px-4 py-2 focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.file_surat }" @change="onFileChange($event)" :disabled="form.processing">
           <progress v-if="form.progress" :value="form.progress.percentage" max="100">
@@ -104,6 +84,29 @@
           </progress>
           <span v-if="form.errors.file_surat" class="text-red-400 italic">{{ form.errors.file_surat }}</span>
         </div>
+      </div>
+      <!-- <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+        <div class="flex-1 flex flex-col space-y-2">
+          <span class="text-black font-medium">Kategori<span class="text-red-400">*</span></span>
+          <select v-model="form.kategori_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.kategori_surat }" :disabled="form.processing">
+            <option value="" selected disabled>Kategori Surat</option>        
+            <option value="Masuk">Masuk</option>
+            <option value="Keluar">Keluar</option>
+          </select>
+          <span v-if="form.errors.kategori_surat" class="text-red-400 italic">{{ form.errors.kategori_surat }}</span>
+        </div>
+        <div class="flex-1 flex flex-col space-y-2">
+          <span class="text-black font-medium">Disposisi Akhir<span class="text-red-400">*</span></span>
+          <select v-model="form.posisi_surat" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-200': true, 'border-red-400': form.errors.posisi_surat }" :disabled="form.processing">
+            <option value="" selected disabled>Pilih Disposisi Akhir</option>        
+            <option value="Kepala">KEPALA</option>
+            <option value="Waka">WAKIL KEPALA</option>
+          </select>
+          <span v-if="form.errors.posisi_surat" class="text-red-400 italic">{{ form.errors.posisi_surat }}</span>
+        </div>
+      </div> -->
+
+      <div class="flex flex-col space-y-4">
         <!-- <button @click="openModal">Lihat File Surat</button> -->
 
         <!-- Modal -->
@@ -125,9 +128,6 @@
             <span class="text-black font-medium">File yang Diunggah:</span>
             <iframe :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(file_path)}`" width="70%" height="400px" class="border border-gray-300"></iframe>
           </div>
-          <!-- <div v-else>
-            <span class="text-red-500">Format file tidak didukung.</span>
-          </div> -->
         </div>
       </div>
       <!-- <div v-if="qrCodeUrl" class="flex flex-col items-center mt-4">
@@ -149,10 +149,11 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import QrcodeVue from 'qrcode.vue';
 import SelectSearch from '@/Components/Select/SelectSearch.vue';
+import dayjs from 'dayjs';
 
 export default {
   name: 'MasterSuratMasukForm',
@@ -193,6 +194,7 @@ export default {
       kategori_surat: '',
       // posisi_surat: '',
       file_surat: '',
+      ruangan_val: '',
     });
 
     const disposisiOptions = ref([
@@ -249,24 +251,63 @@ export default {
     ]);
 
     const sifatOptions = ref([
-        { value: "Segera", label: "SEGERA" },
-        { value: "Penting", label: "PENTING" },
         { value: "Rahasia", label: "RAHASIA" },
         { value: "Biasa", label: "BIASA" }
     ]);
 
     const jenisOptions = ref([
         { value: "Nota Dinas", label: "NOTA DINAS" },
-        { value: "Surat Perintah", label: "SURAT PERINTAH" },
-        { value: "Surat Keputusan", label: "SURAT KEPUTUSAN" },
-        { value: "Surat Tugas", label: "SURAT TUGAS" },
-        { value: "Surat Edaran", label: "SURAT EDARAN" },
-        { value: "Surat Telegram Rahasia", label: "ST. RAHASIA" },
-        { value: "Surat Eksternal", label: "SURAT EKSTERNAL" },
-        { value: "Surat Internal", label: "SURAT INTERNAL" },
-        { value: "Konsep Surat", label: "KONSEP SURAT" },
-        { value: "Legalisasi", label: "LEGALISASI" }
     ]);
+
+    const ruanganOptions = ref([
+        { label: 'Komite Medik', value: 'Komite Medik' },
+        { label: 'Komite Keperawatan', value: 'Komite Keperawatan' },
+        { label: 'SPI', value: 'SPI' },
+        { label: 'Siyanmed', value: 'Siyanmed' },
+        { label: 'Sijangum', value: 'Sijangum' },
+        { label: 'Simak', value: 'Simak' },
+        { label: 'Sijangmed', value: 'Sijangmed' },
+        { label: 'UKPBJ', value: 'UKPBJ' },
+        { label: 'Siren', value: 'Siren' },
+        { label: 'Situud', value: 'Situud' },
+        { label: 'Urpam', value: 'Urpam' },
+        { label: 'Urpers', value: 'Urpers' },
+        { label: 'Urdal', value: 'Urdal' },
+        { label: 'Ajudan', value: 'Ajudan' },
+        { label: 'Pengemudi', value: 'Pengemudi' },
+        { label: 'Teknik', value: 'Teknik' },
+        { label: 'Juru Bayar', value: 'Juru Bayar' },
+        { label: 'Urinfokes', value: 'Urinfokes' },
+        { label: 'Unit Rikkes', value: 'Unit Rikkes' },
+        { label: 'Dik & Litbangkes', value: 'Dik & Litbangkes' },
+        { label: 'Paku', value: 'Paku' },
+        { label: 'ITSK', value: 'ITSK' },
+        { label: 'Kabid Umum dan Keuangan', value: 'Kabid Umum dan Keuangan' },
+        { label: 'Unit K3', value: 'Unit K3' },
+        { label: 'Humas & Pemasaran', value: 'Humas & Pemasaran' },
+        { label: 'PPK1', value: 'PPK1' },
+        { label: 'PPI', value: 'PPI' },
+        { label: 'Koperasi', value: 'Koperasi' },
+        { label: 'Unit SIMRS', value: 'SIMRS' },
+        { label: 'Komite Mutu', value: 'Komite Mutu' },
+        { label: 'Instalwatlan', value: 'Instalwatlan' },
+        { label: 'Instalwatnap', value: 'Instalwatnap' },
+        { label: 'IGD', value: 'IGD' },
+        { label: 'Instalkabed', value: 'Instalkabed' },
+        { label: 'OK Sentral', value: 'OK Sentral' },
+        { label: 'OK Gyn', value: 'OK Gyn' },
+        { label: 'Endoscopy & Brochoscopy', value: 'Endoscopy & Brochoscopy' },
+        { label: 'CSSD', value: 'CSSD' },
+        { label: 'Cathlab', value: 'Cathlab' },
+        { label: 'Instalrehabmed', value: 'Instalrehabmed' },
+        { label: 'Radiologi', value: 'Radiologi' },
+        { label: 'Radioterapi', value: 'Radioterapi' },
+        { label: 'Laboratorium', value: 'Laboratorium' },
+        { label: 'Patologi Anatomi', value: 'Patologi Anatomi' },
+        { label: 'Instalfarmasi', value: 'Instalfarmasi' },
+        { label: 'Gudang Garmasi', value: 'Gudang Garmasi' },
+        { label: 'Instaljangwat', value: 'Instaljangwat' }
+      ]);
 
     const file_path = ref('');
     const qrCodeUrl = ref('');
@@ -275,7 +316,7 @@ export default {
       if (props.pengajuan) {
         Object.assign(form, props.pengajuan);
         file_path.value = `${window.baseUrl}/storage/${props.pengajuan.file_surat}`;
-        generateQrCode(props.pengajuan.id); // Buat QR Code dari ID surat
+        generateQrCode(props.pengajuan.id); 
       }
     });
 
@@ -287,7 +328,7 @@ export default {
       })).post(props.actionUri, {
         onSuccess: (response) => {
           if (response.props.id) {
-            generateQrCode(response.props.id); // Buat QR Code setelah sukses
+            generateQrCode(response.props.id); 
           }
         },
       });
@@ -305,6 +346,21 @@ export default {
       file_path.value = URL.createObjectURL(files[0]);
     }
 
+    const generateNoSurat = () => {
+      if (form.jenis_surat === 'Nota Dinas' && form.ruangan_val) {
+        const today = dayjs();
+        const day = today.format('DD');
+        const month = today.format('MM');
+        const romawiMonths = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+        const monthRomawi = romawiMonths[parseInt(month) - 1];
+        const ruanganCode = ruanganOptions[form.ruangan_val] || form.ruangan_val.toUpperCase();
+        form.no_surat = `ND/${day}/${monthRomawi}/${ruanganCode}`;
+      }
+    };
+
+    watch(() => form.jenis_surat, generateNoSurat);
+    watch(() => form.ruangan_val, generateNoSurat);
+
     return {
       form,
       file_path,
@@ -313,7 +369,9 @@ export default {
       onFileChange,
       disposisiOptions,
       sifatOptions,
-      jenisOptions
+      jenisOptions,
+      ruanganOptions,
+      generateNoSurat
     };
   }
 };

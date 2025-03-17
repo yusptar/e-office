@@ -67,13 +67,14 @@ class PengajuanController extends Controller
         $validated['roles'] = Auth::user()->jabatan_id;
         $validated['ruangan_val'] = Auth::user()->ruangan;
         $validated['posisi_surat'] = 'Kasi TUUD';
+        $validated['kategori_surat'] = 'Masuk';
 
         if ($request->hasFile('file_surat')) {
             $file = $request->file('file_surat');
             $filePath = $file->store('pengajuan_surat', 'public');
             $validated['file_surat'] = $filePath;
         }
-        
+        // dd($validated);
         DB::beginTransaction();
         try {
             SuratMasuk::create($validated);
@@ -164,16 +165,16 @@ class PengajuanController extends Controller
     {
         return [
             'no_surat' => 'required|string|max:255',
-            'asal_surat' => 'required|string|max:255',
-            'tujuan_surat' => 'required|string|max:255',
-            'no_agenda' => 'required|string|max:255',
-            'perihal_surat' => 'required|string|max:255',
-            'sifat_surat' => 'required|string|max:50',
             'jenis_surat' => 'required|string|max:50',
-            'kategori_surat' => 'required|string|max:50',
+            'perihal_surat' => 'required|string|max:255',
+            'file_surat' => 'required|mimes:pdf,doc,docx|max:2048',
+            'asal_surat' => 'nullable|string|max:255',
+            'tujuan_surat' => 'nullable|string|max:255',
+            'no_agenda' => 'nullable|string|max:255',
+            'sifat_surat' => 'nullable|string|max:50',
+            'kategori_surat' => 'nullable|string|max:50',
             'posisi_surat' => 'nullable|string|max:255',
-            'file_surat' => 'nullable|mimes:pdf,doc,docx|max:2048',
-            'ruangan_val' => 'nullable|string|max:255',
+            'ruangan_val' => 'nullable|string|max:255',  
         ];
     }
 }

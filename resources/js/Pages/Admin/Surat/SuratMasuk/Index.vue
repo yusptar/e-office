@@ -504,26 +504,16 @@
           classes: 'px-4 py-2 md:py-4 text-left md:text-center',
           headerClass: 'text-center p-4'
         },
-        {
-          uniqid: 'kategoriSurat',
-          label: 'Kategori',
-          field: 'kategori_surat',
-          sortable: false,
-          sortOrder: 'asc',
-          align: 'center',
-          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-          headerClass: 'text-center p-4'
-        },
-        {
-          uniqid: 'perihalSurat',
-          label: 'Perihal',
-          field: 'perihal_surat',
-          sortable: false,
-          sortOrder: 'asc',
-          align: 'center',
-          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-          headerClass: 'text-center p-4'
-        },
+        // {
+        //   uniqid: 'kategoriSurat',
+        //   label: 'Kategori',
+        //   field: 'kategori_surat',
+        //   sortable: false,
+        //   sortOrder: 'asc',
+        //   align: 'center',
+        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+        //   headerClass: 'text-center p-4'
+        // },
         {
           uniqid: 'jenisSurat',
           label: 'Jenis',
@@ -534,20 +524,30 @@
           classes: 'px-4 py-2 md:py-4 text-left md:text-center',
           headerClass: 'text-center p-4'
         },
-        {
-          uniqid: 'sifatSurat',
-          label: 'Sifat',
-          field: 'sifat_surat',
-          sortable: false,
-          sortOrder: 'asc',
-          align: 'center',
-          classes: 'px-4 py-2 md:py-4 text-left md:text-center',
-          headerClass: 'text-center p-4'
-        },
+        // {
+        //   uniqid: 'sifatSurat',
+        //   label: 'Sifat',
+        //   field: 'sifat_surat',
+        //   sortable: false,
+        //   sortOrder: 'asc',
+        //   align: 'center',
+        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+        //   headerClass: 'text-center p-4'
+        // },
+        // {
+        //   uniqid: 'asalSurat',
+        //   label: 'Asal Surat',
+        //   field: 'asal_surat',
+        //   sortable: false,
+        //   sortOrder: 'asc',
+        //   align: 'center',
+        //   classes: 'px-4 py-2 md:py-4 text-left md:text-center',
+        //   headerClass: 'text-center p-4'
+        // },
         {
           uniqid: 'asalSurat',
           label: 'Asal Surat',
-          field: 'asal_surat',
+          field: 'ruangan_val',
           sortable: false,
           sortOrder: 'asc',
           align: 'center',
@@ -555,9 +555,9 @@
           headerClass: 'text-center p-4'
         },
         {
-          uniqid: 'unitTerkait',
-          label: 'Unit',
-          field: 'ruangan_val',
+          uniqid: 'perihalSurat',
+          label: 'Perihal',
+          field: 'perihal_surat',
           sortable: false,
           sortOrder: 'asc',
           align: 'center',

@@ -165,12 +165,12 @@ class DisposisiController extends Controller
                 $query->where('status', '2')->where('posisi_surat', 'Waka');
                 // KASI TUUD
             } elseif (auth()->user()->jabatan_id == 16) {
-                $query->whereIn('status', ['0', '1', '2']);
+                $query->whereIn('status', ['0', '1', '2', '3', '99']);
                 // IT
             } elseif (auth()->user()->jabatan_id == 2) {
-                $query->whereIn('status', ['0', '1', '2']);
+                $query->whereIn('status', ['0', '1', '2', '3', '99']);
             } else {
-                $query->whereIn('status',  ['0', '1', '2'])->where('user_id', Auth::user()->id);
+                $query->whereIn('status',  ['0', '1', '2', '99'])->where('user_id', Auth::user()->id);
             }
             
         return response()->json($query->paginateFilter());
