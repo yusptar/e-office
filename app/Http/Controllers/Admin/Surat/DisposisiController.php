@@ -80,7 +80,12 @@ class DisposisiController extends Controller
 
         if ($request->hasFile('file_surat')) {
             $file = $request->file('file_surat');
-            $filePath = $file->store('pengajuan_surat', 'public');
+            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension(); 
+            $timestamp = Carbon::now()->format('Ymd_His'); 
+            $newFileName = "{$originalName}_{$timestamp}.{$extension}"; 
+            $filePath = $file->storeAs('pengajuan_surat', $newFileName, 'public'); 
+    
             $validated['file_surat'] = $filePath;
         }
         

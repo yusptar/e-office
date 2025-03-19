@@ -93,58 +93,59 @@
           </button>
           <!-- Modal -->
           <transition name="modal-fade">
-          <div 
-            v-if="showModalFile" 
-            class="modal" 
-            tabindex="-1" 
-            role="dialog" 
-            @click.self="closeModal"
-          >
-            <div class="modal-dialog" :style="modalStyle" role="document">
-              <div class="modal-content">
-                <!-- <div class="modal-header d-flex justify-content-between align-items-center">
+            <div 
+              v-if="showModalFile" 
+              class="fixed inset-0 flex justify-center items-center z-50"
+              @click.self="closeModal"
+            >
+              <div 
+                class="bg-white rounded-lg shadow-lg overflow-hidden relative flex flex-col"
+                style="width: 90%; max-width: 1200px; height: 80vh;"
+              >
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center px-5 py-3 border-b bg-gray-100">
+                  <h3 class="text-lg font-semibold">Pratinjau</h3>
                   <button 
-                    type="button" 
-                    class="btn-close" 
                     @click="closeModal" 
-                    aria-label="Close"
+                    class="text-gray-500 hover:text-red-500 text-2xl"
                   >
-                    <span aria-hidden="true">&times;</span>
+                    &times;
                   </button>
-                </div> -->
-                <div class="modal-body" align="center">
-                  <div v-if="isPdf">
+                </div>
+
+                <!-- Modal Body (Scrollable) -->
+                <div class="p-4 flex-1 overflow-auto bg-gray-50">
+                  <div v-if="isPdf" class="w-full h-full">
                     <embed
                       :src="`${baseUrl}/storage/${currentFile}`"
                       type="application/pdf"
-                      width="70%"
-                      height="500px"
-                      class="border border-gray-300"
+                      class="w-full h-full border border-gray-300"
                     />
                   </div>
-                  <div v-else>
+                  <div v-else class="w-full h-full">
                     <iframe
                       :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
-                      width="70%"
-                      height="500px"
+                      class="w-full h-full border border-gray-300"
                       frameborder="0"
                     ></iframe>
                   </div>
                 </div>
-                <div class="modal-footer">
+
+                <!-- Modal Footer -->
+                <div class="flex justify-end p-4 border-t bg-gray-100">
                   <button 
-                    type="button" 
-                    class="btn-close" 
-                    @click="closeModal" 
-                    aria-label="Close"
+                    @click.prevent="confirmResponse(row)"
+                    class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
                   >
-                    <span aria-hidden="true">&times;</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8">
+                      <path fill="currentColor" d="M5 0v2C1 2 0 4.05 0 7c.52-1.98 2-3 4-3h1v2l3-3.16L5 0z"/>
+                    </svg>
+                    <span>Tanggapi</span>
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-        </transition>
+          </transition>
         </div>
       </template>
       

@@ -11,7 +11,7 @@
 
       <div class="flex flex-col pt-5 md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <strong class="text-black font-bold text-base">Jumlah Surat Proses</strong>
+          <strong class="text-black font-bold text-base">Surat Masuk</strong>
           <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 20 20">
               <mask id="lineMdEmailArrowDownTwotone0">
@@ -38,12 +38,12 @@
               </mask>
               <rect width="24" height="24" fill="currentColor" mask="url(#lineMdEmailArrowDownTwotone0)"/>
             </svg>
-            <span class="ml-2 text-black text-xl font-bold">{{ surat.proses }}</span>
+            <span class="ml-2 text-black text-xl font-bold">{{ surat.masuk }}</span>
           </div>
         </div>
 
         <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
-          <strong class="text-black font-bold text-base">Jumlah Surat Selesai</strong>
+          <strong class="text-black font-bold text-base">Surat Dalam Proses</strong>
           <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 20 20">
               <mask id="lineMdEmailArrowUp0">
@@ -65,12 +65,13 @@
               </mask>
               <rect width="24" height="24" fill="currentColor" mask="url(#lineMdEmailArrowUp0)"/>
             </svg>
-            <span class="ml-2 text-black text-xl font-bold">{{ surat.selesai }}</span>
+            <span class="ml-2 text-black text-xl font-bold">{{ surat.proses }}</span>
           </div>
         </div>
 
-        <div v-if="['3', '4', '16', '2'].includes(surat.roles)" class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">
-          <strong class="text-black font-bold text-base">Jumlah Seluruh Surat</strong>
+        <!-- <div v-if="['3', '4', '16', '2'].includes(surat.roles)" class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md"> -->
+        <div class="flex-1 flex flex-col space-y-2 box-content h-16 w-auto p-4 border-2 rounded-md">      
+          <strong class="text-black font-bold text-base">Surat Selesai</strong>
           <div class="flex flex-row">      
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 20 20">
               <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -85,7 +86,7 @@
                 </path> 
               </g>
             </svg>
-            <span class="ml-2 text-black text-xl font-bold">{{ surat.total }}</span>
+            <span class="ml-2 text-black text-xl font-bold">{{ surat.selesai }}</span>
           </div>
         </div>
       </div> 

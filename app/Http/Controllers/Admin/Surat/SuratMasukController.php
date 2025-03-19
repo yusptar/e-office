@@ -84,7 +84,12 @@ class SuratMasukController extends Controller
 
         if ($request->hasFile('file_surat')) {
             $file = $request->file('file_surat');
-            $filePath = $file->store('pengajuan_surat', 'public');
+            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension(); 
+            $timestamp = Carbon::now()->format('Ymd_His'); 
+            $newFileName = "{$originalName}_{$timestamp}.{$extension}"; 
+            $filePath = $file->storeAs('pengajuan_surat', $newFileName, 'public'); 
+    
             $validated['file_surat'] = $filePath;
         }
         
@@ -144,7 +149,8 @@ class SuratMasukController extends Controller
             $pengajuan->update([
                 'status' => '1',
                 'posisi_surat' => $request->posisi_surat,
-                'catatan_kasi_tuud' => $request->catatan_kasi_tuud
+                'catatan_kasi_tuud' => $request->catatan_kasi_tuud,
+                'no_agenda' => $request->no_agenda
             ]);
 
             DB::commit();
@@ -181,6 +187,10 @@ class SuratMasukController extends Controller
             if ($pengajuan->file_surat) {
                 Storage::disk('public')->delete($pengajuan->file_surat);
             }
+
+            $pengajuan->update([
+                'status' => '99',
+            ]);
 
             $pengajuan->delete();
 

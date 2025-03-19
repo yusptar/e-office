@@ -97,6 +97,57 @@
           <span>Tidak Ada Aksi</span>
         </div>
       </template>
+      <template #table.cell.content.fileSurat="{ row }">
+        <div align="center">
+          <button 
+            @click="openModal(row.file_surat)"
+            class="btn btn-primary">
+            <img :src="baseUrl + '/img/file.png'" alt="file" class="w-6 h-6">
+          </button>
+          <!-- Modal -->
+          <transition name="modal-fade">
+            <div 
+              v-if="showModalFile" 
+              class="fixed inset-0 flex justify-center items-center z-50"
+              @click.self="closeModal"
+            >
+              <div 
+                class="bg-white rounded-lg shadow-lg overflow-hidden relative flex flex-col"
+                style="width: 90%; max-width: 1200px; height: 80vh;"
+              >
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center px-5 py-3 border-b bg-gray-100">
+                  <h3 class="text-lg font-semibold">Pratinjau</h3>
+                  <button 
+                    @click="closeModal" 
+                    class="text-gray-500 hover:text-red-500 text-2xl"
+                  >
+                    &times;
+                  </button>
+                </div>
+
+                <!-- Modal Body (Scrollable) -->
+                <div class="p-4 flex-1 overflow-auto bg-gray-50">
+                  <div v-if="isPdf" class="w-full h-full">
+                    <embed
+                      :src="`${baseUrl}/storage/${currentFile}`"
+                      type="application/pdf"
+                      class="w-full h-full border border-gray-300"
+                    />
+                  </div>
+                  <div v-else class="w-full h-full">
+                    <iframe
+                      :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
+                      class="w-full h-full border border-gray-300"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                </div>               
+              </div>
+            </div>
+          </transition>
+        </div>
+      </template>
       <template #table.cell.content.Status="{ row }">
         <div class="flex flex-row justify-center space-x-4">
           <template v-if="row.status == 2">
@@ -158,69 +209,6 @@
               -
             </span>
           </template>
-        </div>
-      </template>
-      <template #table.cell.content.fileSurat="{ row }">
-        <div align="center">
-          <button 
-            @click="openModal(row.file_surat)"
-            class="btn btn-primary">
-            <img :src="baseUrl + '/img/file.png'" alt="file" class="w-6 h-6">
-          </button>
-          <!-- Modal -->
-          <transition name="modal-fade">
-          <div 
-            v-if="showModalFile" 
-            class="modal" 
-            tabindex="-1" 
-            role="dialog" 
-            @click.self="closeModal"
-          >
-            <div class="modal-dialog" :style="modalStyle" role="document">
-              <div class="modal-content">
-                <!-- <div class="modal-header d-flex justify-content-between align-items-center">
-                  <button 
-                    type="button" 
-                    class="btn-close" 
-                    @click="closeModal" 
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div> -->
-                <div class="modal-body" align="center">
-                  <div v-if="isPdf">
-                    <embed
-                      :src="`${baseUrl}/storage/${currentFile}`"
-                      type="application/pdf"
-                      width="70%"
-                      height="500px"
-                      class="border border-gray-300"
-                    />
-                  </div>
-                  <div v-else>
-                    <iframe
-                      :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
-                      width="70%"
-                      height="500px"
-                      frameborder="0"
-                    ></iframe>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button 
-                    type="button" 
-                    class="btn-close" 
-                    @click="closeModal" 
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </transition>
         </div>
       </template>
     </datatables>

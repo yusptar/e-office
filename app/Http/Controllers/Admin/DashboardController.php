@@ -42,14 +42,16 @@ class DashboardController extends Controller
 
         $totalSurat = (clone $query)->count();
         $suratSelesai = (clone $query)->where('status', '2')->count();
-        $suratDiproses = (clone $query)->whereIn('status', ['0', '1'])->count();
+        $suratProses = (clone $query)->where('status', '1')->count();
+        $suratMasuk = (clone $query)->where('status', '0')->count();
 
         return Inertia::render('Admin/Dashboard', [
             'breadcrumbs' => $this->breadcrumbs,
             'surat' => [
                 'total' => $totalSurat,
                 'selesai' => $suratSelesai,
-                'proses' => $suratDiproses,
+                'proses' => $suratProses,
+                'masuk' => $suratMasuk,
                 'roles' => (string) $jabatan_id,
             ]
         ]);

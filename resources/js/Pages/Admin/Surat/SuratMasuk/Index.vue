@@ -97,58 +97,81 @@
           </button>
           <!-- Modal -->
           <transition name="modal-fade">
-          <div 
-            v-if="showModalFile" 
-            class="modal" 
-            tabindex="-1" 
-            role="dialog" 
-            @click.self="closeModal"
-          >
-            <div class="modal-dialog" :style="modalStyle" role="document">
-              <div class="modal-content">
-                <!-- <div class="modal-header d-flex justify-content-between align-items-center">
+            <div 
+              v-if="showModalFile" 
+              class="fixed inset-0 flex justify-center items-center z-50"
+              @click.self="closeModal"
+            >
+              <div 
+                class="bg-white rounded-lg shadow-lg overflow-hidden relative flex flex-col"
+                style="width: 90%; max-width: 1200px; height: 80vh;"
+              >
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center px-5 py-3 border-b bg-gray-100">
+                  <h3 class="text-lg font-semibold">Pratinjau</h3>
                   <button 
-                    type="button" 
-                    class="btn-close" 
                     @click="closeModal" 
-                    aria-label="Close"
+                    class="text-gray-500 hover:text-red-500 text-2xl"
                   >
-                    <span aria-hidden="true">&times;</span>
+                    &times;
                   </button>
-                </div> -->
-                <div class="modal-body" align="center">
-                  <div v-if="isPdf">
+                </div>
+
+                <!-- Modal Body (Scrollable) -->
+                <div class="p-4 flex-1 overflow-auto bg-gray-50">
+                  <div v-if="isPdf" class="w-full h-full">
                     <embed
                       :src="`${baseUrl}/storage/${currentFile}`"
                       type="application/pdf"
-                      width="70%"
-                      height="500px"
-                      class="border border-gray-300"
+                      class="w-full h-full border border-gray-300"
                     />
                   </div>
-                  <div v-else>
+                  <div v-else class="w-full h-full">
                     <iframe
                       :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
-                      width="70%"
-                      height="500px"
+                      class="w-full h-full border border-gray-300"
                       frameborder="0"
                     ></iframe>
                   </div>
                 </div>
-                <div class="modal-footer">
+
+                <!-- Modal Footer -->
+                <div v-if="row.status == 0 && (row.roles == 16 || row.roles == 2)" class="flex justify-end p-4 border-t bg-gray-100">
                   <button 
-                    type="button" 
-                    class="btn-close" 
-                    @click="closeModal" 
-                    aria-label="Close"
+                    @click.prevent="confirmResponse(row)"
+                    class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
                   >
-                    <span aria-hidden="true">&times;</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8">
+                      <path fill="currentColor" d="M5 0v2C1 2 0 4.05 0 7c.52-1.98 2-3 4-3h1v2l3-3.16L5 0z"/>
+                    </svg>
+                    <span>Tanggapi</span>
+                  </button>
+                </div>
+                <div v-else-if="row.status == 1 && (row.roles == 3 || row.roles == 2)" class="flex justify-end p-4 border-t bg-gray-100">
+                  <button 
+                    @click.prevent="confirmAccept(row)"
+                    class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Disposisi
+                  </button>
+                </div>
+                <div v-else-if="row.status == 1 && (row.roles == 4 || row.roles == 2)" class="flex justify-end p-4 border-t bg-gray-100">
+                  <button 
+                    @click.prevent="confirmAccept(row)"
+                    class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Disposisi
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-        </transition>
+          </transition>
         </div>
       </template>
       
@@ -224,6 +247,18 @@
           Apakah anda yakin untuk mengajukan surat ini?
         </p>
 
+        <div class="w-full">
+          <label for="perihal_surat" class="block text-sm font-medium text-gray-700">Perihal Surat</label>
+          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.perihal_surat }"  :readonly="true" v-model="form.perihal_surat" rows="3" class="h-30" disabled/>
+          <span v-if="form.errors.perihal_surat" class="text-red-400 italic">{{ form.value.errors.perihal_surat }}</span>
+        </div>
+
+        <div class="w-full">
+          <label for="no_agenda" class="block text-sm font-medium text-gray-700">No Agenda</label>
+          <input type="text" :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.no_agenda }" :disabled="form.processing" v-model="form.no_agenda">
+          <span v-if="form.errors.no_agenda" class="text-red-400 italic">{{ form.value.errors.no_agenda }}</span>
+        </div>
+        
         <div class="w-full">
           <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Disposisi Kasi TUUD</label>
           <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }" :disabled="form.processing"  v-model="form.catatan_kasi_tuud" rows="4" class="h-40"/>
@@ -626,6 +661,10 @@
       function confirmResponse(row) {
         form.posisi_surat = row.posisi_surat
         form.catatan_kasi_tuud = row.catatan_kasi_tuud
+        ? `Kepada Yth. WAKA/KA, ${row.catatan_kasi_tuud}`
+        : "Kepada Yth. WAKA/KA, ";
+        form.perihal_surat = row.perihal_surat
+        form.no_agenda = row.no_agenda
         form.slug = row.slug 
         modalTanggapi.value = true
       }
