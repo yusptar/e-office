@@ -56,6 +56,7 @@
           </div>
         </Link>
       </template>
+
       <template #grid.content.body.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
           <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
@@ -72,6 +73,7 @@
           </button>
         </div>
       </template>
+
       <template #table.cell.content.action="{ row }">
         <div class="flex flex-row justify-center space-x-4">
           <!-- <Link v-if="hasAccess('module.surat.masuk.edit', $page.props.currentUser.jabatan.hak_akses)" :href="route('admin.surat.masuk.edit', {pengajuan: row.slug})">
@@ -88,13 +90,43 @@
           </button>
         </div>
       </template>
+
+     
+      <template #table.cell.content.Status="{ row }">
+        <div class="flex flex-row justify-center space-x-1">
+          <template v-if="row.status == 0">
+            <button 
+              @click.prevent="confirmResponse(row)"
+              class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" cheight="16" viewBox="0 0 8 8">
+                <path fill="currentColor" d="M5 0v2C1 2 0 4.05 0 7c.52-1.98 2-3 4-3h1v2l3-3.16L5 0z"/>
+              </svg>
+              <span>Tanggapi</span>
+            </button>
+          </template>
+          <template v-else-if="row.status == 1">
+            <button 
+              @click.prevent="confirmAccept(row)"
+              class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Disposisi
+            </button>
+          </template>
+        </div>
+      </template>
+
       <template #table.cell.content.fileSurat="{ row }">
         <div align="center">
           <button 
-            @click="openModal(row.file_surat)"
+            @click="openModal(row)"
             class="btn btn-primary">
             <img :src="baseUrl + '/img/file.png'" alt="file" class="w-6 h-6">
           </button>
+
           <!-- Modal -->
           <transition name="modal-fade">
             <div 
@@ -117,18 +149,18 @@
                   </button>
                 </div>
 
-                <!-- Modal Body (Scrollable) -->
+                <!-- Modal Body -->
                 <div class="p-4 flex-1 overflow-auto bg-gray-50">
                   <div v-if="isPdf" class="w-full h-full">
                     <embed
-                      :src="`${baseUrl}/storage/${currentFile}`"
+                      :src="`${baseUrl}/storage/${currentRow.file_surat}`"
                       type="application/pdf"
                       class="w-full h-full border border-gray-300"
                     />
                   </div>
                   <div v-else class="w-full h-full">
                     <iframe
-                      :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
+                      :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentRow.file_surat}`)}`"
                       class="w-full h-full border border-gray-300"
                       frameborder="0"
                     ></iframe>
@@ -136,79 +168,36 @@
                 </div>
 
                 <!-- Modal Footer -->
-                <div v-if="row.status == 0 && (row.roles == 16 || row.roles == 2)" class="flex justify-end p-4 border-t bg-gray-100">
-                  <button 
-                    @click.prevent="confirmResponse(row)"
-                    class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8">
-                      <path fill="currentColor" d="M5 0v2C1 2 0 4.05 0 7c.52-1.98 2-3 4-3h1v2l3-3.16L5 0z"/>
-                    </svg>
-                    <span>Tanggapi</span>
-                  </button>
-                </div>
-                <div v-else-if="row.status == 1 && (row.roles == 3 || row.roles == 2)" class="flex justify-end p-4 border-t bg-gray-100">
-                  <button 
-                    @click.prevent="confirmAccept(row)"
-                    class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Disposisi
-                  </button>
-                </div>
-                <div v-else-if="row.status == 1 && (row.roles == 4 || row.roles == 2)" class="flex justify-end p-4 border-t bg-gray-100">
-                  <button 
-                    @click.prevent="confirmAccept(row)"
-                    class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Disposisi
-                  </button>
-                </div>
+                <template v-if="currentRow.status == 0">
+                  <div class="flex justify-end p-4 border-t bg-gray-100">
+                    <button 
+                      @click.prevent="confirmResponse(currentRow)"
+                      class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8">
+                        <path fill="currentColor" d="M5 0v2C1 2 0 4.05 0 7c.52-1.98 2-3 4-3h1v2l3-3.16L5 0z"/>
+                      </svg>
+                      <span>Tanggapi</span>
+                    </button>
+                  </div>
+                </template>
+                <template v-else-if="currentRow.status == 1">
+                  <div class="flex justify-end p-4 border-t bg-gray-100">
+                    <button 
+                      @click.prevent="confirmAccept(currentRow)"
+                      class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Disposisi
+                    </button>
+                  </div>
+                </template>
+
               </div>
             </div>
           </transition>
-        </div>
-      </template>
-      
-
-      <template #table.cell.content.Status="{ row }">
-        <div class="flex flex-row justify-center space-x-1">
-          <template v-if="row.status == 2">
-            <Link :href="route('sertifikasi', { pengajuan: row.slug })">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M43.5 37.5v-27a2 2 0 0 0-2-2h-35a2 2 0 0 0-2 2v27a2 2 0 0 0 2 2h35a2 2 0 0 0 2-2Z"/>
-                <circle cx="14" cy="24" r="5.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M19.5 24h20m-4 0v5.5"/>
-              </svg>
-            </Link>
-          </template>
-          <template v-else-if="row.status == 0">
-            <button 
-              @click.prevent="confirmResponse(row)"
-              class="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" cheight="16" viewBox="0 0 8 8">
-                <path fill="currentColor" d="M5 0v2C1 2 0 4.05 0 7c.52-1.98 2-3 4-3h1v2l3-3.16L5 0z"/>
-              </svg>
-              <span>Tanggapi</span>
-            </button>
-          </template>
-          <template v-else-if="row.status == 1">
-            <button 
-              @click.prevent="confirmAccept(row)"
-              class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Disposisi
-            </button>
-          </template>
         </div>
       </template>
     </datatables>
@@ -286,9 +275,6 @@
         </div>
       </div>
     </dialog-modal>
-
-    
-
 
     <dialog-modal :show="modalAccept" @close="modalAccept = false">
       <div class="flex flex-col space-y-6 p-10 items-center">
@@ -373,21 +359,20 @@
     data() {
       return {
         showModalFile: false,
-        currentFile: null,
+        currentRow: null,
         isPdf: false,
         baseUrl: `${baseUrl}`,
-      };
+      }; 
     },
     methods: {
-      openModal(file) {
-        this.currentFile = file;
-        this.isPdf = file.endsWith('.pdf');
-        this.adjustModalSize();
+      openModal(row) {
+        this.currentRow = row;
+        this.isPdf = row.file_surat.endsWith('.pdf');
         this.showModalFile = true;
       },
       closeModal() {
         this.showModalFile = false;
-        this.currentFile = null;
+        this.currentRow = null;
         this.isPdf = false;
       },
       adjustModalSize() {
@@ -602,7 +587,7 @@
         {
           uniqid: 'fileSurat',
           label: 'File',
-          field: 'file_surat',
+          field: (row) => row.file_surat,
           sortable: false,
           sortOrder: 'asc',
           align: 'center',
@@ -622,7 +607,7 @@
         {
           uniqid: 'Status',
           label: 'Status',
-          field: 'status',
+          field: (row) => row.status,
           sortable: false,
           sortOrder: 'asc',
           align: 'center',
