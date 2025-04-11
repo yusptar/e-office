@@ -226,7 +226,7 @@
         { label: 'Laboratorium', value: 'Laboratorium' },
         { label: 'Patologi Anatomi', value: 'Patologi Anatomi' },
         { label: 'Instalfarmasi', value: 'Instalfarmasi' },
-        { label: 'Gudang Garmasi', value: 'Gudang Garmasi' },
+        { label: 'Gudang Farmasi', value: 'Gudang Farmasi' },
         { label: 'Instaljangwat', value: 'Instaljangwat' }
       ]);
 

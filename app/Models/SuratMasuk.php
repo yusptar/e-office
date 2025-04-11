@@ -43,6 +43,7 @@ class SuratMasuk extends Model
         'status',
         'roles',
         'ruangan_val',
+        'paraf',
         
     ];
 

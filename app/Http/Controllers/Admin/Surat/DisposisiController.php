@@ -41,7 +41,7 @@ class DisposisiController extends Controller
     public function index()
     {
         return Inertia::render('Admin/Surat/Disposisi/Index', [
-            'breadcrumbs' => $this->breadcrumbs
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

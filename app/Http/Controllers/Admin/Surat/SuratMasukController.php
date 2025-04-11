@@ -169,7 +169,8 @@ class SuratMasukController extends Controller
                 'status' => '2',
                 'catatan_ka' => $request->catatan_ka,
                 'asal_surat' => $request->asal_surat,
-                'rencana_aksi' => $request->rencana_aksi
+                'rencana_aksi' => $request->rencana_aksi,
+                'paraf' => $request->paraf
             ]);
 
             DB::commit();

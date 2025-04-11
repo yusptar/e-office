@@ -296,16 +296,16 @@ export default {
         { label: 'Instalkabed', value: 'Instalkabed' },
         { label: 'OK Sentral', value: 'OK Sentral' },
         { label: 'OK Gyn', value: 'OK Gyn' },
-        { label: 'Endoscopy & Brochoscopy', value: 'Endoscopy & Brochoscopy' },
+        { label: 'Endoscopy & Brochoscopy', value: 'EndoscopyBrochoscopy' },
         { label: 'CSSD', value: 'CSSD' },
         { label: 'Cathlab', value: 'Cathlab' },
         { label: 'Instalrehabmed', value: 'Instalrehabmed' },
         { label: 'Radiologi', value: 'Radiologi' },
         { label: 'Radioterapi', value: 'Radioterapi' },
         { label: 'Laboratorium', value: 'Laboratorium' },
-        { label: 'Patologi Anatomi', value: 'Patologi Anatomi' },
+        { label: 'Patologi Anatomi', value: 'PatologiAnatomi' },
         { label: 'Instalfarmasi', value: 'Instalfarmasi' },
-        { label: 'Gudang Garmasi', value: 'Gudang Garmasi' },
+        { label: 'Gudang Farmasi', value: 'GudangFarmasi' },
         { label: 'Instaljangwat', value: 'Instaljangwat' }
       ]);
 

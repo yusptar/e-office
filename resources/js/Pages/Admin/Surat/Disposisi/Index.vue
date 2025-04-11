@@ -100,7 +100,7 @@
       <template #table.cell.content.fileSurat="{ row }">
         <div align="center">
           <button 
-            @click="openModal(row.file_surat)"
+            @click="openModal(row)"
             class="btn btn-primary">
             <img :src="baseUrl + '/img/file.png'" alt="file" class="w-6 h-6">
           </button>
@@ -128,16 +128,50 @@
 
                 <!-- Modal Body (Scrollable) -->
                 <div class="p-4 flex-1 overflow-auto bg-gray-50">
+                  <!-- Report Section -->
+                  <div class="mb-4 p-4 bg-white rounded shadow text-sm">
+                    <h4 class="text-md font-semibold mb-2">REPORT SURAT</h4>
+                    <table class="w-full text-left">
+                      <tr>
+                        <td class="font-medium w-40">Nomor Surat</td>
+                        <td>: {{ currentRow.no_surat }}</td>
+                      </tr>
+                      <tr>
+                        <td class="font-medium">Tanggal Surat</td>
+                        <td>: {{ formatTanggal(currentRow.tanggal_surat) }}</td>
+                      </tr>
+                      <tr>
+                        <td class="font-medium">Perihal</td>
+                        <td>: {{ currentRow.perihal_surat }}</td>
+                      </tr>
+                      <tr>
+                        <td class="font-medium">Rencana Aksi</td>
+                        <td>: {{ currentRow.rencana_aksi }}</td>
+                      </tr>
+                      <tr>
+                        <td class="font-medium">Disposisi Karumkit</td>
+                        <td class="flex items-center justify-between">
+                          <span>: {{ currentRow.catatan_ka }}</span>
+                          <span>
+                            <template v-if="currentRow.paraf == 1">
+                              <img :src="`${baseUrl}/img/paraf.png`" alt="Paraf" style="height:50px;" />
+                            </template>
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+
                   <div v-if="isPdf" class="w-full h-full">
                     <embed
-                      :src="`${baseUrl}/storage/${currentFile}`"
+                      :src="`${baseUrl}/storage/${currentRow.file_surat}`"
                       type="application/pdf"
                       class="w-full h-full border border-gray-300"
                     />
                   </div>
                   <div v-else class="w-full h-full">
                     <iframe
-                      :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentFile}`)}`"
+                      :src="`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(`${baseUrl}/storage/${currentRow.file_surat}`)}`"
                       class="w-full h-full border border-gray-300"
                       frameborder="0"
                     ></iframe>
@@ -254,21 +288,20 @@
     data() {
       return {
         showModalFile: false,
-        currentFile: null,
+        currentRow: null,
         isPdf: false,
         baseUrl: `${baseUrl}`,
       };
     },
     methods: {
-      openModal(file) {
-        this.currentFile = file;
-        this.isPdf = file.endsWith('.pdf');
-        this.adjustModalSize();
+      openModal(row) {
+        this.currentRow = row;
+        this.isPdf = row.file_surat.endsWith('.pdf');
         this.showModalFile = true;
       },
       closeModal() {
         this.showModalFile = false;
-        this.currentFile = null;
+        this.currentRow = null;
         this.isPdf = false;
       },
       adjustModalSize() {
@@ -465,7 +498,8 @@
         showModal,
         confirmDeleteRow,
         qrCodeUrl,
-        deleteRow
+        deleteRow,
+        formatTanggal
       }
     }
   }

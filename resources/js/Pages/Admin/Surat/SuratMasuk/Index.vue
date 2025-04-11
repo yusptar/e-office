@@ -91,7 +91,6 @@
         </div>
       </template>
 
-     
       <template #table.cell.content.Status="{ row }">
         <div class="flex flex-row justify-center space-x-1">
           <template v-if="row.status == 0">
@@ -263,6 +262,15 @@
           <span v-if="form.errors.posisi_surat" class="text-red-400 italic">{{ form.value.errors.posisi_surat }}</span>
         </div>
 
+        <div class="w-full">
+          <label for="sifat_surat" class="block text-sm font-medium text-gray-700">Sifat Surat</label>
+          <select v-model="form.sifat_surat" :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.sifat_surat }" :disabled="form.processing">     
+            <option value="Segera">SEGERA</option>
+            <option value="Biasa">BIASA</option>
+          </select>
+          <span v-if="form.errors.sifat_surat" class="text-red-400 italic">{{ form.value.errors.sifat_surat }}</span>
+        </div>
+
         <div class="w-full pt-5">
           <div class="flex flex-row justify-center space-x-4">
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalTanggapi = false" :disabled="form.processing">
@@ -288,6 +296,7 @@
           <circle cx="38" cy="38" r="10" fill="#43A047"/>
           <path fill="#DCEDC8" d="M42.5 33.3L36.8 39l-2.7-2.7l-2.1 2.2l4.8 4.8l7.8-7.8z"/>
         </svg>
+
         <div class="w-full">
           <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Disposisi Kasi TUUD</label>
           <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }"  :readonly="true" v-model="form.catatan_kasi_tuud" rows="3" class="h-20" disabled/>
@@ -314,7 +323,7 @@
         </div>
 
         <div class="w-full">
-          <span class="text-black font-medium">Rencana Aksi <span class="text-red-400">*</span></span>
+          <span class="text-black font-medium">Disposisi <span class="text-red-400">*</span></span>
             <select-search
               clearable
               :class="{ 'rounded-md focus:ring-1 w-full p-3 mt-2 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.rencana_aksi }"
@@ -325,11 +334,31 @@
           <span v-if="form.errors.rencana_aksi" class="text-red-400 italic">{{ form.value.errors.rencana_aksi }}</span>
         </div>
 
-        <div class="w-full">
-          <label for="catatan_ka" class="block text-sm font-medium text-gray-700">Disposisi Karumkit</label>
-          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_ka }" :disabled="form.processing"  v-model="form.catatan_ka" rows="4" class="h-40"/>
-          <span v-if="form.errors.catatan_ka" class="text-red-400 italic">{{ form.value.errors.catatan_ka }}</span>
+        <div class="w-full flex flex-row gap-4">
+          <!-- Kolom Catatan (kiri, lebih lebar) -->
+          <div class="w-3/4">
+            <label for="catatan_ka" class="block text-sm font-medium text-gray-700">Catatan</label>
+            <textarea
+              :class="{
+                'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true,
+                'border-red-400': form.errors.catatan_ka  
+              }"
+              :disabled="form.processing"
+              v-model="form.catatan_ka"
+              rows="6"
+              class="h-40"
+            />
+            <span v-if="form.errors.catatan_ka" class="text-red-400 italic">{{ form.value.errors.catatan_ka }}</span>
+          </div>
+
+          <!-- Kolom Paraf (kanan, lebih sempit) -->
+          <label class="w-1/4 block text-sm font-medium text-gray-700">Paraf</label>
+          <div class="mt-2 p-12 border rounded-md bg-white text-center">
+            
+            <div v-if="form.parafPreview" v-html="form.parafPreview"></div>
+          </div>
         </div>
+
         <div class="w-full pt-5">
           <div class="flex flex-row justify-center space-x-4">
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalAccept = false" :disabled="form.processing">
@@ -338,8 +367,38 @@
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-green-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed" @click.prevent="acceptRequest()" :disabled="form.processing">
               Simpan
             </button>
+            <button
+              type="button"
+              class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed"
+              @click.prevent="showPasswordModal = true"
+              :disabled="form.processing"
+            >
+              Paraf
+            </button>
           </div>
         </div>
+      </div>
+    </dialog-modal>
+    
+    <dialog-modal :show="showPasswordModal" @close="showPasswordModal = false">
+      <div class="p-6">
+        <h2 class="text-lg font-bold mb-4">Konfirmasi Paraf</h2>
+        <label class="block text-sm font-medium text-gray-700">Masukkan Password</label>
+        <input
+          type="password"
+          v-model="parafPassword"
+          class="w-full p-3 mt-2 border rounded-md focus:ring-indigo-500"
+          placeholder="Password"
+        />
+        <div class="mt-6 flex justify-end gap-3">
+          <button @click="showPasswordModal = false" class="px-4 py-2 bg-gray-400 text-white rounded-md">
+            Batal
+          </button>
+          <button @click="verifyParafPassword" class="px-4 py-2 bg-green-600 text-white rounded-md">
+            Paraf
+          </button>
+        </div>
+        <p v-if="wrongPassword" class="text-red-500 italic mt-2">Password salah.</p>
       </div>
     </dialog-modal>
   
@@ -362,9 +421,29 @@
         currentRow: null,
         isPdf: false,
         baseUrl: `${baseUrl}`,
+        showPasswordModal: false,
+        parafPassword: '',
+        wrongPassword: false,
       }; 
     },
     methods: {
+      verifyParafPassword() {
+        const correctPassword = 'rahasia'; 
+
+        if (this.parafPassword === correctPassword) {
+          this.wrongPassword = false;
+          this.addParaf();
+          this.showPasswordModal = false;
+          this.parafPassword = '';
+        } else {
+          this.wrongPassword = true;
+        }
+      },
+      addParaf() {
+        const parafImg = `<img src="${this.baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;"/>`;
+        this.form.paraf = 1; 
+        this.form.parafPreview = parafImg;
+      },
       openModal(row) {
         this.currentRow = row;
         this.isPdf = row.file_surat.endsWith('.pdf');
@@ -403,11 +482,8 @@
       breadcrumbs: {
         type: Array
       },
-      pengajuan: {
-        type: Object
-      }
     },
-    setup(props) {
+    setup() {
       
       const datatables = ref(null);
       const formatTanggal = (tanggal) => {
@@ -631,7 +707,9 @@
         catatan_ka: "",
         catatan_kasi_tuud: "",
         rencana_aksi: "",
-        slug: "" 
+        slug: "",
+        paraf: null,
+        parafPreview: '',
       })
 
       const showModal = ref(false)
@@ -650,6 +728,7 @@
         : "Kepada Yth. WAKA/KA, ";
         form.perihal_surat = row.perihal_surat
         form.no_agenda = row.no_agenda
+        form.sifat_surat = row.sifat_surat
         form.slug = row.slug 
         modalTanggapi.value = true
       }
@@ -659,7 +738,14 @@
         form.catatan_kasi_tuud = row.catatan_kasi_tuud
         form.asal_surat = _.toString(row.asal_surat)
         form.rencana_aksi = _.toString(row.rencana_aksi)
-        form.slug = row.slug 
+        form.slug = row.slug
+        if (row.paraf === 1) {
+          form.paraf = 1;
+          form.parafPreview = `<img src="${baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;" />`;
+        } else {
+          form.paraf = null;
+          form.parafPreview = '';
+        }
         modalAccept.value = true
       }
 
