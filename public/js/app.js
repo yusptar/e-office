@@ -26210,7 +26210,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     addParaf: function addParaf() {
-      var parafImg = "<img src=\"".concat(this.baseUrl, "/img/paraf.png\" alt=\"Paraf\" style=\"height:60px;\"/>");
+      var parafImg = "<img src=\"".concat(this.baseUrl, "/img/paraf.png\" alt=\"Paraf\" style=\"height:65px; text-align:center;\"/>");
       this.form.paraf = 1;
       this.form.parafPreview = parafImg;
     },
@@ -26615,12 +26615,12 @@ __webpack_require__.r(__webpack_exports__);
       modalTanggapi.value = true;
     }
     function confirmAccept(row) {
-      form.catatan_ka = row.catatan_ka;
-      form.catatan_kasi_tuud = row.catatan_kasi_tuud;
-      form.asal_surat = _.toString(row.asal_surat);
-      form.rencana_aksi = _.toString(row.rencana_aksi);
-      form.slug = row.slug;
-      if (row.paraf === 1) {
+      form.catatan_ka = row.catatan_ka || '';
+      form.catatan_kasi_tuud = row.catatan_kasi_tuud || '';
+      form.asal_surat = String(row.asal_surat || '');
+      form.rencana_aksi = String(row.rencana_aksi || '');
+      form.slug = row.slug || '';
+      if (String(row.paraf === 1)) {
         form.paraf = 1;
         form.parafPreview = "<img src=\"".concat(baseUrl, "/img/paraf.png\" alt=\"Paraf\" style=\"height:60px;\" />");
       } else {
@@ -38182,7 +38182,7 @@ var _hoisted_95 = {
   "class": "text-red-400 italic"
 };
 var _hoisted_96 = {
-  "class": "w-full flex flex-row gap-4"
+  "class": "w-full flex flex-row gap-1"
 };
 var _hoisted_97 = {
   "class": "w-3/4"
@@ -38196,35 +38196,38 @@ var _hoisted_100 = {
   key: 0,
   "class": "text-red-400 italic"
 };
-var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "w-1/4 block text-sm font-medium text-gray-700"
-}, "Paraf", -1 /* HOISTED */);
-var _hoisted_102 = {
-  "class": "mt-2 p-12 border rounded-md bg-white text-center"
+var _hoisted_101 = {
+  "class": "w-3/4"
 };
-var _hoisted_103 = ["innerHTML"];
-var _hoisted_104 = {
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "block text-sm font-medium text-gray-700"
+}, "Paraf", -1 /* HOISTED */);
+var _hoisted_103 = {
+  "class": "w-full p-12 mt-2 rounded-md bg-white text-center"
+};
+var _hoisted_104 = ["innerHTML"];
+var _hoisted_105 = {
   "class": "w-full pt-5"
 };
-var _hoisted_105 = {
+var _hoisted_106 = {
   "class": "flex flex-row justify-center space-x-4"
 };
-var _hoisted_106 = ["disabled"];
 var _hoisted_107 = ["disabled"];
 var _hoisted_108 = ["disabled"];
-var _hoisted_109 = {
+var _hoisted_109 = ["disabled"];
+var _hoisted_110 = {
   "class": "p-6"
 };
-var _hoisted_110 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_111 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "text-lg font-bold mb-4"
 }, "Konfirmasi Paraf", -1 /* HOISTED */);
-var _hoisted_111 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_112 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block text-sm font-medium text-gray-700"
 }, "Masukkan Password", -1 /* HOISTED */);
-var _hoisted_112 = {
+var _hoisted_113 = {
   "class": "mt-6 flex justify-end gap-3"
 };
-var _hoisted_113 = {
+var _hoisted_114 = {
   key: 0,
   "class": "text-red-500 italic mt-2"
 };
@@ -38541,31 +38544,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $setup.form.catatan_ka = $event;
             }),
             rows: "6"
-          }, null, 10 /* CLASS, PROPS */, _hoisted_99), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.catatan_ka]]), $setup.form.errors.catatan_ka ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_100, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.value.errors.catatan_ka), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Kolom Paraf (kanan, lebih sempit) "), _hoisted_101, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_102, [$setup.form.parafPreview ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+          }, null, 10 /* CLASS, PROPS */, _hoisted_99), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.catatan_ka]]), $setup.form.errors.catatan_ka ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_100, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.value.errors.catatan_ka), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Kolom Paraf (kanan, lebih sempit) "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_101, [_hoisted_102, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_103, [$setup.form.parafPreview ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
             key: 0,
             innerHTML: $setup.form.parafPreview
-          }, null, 8 /* PROPS */, _hoisted_103)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_104, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          }, null, 8 /* PROPS */, _hoisted_104)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             type: "button",
             "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed",
             onClick: _cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
               return $setup.modalAccept = false;
             }, ["prevent"])),
             disabled: $setup.form.processing
-          }, " Batal ", 8 /* PROPS */, _hoisted_106), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          }, " Batal ", 8 /* PROPS */, _hoisted_107), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             type: "button",
             "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-green-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed",
             onClick: _cache[21] || (_cache[21] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
               return $setup.acceptRequest();
             }, ["prevent"])),
             disabled: $setup.form.processing
-          }, " Simpan ", 8 /* PROPS */, _hoisted_107), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          }, " Simpan ", 8 /* PROPS */, _hoisted_108), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             type: "button",
             "class": "py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed",
             onClick: _cache[22] || (_cache[22] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
               return $data.showPasswordModal = true;
             }, ["prevent"])),
             disabled: $setup.form.processing
-          }, " Paraf ", 8 /* PROPS */, _hoisted_108)])])])];
+          }, " Paraf ", 8 /* PROPS */, _hoisted_109)])])])];
         }),
         _: 1 /* STABLE */
       }, 8 /* PROPS */, ["show"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_dialog_modal, {
@@ -38575,14 +38578,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_109, [_hoisted_110, _hoisted_111, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_110, [_hoisted_111, _hoisted_112, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
             type: "password",
             "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
               return $data.parafPassword = $event;
             }),
             "class": "w-full p-3 mt-2 border rounded-md focus:ring-indigo-500",
             placeholder: "Password"
-          }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.parafPassword]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_112, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.parafPassword]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_113, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
             onClick: _cache[25] || (_cache[25] = function ($event) {
               return $data.showPasswordModal = false;
             }),
@@ -38592,7 +38595,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.verifyParafPassword && $options.verifyParafPassword.apply($options, arguments);
             }),
             "class": "px-4 py-2 bg-green-600 text-white rounded-md"
-          }, " Paraf ")]), $data.wrongPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_113, "Password salah.")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
+          }, " Paraf ")]), $data.wrongPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_114, "Password salah.")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
         }),
         _: 1 /* STABLE */
       }, 8 /* PROPS */, ["show"])];

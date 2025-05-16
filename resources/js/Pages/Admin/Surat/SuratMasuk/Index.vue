@@ -334,7 +334,7 @@
           <span v-if="form.errors.rencana_aksi" class="text-red-400 italic">{{ form.value.errors.rencana_aksi }}</span>
         </div>
 
-        <div class="w-full flex flex-row gap-4">
+        <div class="w-full flex flex-row gap-1">
           <!-- Kolom Catatan (kiri, lebih lebar) -->
           <div class="w-3/4">
             <label for="catatan_ka" class="block text-sm font-medium text-gray-700">Catatan</label>
@@ -352,10 +352,11 @@
           </div>
 
           <!-- Kolom Paraf (kanan, lebih sempit) -->
-          <label class="w-1/4 block text-sm font-medium text-gray-700">Paraf</label>
-          <div class="mt-2 p-12 border rounded-md bg-white text-center">
-            
-            <div v-if="form.parafPreview" v-html="form.parafPreview"></div>
+          <div class="w-3/4">
+            <label class="block text-sm font-medium text-gray-700">Paraf</label>
+            <div class="w-full p-12 mt-2 rounded-md bg-white text-center">
+              <div v-if="form.parafPreview" v-html="form.parafPreview"></div>
+            </div>
           </div>
         </div>
 
@@ -440,7 +441,7 @@
         }
       },
       addParaf() {
-        const parafImg = `<img src="${this.baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;"/>`;
+        const parafImg = `<img src="${this.baseUrl}/img/paraf.png" alt="Paraf" style="height:65px; text-align:center;"/>`;
         this.form.paraf = 1; 
         this.form.parafPreview = parafImg;
       },
@@ -734,17 +735,18 @@
       }
 
       function confirmAccept(row) {
-        form.catatan_ka = row.catatan_ka
-        form.catatan_kasi_tuud = row.catatan_kasi_tuud
-        form.asal_surat = _.toString(row.asal_surat)
-        form.rencana_aksi = _.toString(row.rencana_aksi)
-        form.slug = row.slug
-        if (row.paraf === 1) {
-          form.paraf = 1;
-          form.parafPreview = `<img src="${baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;" />`;
+        form.catatan_ka = row.catatan_ka || ''
+        form.catatan_kasi_tuud = row.catatan_kasi_tuud || ''
+        form.asal_surat = String(row.asal_surat || '')
+        form.rencana_aksi = String(row.rencana_aksi || '')
+        form.slug = row.slug || ''
+
+        if (String(row.paraf === 1)) {
+          form.paraf = 1
+          form.parafPreview = `<img src="${baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;" />`
         } else {
-          form.paraf = null;
-          form.parafPreview = '';
+          form.paraf = null
+          form.parafPreview = ''
         }
         modalAccept.value = true
       }
