@@ -1,5 +1,5 @@
 <template>
-  <img :src="baseUrl + '/img/logorst.png'" alt="Logo RST" class="logo-image" />
+  <img :src="baseUrl + '/img/logo-rs.png'" alt="Logo RST" class="logo-image" />
 </template>
 
 <script>
@@ -15,7 +15,7 @@ export default {
 
 <style scoped>
 .logo-image {
-  width: 150px;
+  width: 250px;
   height: auto;
 }
 </style>

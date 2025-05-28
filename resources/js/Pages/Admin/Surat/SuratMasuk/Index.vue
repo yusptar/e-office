@@ -380,6 +380,103 @@
         </div>
       </div>
     </dialog-modal>
+
+    <dialog-modal :show="modalAcceptWakarumkit" @close="modalAcceptWakarumkit = false">
+      <div class="flex flex-col space-y-6 p-10 items-center">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-20 h-20 fill-current text-yellow-500">
+          <path d="M70.335 30.683c-1.569-2.719-3.878-4.278-6.337-4.278s-4.764 1.556-6.333 4.274l-34.6 59.94c-1.569 2.719-1.765 5.5-.536 7.628s3.734 3.348 6.871 3.348h69.2c3.138 0 5.643-1.22 6.871-3.348s1.035-4.907-.534-7.624zm31.484 65.452c-.456.785-1.627 1.237-3.216 1.237H29.4c-1.589 0-2.76-.452-3.214-1.237s-.26-2.029.536-3.406l34.6-59.94c.794-1.375 1.769-2.163 2.676-2.163s1.886.79 2.68 2.167l34.6 59.939c.798 1.377.994 2.616.541 3.403z"/>
+          <path d="M64 78.144a2.11 2.11 0 0 0 2.111-2.111V48.24a2.111 2.111 0 0 0-4.222 0v27.793A2.11 2.11 0 0 0 64 78.144z"/>
+          <circle cx="64" cy="86.506" r="3.734"/>
+        </svg> -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="170" height="170" viewBox="0 0 48 48">
+          <path fill="#D1C4E9" d="M38 7H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm0 12H10c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2z"/>
+          <circle cx="38" cy="38" r="10" fill="#43A047"/>
+          <path fill="#DCEDC8" d="M42.5 33.3L36.8 39l-2.7-2.7l-2.1 2.2l4.8 4.8l7.8-7.8z"/>
+        </svg>
+
+        <div class="w-full">
+          <label for="catatan_kasi_tuud" class="block text-sm font-medium text-gray-700">Disposisi Kasi TUUD</label>
+          <textarea :class="{ 'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true, 'border-red-400': form.errors.catatan_kasi_tuud }"  :readonly="true" v-model="form.catatan_kasi_tuud" rows="3" class="h-20" disabled/>
+          <span v-if="form.errors.catatan_kasi_tuud" class="text-red-400 italic">{{ form.value.errors.catatan_kasi_tuud }}</span>
+        </div>
+
+        <div class="w-full">
+          <span class="text-black font-medium">Diteruskan Kepada <span class="text-red-400">*</span></span>
+          <input
+            list="disposisiList"
+            v-model="form.asal_surat"
+            :class="{
+              'rounded-md focus:ring-1 w-full p-4 mt-2 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100 border border-gray-300': true,
+              'border-red-400': form.errors.asal_surat
+            }"
+            placeholder="Pilih disposisi"
+          />
+          <datalist id="disposisiList">
+            <option v-for="option in disposisiOptions" :key="option.value" :value="option.value">
+              {{ option.label }}
+            </option>
+          </datalist>
+          <span v-if="form.errors.asal_surat" class="text-red-400 italic">{{ form.errors.asal_surat }}</span>
+        </div>
+
+        <div class="w-full">
+          <span class="text-black font-medium">Disposisi <span class="text-red-400">*</span></span>
+            <select-search
+              clearable
+              :class="{ 'rounded-md focus:ring-1 w-full p-3 mt-2 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.rencana_aksi }"
+              v-model="form.rencana_aksi"
+              :disabled="form.processing"
+              :options="rencanaAksiOptions">
+            </select-search>
+          <span v-if="form.errors.rencana_aksi" class="text-red-400 italic">{{ form.value.errors.rencana_aksi }}</span>
+        </div>
+
+        <div class="w-full flex flex-row gap-1">
+          <!-- Kolom Catatan (kiri, lebih lebar) -->
+          <div class="w-3/4">
+            <label for="catatan_ka" class="block text-sm font-medium text-gray-700">Catatan</label>
+            <textarea
+              :class="{
+                'w-full p-3 mt-2 border rounded-md disabled:bg-gray-200': true,
+                'border-red-400': form.errors.catatan_ka  
+              }"
+              :disabled="form.processing"
+              v-model="form.catatan_ka"
+              rows="6"
+              class="h-40"
+            />
+            <span v-if="form.errors.catatan_ka" class="text-red-400 italic">{{ form.value.errors.catatan_ka }}</span>
+          </div>
+
+          <!-- Kolom Paraf (kanan, lebih sempit) -->
+          <div class="w-3/4">
+            <label class="block text-sm font-medium text-gray-700">Paraf</label>
+            <div class="w-full p-12 mt-2 rounded-md bg-white text-center">
+              <div v-if="form.parafPreview" v-html="form.parafPreview"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full pt-5">
+          <div class="flex flex-row justify-center space-x-4">
+            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalAccept = false" :disabled="form.processing">
+              Batal
+            </button>
+            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-green-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed" @click.prevent="acceptRequest()" :disabled="form.processing">
+              Simpan
+            </button>
+            <button
+              type="button"
+              class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-blue-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed"
+              @click.prevent="showPasswordModal = true"
+              :disabled="form.processing"
+            >
+              Paraf
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog-modal>
     
     <dialog-modal :show="showPasswordModal" @close="showPasswordModal = false">
       <div class="p-6">
@@ -716,6 +813,7 @@
       const showModal = ref(false)
       const modalTanggapi = ref(false)
       const modalAccept = ref(false)
+      const modalAcceptWakarumkit = ref(false)
 
       function confirmDeleteRow(row) {
         form.value = row
@@ -741,11 +839,9 @@
         form.rencana_aksi = String(row.rencana_aksi || '')
         form.slug = row.slug || ''
 
-        if (String(row.paraf === 1)) {
-          form.paraf = 1
+        if (String(row.paraf === "1")) {
           form.parafPreview = `<img src="${baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;" />`
         } else {
-          form.paraf = null
           form.parafPreview = ''
         }
         modalAccept.value = true
@@ -796,6 +892,7 @@
         acceptRequest,
         disposisiOptions,
         rencanaAksiOptions,
+        modalAcceptWakarumkit,
       }
     }
   }

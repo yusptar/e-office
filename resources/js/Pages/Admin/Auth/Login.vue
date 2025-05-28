@@ -4,6 +4,11 @@
   <AuthLayout>
     <form @submit.prevent="submit()">
       <div class="flex flex-col space-y-4">
+        <div class="flex flex-row w-full sm:max-w-md items-center justify-center mb-2">
+          <slot name="title">
+            <span class="font-extrabold tracking-wide text-lg">E-Office</span>
+          </slot>
+        </div>
         <div class="flex flex-col space-y-2">
           <span class="text-black font-medium">Username / Email <span class="text-red-400">*</span></span>
           <input type="text" :class="{ 'rounded-md focus:ring-1 ring-indigo-500 placeholder-gray-500 text-black disabled:cursor-not-allowed disabled:bg-gray-100': true, 'border-red-400': form.errors.email }" v-model="form.email" :disabled="form.processing">
