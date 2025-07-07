@@ -6,7 +6,7 @@
       <div class="flex flex-col space-y-4">
         <div class="flex flex-row w-full sm:max-w-md items-center justify-center mb-2">
           <slot name="title">
-            <span class="font-extrabold tracking-wide text-lg">E-Office</span>
+            <span class="font-extrabold tracking-wide text-lg">Log In</span>
           </slot>
         </div>
         <div class="flex flex-col space-y-2">

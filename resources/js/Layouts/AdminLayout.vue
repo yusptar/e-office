@@ -3,7 +3,7 @@
   <div class="border-b border-dark-3 bg-dark-2 -mx-1 sm:-mx-8 mb-6 md:hidden">
     <div class="h-16 px-3 sm:px-8 flex items-center">
       <a href="" class="flex mr-auto">
-        <logo-image class="w-6 h-6" />
+        <logo-image class="max-h-10 sm:max-h-12 w-auto object-contain" />
       </a>
       <!-- Hamburger Button -->
       <a href="javascript:;" @click.prevent="openMobileMenu = !openMobileMenu" class="mr-2">
@@ -27,7 +27,7 @@
       <nav class="pr-5 h-full overflow-x-hidden hidden md:block flex-flex-col fixed bg-dark-3" style="width: 250px;">
         <div class="h-full flex flex-col">
           <a href="" class="flex items-center justify-center pl-5 pt-6">
-            <logo-image class="w-6 h-6" />
+            <logo-image class="w-8 h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 lg:w-48 lg:h-48" />
           </a>
           <div class="w-full h-px z-10 relative bg-dark-3 my-6"></div>
           <div class="overflow-y-auto pl-3" style="height: calc(103vh - 210px)">

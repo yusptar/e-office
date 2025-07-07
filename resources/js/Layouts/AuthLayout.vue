@@ -1,21 +1,27 @@
 <template>
-  <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-cover bg-center">
+  <div class="min-h-screen flex flex-col justify-center items-center bg-cover bg-center px-4 py-6">
     
-    <Link href="/">
-        <logo-image class="w-1 h-1" />
+    <!-- Logo -->
+    <Link href="/" class="mb-4">
+      <logo-image class="w-48 h-48 sm:w-20 sm:h-20 md:w-64 md:h-64" />
     </Link>
 
-    <!-- <div class="flex flex-row w-full sm:max-w-md items-center justify-center">
+    <!-- Title -->
+    <div class="text-center mb-4">
       <slot name="title">
-        <span class="font-extrabold tracking-wide text-lg">E-Office</span>
+        <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">E-Office</h1>
       </slot>
-    </div> -->
+    </div>
 
-    <div class="w-full sm:max-w-md mt-6 px-6 py-6 bg-white shadow-md overflow-hidden sm:rounded-lg">
+    <!-- Card -->
+    <div class="w-full sm:max-w-md px-6 py-6 bg-white shadow-md rounded-lg">
       <slot />
     </div>
 
-    <small class="mt-5 tracking-wide text-white">{{ new Date().getFullYear() }} &copy; Unit SIMRS Rumkit Tk.II dr.Soepraoen. All Rights Reserved.</small>
+    <!-- Footer -->
+    <small class="mt-6 text-center text-xs text-gray-400">
+      {{ new Date().getFullYear() }} &copy; Rumkit Tk.II dr. Soepraoen. All Rights Reserved.
+    </small>
   </div>
 </template>
 
