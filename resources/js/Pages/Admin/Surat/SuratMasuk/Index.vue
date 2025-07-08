@@ -522,11 +522,12 @@
         showPasswordModal: false,
         parafPassword: '',
         wrongPassword: false,
+        corrPassword: `${parafpw}`,
       }; 
     },
     methods: {
       verifyParafPassword() {
-        const correctPassword = 'rahasia'; 
+        const correctPassword = `${this.corrPassword}`; 
 
         if (this.parafPassword === correctPassword) {
           this.wrongPassword = false;
@@ -839,7 +840,7 @@
         form.rencana_aksi = String(row.rencana_aksi || '')
         form.slug = row.slug || ''
 
-        if (String(row.paraf === "1")) {
+        if (String(row.paraf) === "1") {
           form.parafPreview = `<img src="${baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;" />`
         } else {
           form.parafPreview = ''
@@ -884,6 +885,7 @@
         showModal,
         modalTanggapi,
         modalAccept,
+        modalAcceptWakarumkit,
         confirmDeleteRow,
         deleteRow,
         confirmResponse,
@@ -892,7 +894,7 @@
         acceptRequest,
         disposisiOptions,
         rencanaAksiOptions,
-        modalAcceptWakarumkit,
+       
       }
     }
   }

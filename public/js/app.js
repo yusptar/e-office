@@ -26204,12 +26204,13 @@ __webpack_require__.r(__webpack_exports__);
       baseUrl: "".concat(baseUrl),
       showPasswordModal: false,
       parafPassword: '',
-      wrongPassword: false
+      wrongPassword: false,
+      corrPassword: "".concat(parafpw)
     };
   },
   methods: {
     verifyParafPassword: function verifyParafPassword() {
-      var correctPassword = 'rahasia';
+      var correctPassword = "".concat(this.corrPassword);
       if (this.parafPassword === correctPassword) {
         this.wrongPassword = false;
         this.addParaf();
@@ -26631,7 +26632,7 @@ __webpack_require__.r(__webpack_exports__);
       form.asal_surat = String(row.asal_surat || '');
       form.rencana_aksi = String(row.rencana_aksi || '');
       form.slug = row.slug || '';
-      if (String(row.paraf === "1")) {
+      if (String(row.paraf) === "1") {
         form.parafPreview = "<img src=\"".concat(baseUrl, "/img/paraf.png\" alt=\"Paraf\" style=\"height:60px;\" />");
       } else {
         form.parafPreview = '';
@@ -26678,6 +26679,7 @@ __webpack_require__.r(__webpack_exports__);
       showModal: showModal,
       modalTanggapi: modalTanggapi,
       modalAccept: modalAccept,
+      modalAcceptWakarumkit: modalAcceptWakarumkit,
       confirmDeleteRow: confirmDeleteRow,
       deleteRow: deleteRow,
       confirmResponse: confirmResponse,
@@ -26685,8 +26687,7 @@ __webpack_require__.r(__webpack_exports__);
       confirmAccept: confirmAccept,
       acceptRequest: acceptRequest,
       disposisiOptions: disposisiOptions,
-      rencanaAksiOptions: rencanaAksiOptions,
-      modalAcceptWakarumkit: modalAcceptWakarumkit
+      rencanaAksiOptions: rencanaAksiOptions
     };
   }
 });

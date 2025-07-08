@@ -18,6 +18,7 @@
         @routes
         <script src="{{ env('ALT_SCRIPT_URL') }}" defer></script>
         <script>window.baseUrl = "{{ env('APP_URL', url('/')) }}";</script>
+        <script>window.parafpw = "{{ env('PARAF_PASS') }}";</script>
     </head>
     <body class="font-sans antialiased overflow-x-hidden font-roboto text-sm bg-no-repeat bg-fixed">
         @inertia
