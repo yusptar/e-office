@@ -16,13 +16,14 @@
 
         <!-- Scripts -->
         @routes
+        
         <script src="{{ env('ALT_SCRIPT_URL') }}" defer></script>
         <script>window.baseUrl = "{{ env('APP_URL', url('/')) }}";</script>
         <script>window.parafpw = "{{ env('PARAF_PASS') }}";</script>
+        <script>window.jabatanId = {{ auth()->check() ? auth()->user()->jabatan_id : 0 }};</script>
     </head>
     <body class="font-sans antialiased overflow-x-hidden font-roboto text-sm bg-no-repeat bg-fixed">
         @inertia
-
         @env ('local')
             {{-- <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script> --}}
         @endenv

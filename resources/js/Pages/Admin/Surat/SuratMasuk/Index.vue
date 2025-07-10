@@ -181,19 +181,33 @@
                   </div>
                 </template>
                 <template v-else-if="currentRow.status == 1">
-                  <div class="flex justify-end p-4 border-t bg-gray-100">
-                    <button 
-                      @click.prevent="confirmAccept(currentRow)"
-                      class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Disposisi
-                    </button>
-                  </div>
+                  <template v-if="jabatanId !== 4">
+                    <div class="flex justify-end p-4 border-t bg-gray-100">
+                      <button 
+                        @click.prevent="confirmAccept(currentRow)"
+                        class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Disposisi Umum
+                      </button>
+                    </div>
+                  </template>
+                  <template v-else-if="jabatanId === 4">
+                    <div class="flex justify-end p-4 border-t bg-gray-100">
+                      <button 
+                        @click.prevent="confirmWakaAccept(currentRow)"
+                        class="flex items-center gap-2 px-2 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Disposisi Waka
+                      </button>
+                    </div>
+                  </template>
                 </template>
-
               </div>
             </div>
           </transition>
@@ -459,7 +473,7 @@
 
         <div class="w-full pt-5">
           <div class="flex flex-row justify-center space-x-4">
-            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalAccept = false" :disabled="form.processing">
+            <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed" @click.prevent="modalAcceptWakarumkit = false" :disabled="form.processing">
               Batal
             </button>
             <button type="button" class="py-3 px-6 text-center shadow-md rounded-md font-semibold text-white bg-green-500 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:cursor-not-allowed" @click.prevent="acceptRequest()" :disabled="form.processing">
@@ -523,6 +537,7 @@
         parafPassword: '',
         wrongPassword: false,
         corrPassword: `${parafpw}`,
+        jabatanId: Number(window.jabatanId) ,
       }; 
     },
     methods: {
@@ -848,6 +863,21 @@
         modalAccept.value = true
       }
 
+      function confirmWakaAccept(row) {
+        form.catatan_ka = row.catatan_ka || ''
+        form.catatan_kasi_tuud = row.catatan_kasi_tuud || ''
+        form.asal_surat = String(row.asal_surat || '')
+        form.rencana_aksi = String(row.rencana_aksi || '')
+        form.slug = row.slug || ''
+
+        if (String(row.paraf) === "1") {
+          form.parafPreview = `<img src="${baseUrl}/img/paraf.png" alt="Paraf" style="height:60px;" />`
+        } else {
+          form.parafPreview = ''
+        }
+        modalAcceptWakarumkit.value = true
+      }
+
       function deleteRow() {
         form.delete(route('admin.surat.masuk.destroy', { pengajuan: form.value.slug }), {
           onSuccess: () => {
@@ -877,6 +907,17 @@
           }
         });
       }
+
+      
+      function acceptWakaRequest(){
+        form.put(route('admin.surat.masuk.persetujuan', { pengajuan: form.slug }), {
+          onSuccess: () => {
+            form.reset()
+            modalAcceptWakarumkit.value = false
+            datatables.value.getData()
+          }
+        });
+      }
   
       return {
         datatables,
@@ -892,6 +933,8 @@
         responseRequest,
         confirmAccept,
         acceptRequest,
+        confirmWakaAccept,
+        acceptWakaRequest,
         disposisiOptions,
         rencanaAksiOptions,
        
